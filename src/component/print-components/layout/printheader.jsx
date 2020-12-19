@@ -51,11 +51,9 @@ export default function PrintHeader(props){
                             <p className="h6">
                                 Mobil: {props.phonenummer}
                             </p>
-                            <i>
                             <p className="h6">
                                 Email: {props.email}
                             </p>
-                            </i>
                     </div>
                 </Col>
             </Row>

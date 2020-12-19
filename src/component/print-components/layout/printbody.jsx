@@ -1,11 +1,12 @@
 import {Table} from 'react-bootstrap'
+import moment from 'moment'
 
 export default function PrintBody(props){
     return (
         <>
             <p className="subject h2 mt-5">
                 Invoice <small style={{fontSize: "15px"}}>Invoice no: #{props.invoiceno} </small>
-                 <small style={{fontSize: "15px"}} className="float-right pt-3">19.12.2020</small>
+                 <small style={{fontSize: "15px"}} className="float-right pt-3"> {moment().subtract(10, 'days').calendar()} </small>
             </p>
             <hr className="bg-dark" />
             <Table striped bordered hover>

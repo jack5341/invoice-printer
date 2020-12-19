@@ -4,7 +4,7 @@ export default function UserTable(props){
     
     return (
         <>
-            <a target="_blank" href={"/print/" + props.id}>
+            <a target="_blank" rel="noreferrer" href={"/print/" + props.id}>
                 <Table striped bordered hover>
                     <thead>
                         <tr>

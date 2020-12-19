@@ -3,7 +3,6 @@ import {Container} from 'react-bootstrap'
 import {usersStore} from '../context/getusers'
 import Print from '../component/print-components/print'
 import {
-    BrowserRouter as Router,
     useParams
 } from "react-router-dom";
 
