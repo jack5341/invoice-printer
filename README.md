@@ -6,7 +6,7 @@ Your pdf's are saving to `/server` you can find them in there !
 
 > Output sample
 
-![Screenshot](https://raw.githubusercontent.com/jack5341/demand-print/master/Screenshot.PNG)
+![Screenshot](https://raw.githubusercontent.com/jack5341/pdf-demand-printer/master/master/Screenshot.PNG)
 
 ## How to install 
 
