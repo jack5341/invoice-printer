@@ -1,25 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
+import { usersStore } from './context/getusers'
+import { useEffect,useState } from 'react'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+  Link,
+  useParams
+} from "react-router-dom";
+import axios from 'axios'
 
-function App() {
+// Pages
+import Homepage from './pages/homepage'
+import Printpage from './pages/printpage'
+
+export default function App() {
+
+  const [users,setUsers] = useState([])
+
+  useEffect(() => {
+    axios({
+      url: "http://localhost:8080/getusers",
+      method: "GET"
+    }).then((res) => {
+      setUsers(res.data)
+    })
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <usersStore.Provider value={users} >
+      <Switch>
+        <Route exact path="/print/:id" component={Printpage} />
+        <Route component={Homepage} path="/"/>
+      </Switch>
+      </usersStore.Provider>
+    </Router>
+  )
 }
 
-export default App;
