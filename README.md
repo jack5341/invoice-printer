@@ -4,7 +4,7 @@ Powered by React.js,Puppeteer and Nodejs Fast PDF demand printer
 
 Your pdf's are saving to `/server` you can find them in there !
 
-![Screenshot](https://raw.githubusercontent.com/jack5341/demand-print/master/Screenshot.PNG)
+![Screenshot](https://raw.githubusercontent.com/jack5341/demand-print/master/master/Screenshot.PNG)
 
 ## How to install 
 
