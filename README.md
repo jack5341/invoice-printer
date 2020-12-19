@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+# Demand Printer
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Powered by React.js,Puppeteer and Nodejs Fast PDF demand printer
 
-## Available Scripts
+Your pdf's are saving to `/server` you can find them in there !
 
-In the project directory, you can run:
+![Screenshot](https://raw.githubusercontent.com/jack5341/demand-print/master/Screenshot.PNG)
 
-### `npm start`
+## How to install 
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+-   Clone Repo
+```sh
+$ git clone https://github.com/jack5341/demand-print.git
+```
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+- Install Dependencies
+```sh
+$ npm install 
+```
 
-### `npm test`
+or
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+```sh
+$ yarn
+```
+> Same steps for Server Side "./server"
+- Build
+```sh
+$ npm run build
+```
 
-### `npm run build`
+or 
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+```sh
+$ yarn build
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## How did i use Puppeteer
+```js
+app.post("/takescreenshot", async(req,res) => {
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+	console.log()
 
-### `npm run eject`
+	const  browser = await  puppeteer.launch();
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+	const  page = await  browser.newPage();
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+	await  page.goto(req.body.path, {waitUntil:  'networkidle2'});
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+	await  page.evaluate(() => {
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+	document.querySelector(".btn ").style="display:none"
 
-## Learn More
+	})
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+	await  page.pdf({path:  req.body.company + '.pdf', format:  'A4'});
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+	await  browser.close()
 
-### Code Splitting
+	res.send("Succesfully saved on " + "./server/" + req.body.company
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+	+ '.pdf'
 
-### Analyzing the Bundle Size
+	)
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+	res.end()
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+})
+```
+>Server side port is 8080

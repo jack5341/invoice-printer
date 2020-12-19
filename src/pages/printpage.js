@@ -1,7 +1,7 @@
 import {useContext} from 'react'
 import {Container} from 'react-bootstrap'
 import {usersStore} from '../context/getusers'
-import PrintHeader from '../component/header/printheader'
+import Print from '../component/print-components/print'
 import {
     BrowserRouter as Router,
     useParams
@@ -22,7 +22,8 @@ export default function Printpage(){
         return (
             <>
             <Container>
-                <PrintHeader company={user.company.name}
+                <Print company={user.company.name}
+                email={user.email}
                 name={user.name}
                 street={user.address.street}
                 zipcode={user.address.zipcode}
