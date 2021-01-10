@@ -7,6 +7,9 @@ export default function Content(){
 
     return (
         <Container maxW="container.md">
+            {/* <center>
+                <Spinner mt="5" size="xl" color="blue.300" />
+            </center> */}
             <Text
             mt="5"
             textAlign="center"
@@ -17,9 +20,6 @@ export default function Content(){
             >
             Export results
 
-            {/* <center>
-                <Spinner mt="5" size="xl" color="blue.300" />
-            </center> */}
             </Text>
             <ListItem/>
         </Container>

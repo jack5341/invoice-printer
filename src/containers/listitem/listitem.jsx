@@ -8,12 +8,12 @@ import { Box,
     Tbody,
     Th,
     Kbd,
-    ScaleFade
+    SlideFade  
 } from "@chakra-ui/react"
 
 export default function ListItemContainer(props){
     return (
-        <ScaleFade in={true} initialScale={0.9} >
+        <SlideFade in={true} initialScale={0.7} >
             <Tooltip hasArrow label="Click for print !" placement="top">
                 <a href="javascript:void(0)">
                     <Box style={{overflowX: "auto"}} boxShadow="outline" mt="5" mb="5" bg="#2866ca38">
@@ -31,18 +31,18 @@ export default function ListItemContainer(props){
                             </Thead>
                             <Tbody>
                                 <Tr>
-                                    <Td> Example Gmbh </Td>
-                                    <Td><Kbd> 177 1777 177</Kbd></Td>
-                                    <Td> nedim.akar53411@gmail.com </Td>
-                                    <Td> Apple </Td>
-                                    <Td> 500 </Td>
-                                    <Td> 3000.00 € </Td>
+                                    <Td><Kbd>Example GmbH</Kbd></Td>
+                                    <Td><Kbd>177 1777 177</Kbd></Td>
+                                    <Td><Kbd>nedim.akar53411@gmail.com</Kbd></Td>
+                                    <Td><Kbd>Apple</Kbd></Td>
+                                    <Td><Kbd>500</Kbd></Td>
+                                    <Td><Kbd>3000.00 €</Kbd></Td>
                                 </Tr>
                             </Tbody>
                         </Table>
                     </Box>
                 </a>
             </Tooltip>
-        </ScaleFade>
+        </SlideFade>
     )
 }
