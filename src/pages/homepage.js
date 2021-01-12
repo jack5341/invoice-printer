@@ -7,13 +7,13 @@ import Content from '../components/content/content'
 
 export default function Homepage(){
 
-    const [hide,setHide] = useState(true)
+    const [load,isLoad] = useState(null)
 
     return (
         <>
-            <ScaleFade in={hide} initialScale={0.9} >
-                <Upmenu/>
-                <Content/>
+            <ScaleFade in={true} initialScale={0.9} >
+                <Upmenu loadState={isLoad} />
+                <Content loadState={load} />
             </ScaleFade>
         </>
     )
