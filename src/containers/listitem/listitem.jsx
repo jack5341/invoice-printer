@@ -15,10 +15,10 @@ export default function ListItemContainer(props){
     return (
         <SlideFade in={true} initialScale={0.7} >
             <Tooltip hasArrow label="Click for print !" placement="top">
-                <a href="javascript:void(0)">
+                <a href="#">
                     <Box style={{overflowX: "auto"}} boxShadow="outline" mt="5" mb="5" bg="#2866ca38">
                         <Table variant="simple">
-                            <TableCaption>Invoice for Example GmbH </TableCaption>
+                            <TableCaption>Invoice for {props.company} </TableCaption>
                             <Thead>
                                 <Tr>
                                     <Th>Company</Th>
@@ -31,12 +31,12 @@ export default function ListItemContainer(props){
                             </Thead>
                             <Tbody>
                                 <Tr>
-                                    <Td><Kbd>Example GmbH</Kbd></Td>
-                                    <Td><Kbd>177 1777 177</Kbd></Td>
-                                    <Td><Kbd>nedim.akar53411@gmail.com</Kbd></Td>
-                                    <Td><Kbd>Apple</Kbd></Td>
-                                    <Td><Kbd>500</Kbd></Td>
-                                    <Td><Kbd>3000.00 €</Kbd></Td>
+                                    <Td><Kbd>{props.company}</Kbd></Td>
+                                    <Td><Kbd>{props.phone}</Kbd></Td>
+                                    <Td><Kbd>{props.email}</Kbd></Td>
+                                    <Td><Kbd>{props.product}</Kbd></Td>
+                                    <Td><Kbd>{props.piece}</Kbd></Td>
+                                    <Td><Kbd>{props.price} €</Kbd></Td>
                                 </Tr>
                             </Tbody>
                         </Table>

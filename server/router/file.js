@@ -6,18 +6,19 @@ const extension = require("../controller/extensions")
 
 var upload = multer({ desk: "../" })
 
-router.post("/routing-file-extension", upload.single('document'), (req,res) => {
+router.post("/extension-separator", upload.single('document'), async(req,res) => {
 
-    const file = req.files.document
+    const file = await req.files.document
 
     if (!file) {
-      return res.send({
+      res.send({
           process: false,
           message: "Invalid Extension"
       })
+      res.end()
     }
 
-    const regex = /(docx?|xlsx?|pdf|rar|zip|7z)/gm
+    const regex = /(xlsx|csv?)/gm
     const fileExtension = regex.exec(file.name)[0]
 
     if(fileExtension == null){
@@ -25,20 +26,28 @@ router.post("/routing-file-extension", upload.single('document'), (req,res) => {
         res.end()
     }
      
-    file.mv('./' + 'process-file.' + fileExtension);
+    await file.mv('./' + 'process-file.' + fileExtension);
 
     switch (fileExtension) {
-        case "docx":
-            console.log("docx");
-            break
         case "xlsx":
-            console.log("xlsx");
-            break
-    }
-    
-})
+            res.send({
+                process: true,
+                parsedArray: extension.XLSX()
+            })
+            res.end()
+            break;
+        
+        case "csv":
+            res.send({
+                process: true,
+                parsedArray: console.log(extension.CSV())
+            })
+            res.end()
+            break;
 
-router.post("/routing-file-extension/docx", extension.DOCX)
-router.post("/routing-file-extension/xls", extension.XLSX)
+        default:
+            break;
+    }
+})
 
 module.exports = router

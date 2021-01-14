@@ -1,9 +1,7 @@
 import {useState} from 'react'
 import axios from 'axios'
-import toast, { Toaster } from 'react-hot-toast';
 import { Box,Container,IconButton,SlideFade  } from "@chakra-ui/react"
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
-
 // Containers
 import Header from '../../containers/header/header'
 import SwitchContainer from '../../containers/switch/switch'
@@ -15,12 +13,14 @@ export default function Upmenu(props){
     function uploadFile(e){  
         var formData = new FormData()
         formData.append("document", e.target.files[0]);
-        props.loadState(true)
         axios({
             method: "post",
-            url: "http://localhost:8080/api/routing-file-extension",
+            url: "http://localhost:8080/api/extension-separator",
             data: formData
-        }).then((res) => console.log(res.data))
+        }).then((res) => {
+            setHide(false)
+            props.setList(res.data.parsedArray)
+        })
     }
 
     return (
@@ -33,7 +33,7 @@ export default function Upmenu(props){
                         <Box bg="#2866ca38" mt="4" boxShadow="outline">
                             <center>
                                 <form>
-                                    <input name="document" onChange={uploadFile} style={{padding: "2.5rem"}} accept=".docx, .xlsx" type="file" />
+                                    <input name="document" onChange={uploadFile} style={{padding: "2.5rem"}} accept=".xlsx, .csv" type="file" />
                                 </form>
                             </center>
                         </Box>

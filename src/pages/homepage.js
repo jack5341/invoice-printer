@@ -8,12 +8,13 @@ import Content from '../components/content/content'
 export default function Homepage(){
 
     const [load,isLoad] = useState(null)
+    const [list,setList] = useState(null)
 
     return (
         <>
             <ScaleFade in={true} initialScale={0.9} >
-                <Upmenu loadState={isLoad} />
-                <Content loadState={load} />
+                <Upmenu setList={setList} loadState={isLoad} />
+                <Content list={list} loadState={load} />
             </ScaleFade>
         </>
     )
