@@ -32,6 +32,7 @@ router.post("/extension-separator", upload.single('document'), async(req,res) =>
         case "xlsx":
             res.send({
                 process: true,
+                type: "xlsx",
                 parsedArray: extension.XLSX()
             })
             res.end()
@@ -40,7 +41,8 @@ router.post("/extension-separator", upload.single('document'), async(req,res) =>
         case "csv":
             res.send({
                 process: true,
-                parsedArray: console.log(extension.CSV())
+                type: "csv",
+                parsedArray: extension.CSV()
             })
             res.end()
             break;

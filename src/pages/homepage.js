@@ -9,12 +9,13 @@ export default function Homepage(){
 
     const [load,isLoad] = useState(null)
     const [list,setList] = useState(null)
+    const [type,setType] = useState(null)
 
     return (
         <>
             <ScaleFade in={true} initialScale={0.9} >
-                <Upmenu setList={setList} loadState={isLoad} />
-                <Content list={list} loadState={load} />
+                <Upmenu setType={setType} setList={setList} loadState={isLoad} />
+                <Content type={type} list={list} loadState={load} />
             </ScaleFade>
         </>
     )

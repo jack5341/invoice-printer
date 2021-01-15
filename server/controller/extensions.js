@@ -8,10 +8,9 @@ exports.XLSX = () => {
 }
 
 exports.CSV = () =>  {
-    fs.createReadStream('./process-file.csv')
-    .pipe(csv.parse())
-    .on('data')
-    .on('end', () => {
-        console.log("CSV file successfully processed")
-    })
+    return fs.readFileSync('./process-file.csv')
+    .toString()
+    .split('\n')
+    .map(e => e.trim()) 
+    .map(e => e.split(',').map(e => e.trim())); 
 }

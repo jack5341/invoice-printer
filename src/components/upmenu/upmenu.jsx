@@ -19,6 +19,7 @@ export default function Upmenu(props){
             data: formData
         }).then((res) => {
             setHide(false)
+            props.setType(res.data.type)
             props.setList(res.data.parsedArray)
         })
     }

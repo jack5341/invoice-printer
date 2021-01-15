@@ -1,9 +1,12 @@
+import {useEffect} from 'react'
 import { Container,Text } from "@chakra-ui/react"
 
 // Container's
 import ListItem from '../../containers/listitem/listitem'
 
 export default function Content(props){
+
+    console.log(props.list)
 
     if(props.list){
         return (
@@ -19,7 +22,9 @@ export default function Content(props){
                     Export results
 
                 </Text>
-                {props.list.map((x,index) => x[0] == undefined ? null : <ListItem
+
+                {props.type === "xlsx" ? 
+                props.list.map((x,index) => x[0] == undefined ? null : <ListItem
                     key={index}
                     company={x[0]}
                     phone={x[1]}
@@ -27,7 +32,16 @@ export default function Content(props){
                     product={x[3]}
                     piece={x[4]}
                     price={x[5]}
-                />)}
+                />) : props.list.map((x,index) => x[0] == undefined ? null : <ListItem
+                    key={index}
+                    company={x[0]}
+                    phone={x[1]}
+                    email={x[2]}
+                    product={x[3]}
+                    piece={x[4]}
+                    price={x[3]}
+                />)
+                }
             </Container>
         )
     }
