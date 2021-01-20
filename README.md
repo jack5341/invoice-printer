@@ -16,9 +16,9 @@ D --> F(.)
 C --> F(( parsedArray))
 ```
 
->  After i post to /api/extension-separator will filtering for file extension
-> Then is what extension will go to that function
->With `parsedArray` will send to client side
+> - After i post to /api/extension-separator will filtering for file extension
+> - Then is what extension will go to that function
+> - With `parsedArray` will send to client side
 #
 > file.js - "/extension-separator"
 ```js
