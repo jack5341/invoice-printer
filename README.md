@@ -7,7 +7,7 @@ Then what will happen after then i post  to `http://localhost:8080/api/extension
 
 A basic diagram for beginner's  
 
-```mermaid
+``` mermaid
 graph LR
 A[/api/extension-separator] --> B
 B["regex  =  /(xlsx|csv?)/gm"] -- If file extension xlsx --> C(extension.XLSX)
