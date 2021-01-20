@@ -1,70 +1,126 @@
-# Getting Started with Create React App
+# Invoice-Printer
+Fetch from XLSX (Excel) and CSV (Comma-separated values) **Row's**  and **Collum's** and convert to array.
+**Then you can use it how you want !**
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+## Require Processing Process
+Then what will happen after then i post  to `http://localhost:8080/api/extension-separator`.
 
-## Available Scripts
+A basic diagram for beginner's  
 
-In the project directory, you can run:
+```mermaid
+graph LR
+A[/api/extension-separator] --> B
+B["regex  =  /(xlsx|csv?)/gm"] -- If file extension xlsx --> C(extension.XLSX)
+B -- If file extension csv --> D(extension.CSV)
+D --> F(.)
+C --> F(( parsedArray))
+```
 
-### `npm start`
+>  After i post to /api/extension-separator will filtering for file extension
+> Then is what extension will go to that function
+>With `parsedArray` will send to client side
+#
+> file.js - "/extension-separator"
+```js
+const regex = /(xlsx|csv?)/gm
+	
+// The element we want in the array is the last element on regex
+const fileExtension = regex.exec(file.name)[0]
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+// If file extension is null
+if(fileExtension == null){
+	res.send("Invalid File Extension")
+	res.end()
+}
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+// Switch for xlsx and csv extensions
+switch (fileExtension) {
+	case "xlsx":
+		res.send({
+		// This boolean is for process is succesfully or not 
+		process: true,
+		type: "xlsx",
+		parsedArray: extension.XLSX()
+		})
+		res.end()
+	break;
 
-### `npm test`
+	case "csv":
+		res.send({
+		// This boolean is for process is succesfully or not 
+		process: true,
+		type: "csv",
+		parsedArray: extension.CSV()
+		})
+		res.end()
+	break;
+default:
+break;
+}
+```
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+>extensions.js - CSV( ) XLSX( )
+```js
+const xlsx = require("node-xlsx")
+const fs = require("fs")
 
-### `npm run build`
+exports.XLSX = () => {
+// We parsing process-file.xlsx and define to parsedRaw
+const parsedRaw = xlsx.parse("./process-file.xlsx")
+return parsedRaw[0].data
+}
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+exports.CSV = () => {
+// Reading file process-file.csv with fs.readFileSync 
+return fs.readFileSync('./process-file.csv')
+	.toString()
+	.split('\n')
+	.map(e => e.trim())
+	.map(e => e.split(',').map(e => e.trim()));
+}
+```
+## How to install ( client-side )
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+> Clone this repository
+```sh
+git clone https://github.com/jack5341/invoice-printer.git
+```
+> Go to path
+```sh
+cd client
+```
+>Install node modules and start
+```sh
+npm install && npm start
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+or
 
-### `npm run eject`
+```sh
+yarn
+```
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## How to install ( server-side )
+> Go to path
+```sh
+cd server
+```
+> Install node modules and start
+```sh
+npm install && npm start
+```   
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+# What i used ? 
+> On client-side 
+- [x] React.js
+- [x] Axios
+> On server-side
+- [x] Nodejs
+- [x] Cors
+- [x] Express
+- [x] Multer
+- [x] Morgan
+- [x] [node-xlsx](https://www.npmjs.com/package/node-xlsx)
+- [x] nodemon
+- [x] body-parser
+- [x] fs
