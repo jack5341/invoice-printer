@@ -2,9 +2,9 @@ import {useState} from 'react'
 import axios from 'axios'
 import { Box,Container,IconButton,SlideFade  } from "@chakra-ui/react"
 import { ChevronDownIcon, ChevronUpIcon } from '@chakra-ui/icons'
+
 // Containers
 import Header from '../../containers/header/header'
-import SwitchContainer from '../../containers/switch/switch'
 
 export default function Upmenu(props){
 
@@ -29,7 +29,6 @@ export default function Upmenu(props){
             <Box padding="4" bg="gray.100" maxW="10xl">
             <SlideFade in={hide} offsetY="20px">
                 <div style={{display: hide == false ? "none" : "block"}}>
-                        <SwitchContainer/>
                         <Header/>
                         <Box bg="#2866ca38" mt="4" boxShadow="outline">
                             <center>
