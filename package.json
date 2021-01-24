@@ -1,5 +1,5 @@
 {
-  "name": "Invoice Printer",
+  "name": "invoice-printer",
   "description": "Invoice Printer by React.js",
   "version": "0.1.0",
   "private": true,
