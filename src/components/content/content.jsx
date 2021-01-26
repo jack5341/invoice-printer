@@ -5,9 +5,6 @@ import ListItem from '../../containers/listitem/listitem'
 import TemplateItem from '../../containers/template-item/templateitem'
 
 export default function Content(props) {
-
-    console.log(props.list)
-
     if (props.list) {
         return (
             <Container maxW="container.md">
@@ -49,7 +46,6 @@ export default function Content(props) {
     return (
         <Container maxW="container.md">
             <TemplateItem />
-
         </Container>
     )
 }
