@@ -1,3 +1,4 @@
+import {useState} from 'react'
 import {
     Th,
     Kbd,
@@ -9,9 +10,14 @@ import {
 import { CloseIcon } from '@chakra-ui/icons'
 
 export default function ThSection(props) {
+
     return (
         <Th id={props.uniqueId}>
-            <a className="icons" onClick={() => props.setUniqueId(props.uniqueId)} href="#"><Icon as={CloseIcon} mb="2" /></a>
+            <a className="icons" onClick={(e) => {
+                e.preventDefault()
+                props.setUniqueId(props.uniqueId)
+            }} href="#"><Icon as={CloseIcon} mb="2" />
+            </a>
             <Editable defaultValue="Enter a title">
                 <Kbd>
                     <EditablePreview />

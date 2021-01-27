@@ -12,7 +12,8 @@ function App() {
     <Router>
       <Switch>
         <Route component={Homepage} path="/"/>
-        <Route path="/demand"/>
+        <Route path="/invoice-edit"/>
+        <Route path="/print"/>
       </Switch>
     </Router>
   )

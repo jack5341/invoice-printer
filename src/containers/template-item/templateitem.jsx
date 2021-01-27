@@ -9,7 +9,9 @@ import {
     Th,
     Icon,
     Tbody,
-    Select
+    Select,
+    Button,
+    Text
 } from "@chakra-ui/react"
 import { PlusSquareIcon } from '@chakra-ui/icons'
 import { v4 as uuidv4 } from 'uuid'
@@ -24,8 +26,10 @@ import "./style.css"
 export default function TemplateItem() {
 
     const [uniqueId, setUniqueId] = useState(null)
+    const [typeMoney, setTypeMoney] = useState("€")
+    const [load,setLoad] = useState(null)
 
-    useEffect(() => {
+    useEffect((e) => {
         if (uniqueId) {
             document.getElementById(uniqueId).remove()
             document.getElementById(uniqueId).remove()
@@ -33,33 +37,56 @@ export default function TemplateItem() {
     }, [uniqueId])
 
     const [thList, setThList] = useState({
-        th: [<ThSection setUniqueId={setUniqueId} />, <ThSection setUniqueId={setUniqueId} />],
-        td: [<TdSection title="hello world"/>,
-        <Td>
-            {"Example"}
-            <Select border="0px">
-                <option value="option1">€</option>
-                <option value="option2">$</option>
-            </Select>
-        </Td>]
+        th: [{
+            element: <ThSection setUniqueId={setUniqueId} />
+        },
+        {
+            element: <ThSection setUniqueId={setUniqueId} />
+        }],
+        td: [{ element: <TdSection title="hello world" /> },
+        {
+            element: <Td>
+                {"Example"}
+                <Select onChange={e => setTypeMoney(e.target.value)} border="0px">
+                    <option value="€">€</option>
+                    <option value="$">$</option>
+                </Select>
+            </Td>
+        }]
     })
-    
-    function addNewList(){
+
+    function addNewList(e) {
+        e.preventDefault()
         const uniqueToken = uuidv4()
         setThList({
-            th: [...thList.th, <ThSection uniqueId={uniqueToken} setUniqueId={setUniqueId} />],
-            td: [...thList.td, <TdSection uniqueId={uniqueToken} title="hello world" id={uniqueToken} />]
+            th: [...thList.th, {
+                id: uniqueToken,
+                element: <ThSection uniqueId={uniqueToken} setUniqueId={setUniqueId} />
+            }],
+            td: [...thList.td, {
+                id: uniqueToken,
+                element: <TdSection uniqueId={uniqueToken} title="hello world" id={uniqueToken} />
+            }]
         })
-    } 
+    }
 
     return (
         <a>
+            <Text
+                pl="2"
+                bgGradient="linear(to-l, #7928CA,#2866ca)"
+                bgClip="text"
+                fontSize="4xl"
+                fontWeight="semibold"
+            >
+                Setting your outputs
+            </Text>
             <Box style={{ overflowX: "auto" }} boxShadow="outline" mt="5" mb="5" bg="#2866ca38">
                 <Table variant="simple">
                     <TableCaption>Invoice for {"Example"}</TableCaption>
                     <Thead>
                         <Tr>
-                            {thList.th.map((element) => element)}
+                            {thList.th.map((x) => x.element)}
                             <Th>
                                 <a className="icons" onClick={addNewList} href="#">
                                     <Icon fontSize="2xl" as={PlusSquareIcon} mb="2" />
@@ -69,11 +96,29 @@ export default function TemplateItem() {
                     </Thead>
                     <Tbody>
                         <Tr>
-                            {thList.td.map((element, key) => element)}
+                            {thList.td.map((x) => x.element)}
                         </Tr>
                     </Tbody>
                 </Table>
             </Box>
+
+            <Button
+                id="save-btn"
+                w="100%"
+                mb="5"
+                onClick={e => {
+                    const btn = document.getElementById("save-btn")
+                    btn.setAttribute("disabled", "")
+                    btn.innerHTML = "Your settings are saving..."
+                    setLoad(true)
+                }}
+                colorScheme="blue"
+                size="lg"
+                borderRadius="md"
+                colorScheme="blue"
+            >
+                Save this template
+            </Button>
         </a>
     )
 }
