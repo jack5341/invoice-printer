@@ -10,19 +10,21 @@ import {
 import { CloseIcon } from '@chakra-ui/icons'
 
 export default function ThSection(props) {
-
     return (
         <Th id={props.uniqueId}>
             <a className="icons" onClick={(e) => {
                 e.preventDefault()
-                props.setUniqueId(props.uniqueId)
+                if(props.setUniqueId){
+                    props.setUniqueId(props.uniqueId)
+                }
+                return null
             }} href="#"><Icon as={CloseIcon} mb="2" />
             </a>
             <Editable defaultValue="Enter a title">
                 <Kbd>
                     <EditablePreview />
                 </Kbd>
-                <EditableInput onChange={(e) => console.log(e.target.value)}/>
+                <EditableInput onChange={(e) => window.localStorage.setItem("list/" + props.uniqueId, e.target.value) }/>
             </Editable>
         </Th>
     )

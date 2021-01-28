@@ -11,7 +11,12 @@ import {
     Tbody,
     Select,
     Button,
-    Text
+    Text,
+    Modal,
+    ModalOverlay,
+    ModalContent,
+    ModalHeader,
+    ModalFooter
 } from "@chakra-ui/react"
 import { PlusSquareIcon } from '@chakra-ui/icons'
 import { v4 as uuidv4 } from 'uuid'
@@ -26,8 +31,7 @@ import "./style.css"
 export default function TemplateItem() {
 
     const [uniqueId, setUniqueId] = useState(null)
-    const [typeMoney, setTypeMoney] = useState("€")
-    const [load,setLoad] = useState(null)
+    const [hide, setHide] = useState(true)
 
     useEffect((e) => {
         if (uniqueId) {
@@ -38,16 +42,16 @@ export default function TemplateItem() {
 
     const [thList, setThList] = useState({
         th: [{
-            element: <ThSection setUniqueId={setUniqueId} />
+            element: <ThSection uniqueId={uuidv4()} />
         },
         {
-            element: <ThSection setUniqueId={setUniqueId} />
+            element: <ThSection uniqueId={uuidv4()} />
         }],
         td: [{ element: <TdSection title="hello world" /> },
         {
             element: <Td>
                 {"Example"}
-                <Select onChange={e => setTypeMoney(e.target.value)} border="0px">
+                <Select onChange={e => window.localStorage.setItem("list/" + uuidv4(),e.target.value) } border="0px">
                     <option value="€">€</option>
                     <option value="$">$</option>
                 </Select>
@@ -71,54 +75,77 @@ export default function TemplateItem() {
     }
 
     return (
-        <a>
-            <Text
-                pl="2"
-                bgGradient="linear(to-l, #7928CA,#2866ca)"
-                bgClip="text"
-                fontSize="4xl"
-                fontWeight="semibold"
-            >
-                Setting your outputs
-            </Text>
-            <Box style={{ overflowX: "auto" }} boxShadow="outline" mt="5" mb="5" bg="#2866ca38">
-                <Table variant="simple">
-                    <TableCaption>Invoice for {"Example"}</TableCaption>
-                    <Thead>
-                        <Tr>
-                            {thList.th.map((x) => x.element)}
-                            <Th>
-                                <a className="icons" onClick={addNewList} href="#">
-                                    <Icon fontSize="2xl" as={PlusSquareIcon} mb="2" />
-                                </a>
-                            </Th>
-                        </Tr>
-                    </Thead>
-                    <Tbody>
-                        <Tr>
-                            {thList.td.map((x) => x.element)}
-                        </Tr>
-                    </Tbody>
-                </Table>
-            </Box>
-
-            <Button
-                id="save-btn"
-                w="100%"
-                mb="5"
-                onClick={e => {
-                    const btn = document.getElementById("save-btn")
-                    btn.setAttribute("disabled", "")
-                    btn.innerHTML = "Your settings are saving..."
-                    setLoad(true)
-                }}
-                colorScheme="blue"
-                size="lg"
-                borderRadius="md"
-                colorScheme="blue"
-            >
-                Save this template
-            </Button>
-        </a>
+        <>
+            <Modal size="xl" onClose={!hide} isOpen={hide} isCentered>
+                <ModalOverlay />
+                <ModalContent>
+                    <ModalHeader>
+                        <Text
+                            pl="2"
+                            bgGradient="linear(to-l, #7928CA,#2866ca)"
+                            bgClip="text"
+                            fontSize="2xl"
+                            fontWeight="semibold"
+                        >
+                            Setting your outputs
+                        </Text>
+                    </ModalHeader>
+                    <Box style={{ overflowX: "auto" }} mb="5" bg="#2866ca38">
+                        <Table variant="simple">
+                            <TableCaption>Invoice for {"Example"}</TableCaption>
+                            <Thead>
+                                <Tr>
+                                    {thList.th.map((x) => x.element)}
+                                    <Th>
+                                        <a className="icons" onClick={addNewList} href="#">
+                                            <Icon fontSize="2xl" as={PlusSquareIcon} mb="2" />
+                                        </a>
+                                    </Th>
+                                </Tr>
+                            </Thead>
+                            <Tbody>
+                                <Tr>
+                                    {thList.td.map((x) => x.element)}
+                                </Tr>
+                            </Tbody>
+                        </Table>
+                    </Box>
+                    <a onClick={e => {
+                        setHide(false)
+                        window.sessionStorage.setItem("show", true)
+                    }} href="#">
+                        <Text
+                            pl="7"
+                            bgGradient="linear(to-l, #7928CA,#2866ca)"
+                            bgClip="text"
+                            fontSize="sm"
+                            fontWeight="semibold"
+                        >
+                            I don't need set my outputs
+                        </Text>
+                    </a>
+                    <ModalFooter>
+                        <Button
+                            id="save-btn"
+                            w="100%"
+                            mb="5"
+                            onClick={e => {
+                                const btn = document.getElementById("save-btn")
+                                btn.setAttribute("disabled", "")
+                                btn.innerHTML = "Your settings are saving..."
+                                window.sessionStorage.setItem("show", false)
+                                setTimeout(() => setHide(false), 1000);
+                            }}
+                            colorScheme="blue"
+                            size="lg"
+                            borderRadius="md"
+                            colorScheme="blue"
+                        >
+                            Save this template
+                        </Button>
+                    </ModalFooter>
+                </ModalContent>
+            </Modal>
+        </>
     )
 }

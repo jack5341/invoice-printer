@@ -2,7 +2,6 @@ import { Container, Text } from "@chakra-ui/react"
 
 // Container's
 import ListItem from '../../containers/listitem/listitem'
-import TemplateItem from '../../containers/template-item/templateitem'
 
 export default function Content(props) {
     if (props.list) {
@@ -16,8 +15,7 @@ export default function Content(props) {
                     fontSize="4xl"
                     fontWeight="extrabold"
                 >
-                    Export results
-
+                    Export Results
                 </Text>
 
                 {props.type === "xlsx" ?
@@ -43,9 +41,5 @@ export default function Content(props) {
         )
     }
 
-    return (
-        <Container maxW="container.md">
-            <TemplateItem />
-        </Container>
-    )
+    return null
 }
