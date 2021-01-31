@@ -16,27 +16,9 @@ export default function Content(props) {
                     fontWeight="extrabold"
                 >
                     Export Results
-                </Text>
-
-                {props.type === "xlsx" ?
-                    props.list.map((x, index) => x[0] == undefined ? null : <ListItem
-                        key={index}
-                        company={x[0]}
-                        phone={x[1]}
-                        email={x[2]}
-                        product={x[3]}
-                        piece={x[4]}
-                        price={x[5]}
-                    />) : props.list.map((x, index) => x[0] == undefined ? null : <ListItem
-                        key={index}
-                        company={x[0]}
-                        phone={x[1]}
-                        email={x[2]}
-                        product={x[3]}
-                        piece={x[4]}
-                        price={x[3]}
-                    />)
-                }
+                    </Text>
+                <hr />
+                <ListItem parsedlist={props.list} />
             </Container>
         )
     }

@@ -30,7 +30,7 @@ export default function Upmenu(props){
             <SlideFade in={hide} offsetY="20px">
                 <div style={{display: hide == false ? "none" : "block"}}>
                         <Header/>
-                        <Box bg="#2866ca38" mt="4" boxShadow="outline">
+                        <Box bg="#2866ca38" mt="4">
                             <center>
                                 <form>
                                     <input name="document" onChange={uploadFile} style={{padding: "2.5rem"}} accept=".xlsx, .csv" type="file" />
