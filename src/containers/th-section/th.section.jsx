@@ -12,8 +12,8 @@ export default function ThSection(props) {
             <Editable defaultValue={props.title}>
                 <Kbd>
                     <EditablePreview />
+                    <EditableInput/>
                 </Kbd>
-                <EditableInput/>
             </Editable>
         </Th>
     )

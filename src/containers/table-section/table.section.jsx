@@ -16,7 +16,7 @@ export default function TableSection(props) {
             <a href="#">
                 <Box style={{ overflowX: "auto" }} boxShadow="outline" mt="5" mb="5" bg="#2866ca38">
                     <Table variant="simple">
-                        <TableCaption>Invoice for {props.company} </TableCaption>
+                        <TableCaption>Invoice for {window.localStorage.getItem("company_name")} </TableCaption>
                         <Thead>
                             {props.title.map((element,key) => <ThSection title={element} key={key} />)}
                         </Thead>
