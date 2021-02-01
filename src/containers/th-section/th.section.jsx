@@ -1,20 +1,14 @@
 import {
     Th,
-    Kbd,
-    Editable,
-    EditableInput,
-    EditablePreview,
+    Kbd
 } from "@chakra-ui/react"
 
 export default function ThSection(props) {
     return (
         <Th>
-            <Editable defaultValue={props.title}>
-                <Kbd>
-                    <EditablePreview />
-                    <EditableInput/>
-                </Kbd>
-            </Editable>
+            <Kbd>
+                {props.title}
+            </Kbd>
         </Th>
     )
 }

@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { ScaleFade } from "@chakra-ui/react"
+import Helmet from 'react-helmet'
 
 // Components
 import Upmenu from '../components/upmenu/upmenu'
@@ -13,6 +14,9 @@ export default function Homepage() {
 
     return (
         <>
+            <Helmet>
+                <title>Invoice Lister 🧐</title>
+            </Helmet>
             <ScaleFade in={true} initialScale={0.9} >
                 <Upmenu setType={setType} setList={setList} loadState={isLoad} />
                 <Content type={type} list={list} loadState={load} />
