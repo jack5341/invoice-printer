@@ -4,7 +4,8 @@ import {
     Table,
     TableCaption,
     Thead,
-    Tbody
+    Tbody,
+    useColorMode
 } from "@chakra-ui/react"
 import jwt from 'jsonwebtoken'
 
@@ -13,10 +14,12 @@ import ThSection from '../th-section/th.section'
 import TdSection from '../td-section/td.section'
 
 export default function TableSection(props) {
+    const { colorMode, toggleColorMode } = useColorMode();
+
     return (
         <Tooltip hasArrow label="Click for Edit !" placement="top">
-            <a target="_blank" href={"/invoice-edit/?token=" + jwt.sign(Object.assign({},props.output), 'shhhhh')}>
-            <Box style={{ overflowX: "auto" }} boxShadow="outline" mt="5" mb="5" bg="#2866ca38">
+            <a target="_blank" rel="noreferrer" href={"/invoice-edit/?token=" + jwt.sign(Object.assign({},props.output), 'shhhhh')}>
+            <Box style={{ overflowX: "auto" }} boxShadow="xl" mt="5" mb="5" bg={colorMode == "light" ? "#2866ca38" : "#bee3f80a"}>
                 <Table variant="simple">
                     <TableCaption>Invoice for {window.localStorage.getItem("company_name")} </TableCaption>
                         <Thead>

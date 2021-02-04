@@ -1,6 +1,7 @@
 #a4-paper{
-    width: 210mm;
-    height: 292mm;
+    width: 21cm;
+    height: 50cm;
+    color: initial;
 }
 
 #brand-name{
@@ -16,6 +17,13 @@
     font-size: 1.5rem;
 }
 
+#brand-name .chakra-editable__preview{
+    padding: 0.5rem;
+    background: #ffffff !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-top: 0.5rem;
+}
+
 #brand-infos .left-side{
     text-align: left;
 }
@@ -27,3 +35,17 @@
 #brand-infos .left-side .author-company-infos{
     font-size: 0.6rem !important;
 } 
+
+#brand-infos .chakra-editable__preview{
+    padding: 0.5rem;
+    background: #ffffff !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-top: 0.5rem;
+}
+
+.a4-footer .chakra-editable__preview{
+    padding: 0.5rem;
+    background: #ffffff !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-top: 0.5rem;
+}
