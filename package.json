@@ -33,8 +33,6 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "dev": "concurrently \"cd server && npm run start\" \"npm run start\"",
-    "install": "concurrently \"cd server && npm install\" \"npm install\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
