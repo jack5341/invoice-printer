@@ -1,28 +1,28 @@
+import { useEffect } from 'react'
 import {
   BrowserRouter as Router,
   Switch,
   Route
 } from "react-router-dom";
-import ReactGA from "react-ga";  //Google Analytics
 import { ChakraProvider } from "@chakra-ui/react"
-
-const history = createBrowserHistory();
-
-history.listen(location => {
-  ReactGA.initialize('G-VTPVN058D5');
-  ReactGA.set({ page: location.pathname }); // Update the user's current page
-  ReactGA.pageview(location.pathname); // Record a pageview for the given page
-});
-
+import ReactGA from 'react-ga';
 
 // Pages
 import Homepage from './pages/homepage'
 import Editor from './pages/editor'
 
+ReactGA.initialize("G-VTPVN058D5"); 
+
 function App() {
+
+  useEffect( () => {
+    // This line will trigger on a route change
+    ReactGA.pageview(window.location.pathname + window.location.search); 
+  });
+
   return (
     <ChakraProvider>
-      <Router history={history}>
+      <Router>
         <Switch>
           <Route component={Homepage} exact path="/" />
           <Route component={Editor} path="/invoice-edit" />

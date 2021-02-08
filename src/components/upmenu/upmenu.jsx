@@ -11,7 +11,6 @@ export default function Upmenu(props) {
     let fileReader;
     const [hide, setHide] = useState(true)
     const { colorMode } = useColorMode();
-
     
     const handleFileChosen = (file) => {
 
