@@ -1,6 +1,6 @@
 {
   "name": "invoice-printer",
-  "description": "Invoice Printer by React.js",
+  "description": "Invoice Printer for XLSX and CSV files",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -16,22 +16,25 @@
     "@testing-library/jest-dom": "^5.11.8",
     "@testing-library/react": "^11.2.3",
     "@testing-library/user-event": "^12.6.0",
-    "axios": "^0.21.1",
     "dayjs": "^1.10.4",
     "framer-motion": "^3.2.0",
     "jsonwebtoken": "^8.5.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-ga": "^3.3.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.14.1",
     "react-hot-toast": "^1.0.1",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
+    "read-excel-file": "^5.0.0",
     "uuid": "^8.3.2",
     "web-vitals": "^0.2.4"
   },
   "scripts": {
     "start": "react-scripts start",
+    "dev": "concurrently \"cd server && npm run start\" \"npm run start\"",
+    "install": "concurrently \"cd server && npm install\" \"npm install\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"

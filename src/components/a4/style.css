@@ -1,6 +1,6 @@
 #a4-paper{
     width: 21cm;
-    height: 50cm;
+    height: auto;
     color: initial;
 }
 
@@ -45,6 +45,15 @@
 
 .a4-footer .chakra-editable__preview{
     padding: 0.5rem;
+    background: #ffffff !important;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    margin-top: 0.5rem;
+}
+
+
+.a4-under .chakra-editable__preview{
+    padding: 0.25rem;
+    font-size: 0.6rem;
     background: #ffffff !important;
     box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1),0 2px 4px -1px rgba(0, 0, 0, 0.06);
     margin-top: 0.5rem;

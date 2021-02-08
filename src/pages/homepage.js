@@ -15,7 +15,7 @@ export default function Homepage() {
     return (
         <>
             <Helmet>
-                <title>Invoice Lister 🧐</title>
+                <title>Invoice Parser 🧐</title>
             </Helmet>
             <ScaleFade in={true} initialScale={0.9} >
                 <Upmenu setType={setType} setList={setList} loadState={isLoad} />
