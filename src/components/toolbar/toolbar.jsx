@@ -1,11 +1,14 @@
+import {useState} from 'react'
 import { Box, Text, useColorMode, Button } from "@chakra-ui/react";
 import jwt from 'jsonwebtoken'
+import axios from 'axios'
 
 // Containers
 import Cards from '../../containers/toolbar/cards/cards'
 
 export default function Toolbar() {
 
+    const [disable,setDisable] = useState(false)
     const { colorMode, toggleColorMode } = useColorMode();
     const str = window.location.search
     const paramObject = jwt.decode(str.replace("?token=", ''))
@@ -26,6 +29,17 @@ export default function Toolbar() {
             {Object.values(paramObject).map((element, index) => <Cards key={index} index={index} title={element} />)}
             <center>
                 <Button
+                    onClick={(e) => {
+                        axios({
+                            method: "post",
+                            url: "http://127.0.0.1:8080/layout/invoice", 
+                            data: {
+                                token: window.localStorage.getItem("invoice-token")
+                            }
+                        })
+                        setDisable(true)
+                    }}
+                    disabled={disable}
                     background="#5ba2e6"
                     mb="3"
                     width="90%"

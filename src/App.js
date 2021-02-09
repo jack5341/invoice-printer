@@ -15,10 +15,7 @@ ReactGA.initialize("G-VTPVN058D5");
 
 function App() {
 
-  useEffect( () => {
-    // This line will trigger on a route change
-    ReactGA.pageview(window.location.pathname + window.location.search); 
-  });
+  useEffect( () => ReactGA.pageview(window.location.pathname + window.location.search));
 
   return (
     <ChakraProvider>

@@ -24,13 +24,14 @@ export default function A4() {
 
     const str = window.location.search
     const decodedObject = jwt.decode(str.replace("?token=", ''))
+    window.localStorage.setItem("invoice-token", str.replace("?token=", ''))
 
     return (
         <center>
             <SlideFade in={true} initialScale={0.9}>
                 <Box shadow="xl" mt="12" mb="12" p="12" border="2px" borderColor="gray.200" bg="whitesmoke" id="a4-paper">
                     <Box id="brand-name" pl="12">
-                        <EditableBox class={"brand"} title={window.localStorage.getItem("company_name")} />
+                        <EditableBox class={"brand"} title={window.localStorage.getItem("company_name") ? window.localStorage.getItem("company_name") : "Your Company Name"} />
                         <EditableBox title={"Company slogan is here"} />
                     </Box>
                     <Box id="brand-infos" mt="12">

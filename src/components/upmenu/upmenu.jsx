@@ -11,7 +11,7 @@ export default function Upmenu(props) {
     let fileReader;
     const [hide, setHide] = useState(true)
     const { colorMode } = useColorMode();
-    
+
     const handleFileChosen = (file) => {
 
         if (!file) {
@@ -33,6 +33,7 @@ export default function Upmenu(props) {
                 readXlsxFile(file).then((rows) => {
                     props.setList(rows)
                 })
+                setHide(false)
                 break;
 
             case "csv":
@@ -40,10 +41,11 @@ export default function Upmenu(props) {
                 fileReader = new FileReader();
                 fileReader.onloadend = (e) => {
                     props.setList(fileReader.result.toString()
-                    .split('\n')
-                    .map(e => e.trim()) 
-                    .map(e => e.split(',').map(e => e.trim())))
+                        .split('\n')
+                        .map(e => e.trim())
+                        .map(e => e.split(',').map(e => e.trim())))
                 };
+                setHide(false)
                 break;
 
             default:

@@ -1,7 +1,9 @@
-const app = require('fastify')({
-    logger: true
-})
+const app = require('fastify')()
 
+// Middlewares
+app.register(require('fastify-cors'))
+
+// Routes
 const printRoutes = require("./router/print")
 printRoutes.forEach((route,index) => {
     app.route(route)
@@ -22,5 +24,5 @@ app.listen(PORT, (err, address) => {
         app.log.error(err)
         process.exit(1)
     }
-    app.log.info(`server listening on ${address}`)
+    console.log(`server listening on ${address}`)
 })

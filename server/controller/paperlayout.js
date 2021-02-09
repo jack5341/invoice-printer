@@ -1,3 +1,5 @@
+const jwt = require("jsonwebtoken")
+
 module.exports.Invoice = async(req, res) => {
-    console.log(req.body)
+    const objectInvoice = jwt.decode(req.body.token)
 }
