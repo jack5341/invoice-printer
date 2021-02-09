@@ -1,0 +1,22 @@
+{
+  "name": "invoice-printer-server",
+  "version": "1.0.0",
+  "description": "The invoice printer server side",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "ejs": "^3.1.6",
+    "fastify": "^3.11.0",
+    "fastify-cors": "^5.2.0",
+    "fastify-express": "^0.3.2",
+    "jsonwebtoken": "^8.5.1",
+    "nodemon": "^2.0.7",
+    "puppeteer": "^7.0.3"
+  }
+}
