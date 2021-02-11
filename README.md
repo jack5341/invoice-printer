@@ -22,6 +22,7 @@ Frontend is powered by React.js and Chakra UI.
 
 # Server Side
 Server is powered by Fastify i choose it for speed.
+<a target="_blank" href="https://github.com/jack5341/invoice-printer-server">Server Repository</a>
 
 # How to install ?
 
