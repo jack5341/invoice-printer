@@ -1,4 +1,4 @@
-![Repo gif](https://raw.githubusercontent.com/jack5341/invoice-printer-client/main/media/MOSHED-2021-2-11-23-7-55.gif)<br/>
+![Repo gif](https://raw.githubusercontent.com/jack5341/invoice-printer-client/v2/media/MOSHED-2021-2-11-23-7-55.gif)<br/>
 <p>
 <a href="https://invoiceprinter.com/"><img src="https://img.shields.io/badge/-invoiceprinter-017180?style=flat&logo=Google-Chrome&logoColor=white"/></a>
 <img alt="Version" src="https://img.shields.io/badge/version-0.5.0-blue.svg?cacheSeconds=2592000" />
