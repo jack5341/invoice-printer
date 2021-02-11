@@ -36,4 +36,4 @@ npm start
 
 # 🔍 Is there a mistake or a line that you can make better quality? GO PR !!!
 
-### 🔫 <a target="_blank" href="https://raw.githubusercontent.com/jack5341/invoice-printer-client/main/media/templatefile.xlsx">Template Excel File</a>
+### 🔫 <a target="_blank" href="https://github.com/jack5341/invoice-printer-client/blob/v2/media/templatefile.xlsx?raw=true">Template Excel File</a>
