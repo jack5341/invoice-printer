@@ -32,7 +32,7 @@ export default function Toolbar() {
                     onClick={(e) => {
                         axios({
                             method: "post",
-                            url: "http://127.0.0.1:8080/print/invoice/",
+                            url: "https://invoice-printer-fastify.herokuapp.com/print/invoice/",
                             data: {
                                 token: window.localStorage.getItem("invoice-token")
                             }
@@ -41,7 +41,8 @@ export default function Toolbar() {
                                 var a = document.createElement("a")
                                 a.href = "data:application/pdf;base64," + res.data.file
                                 a.download = res.data.filename + ".pdf"
-                                return a.click();
+                                a.click();
+                                return setDisable(false)
                             }
                             return alert("Somethings were wrong..")
                         })
