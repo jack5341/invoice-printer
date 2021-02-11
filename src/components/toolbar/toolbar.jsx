@@ -1,4 +1,4 @@
-import {useState} from 'react'
+import { useState } from 'react'
 import { Box, Text, useColorMode, Button } from "@chakra-ui/react";
 import jwt from 'jsonwebtoken'
 import axios from 'axios'
@@ -8,13 +8,13 @@ import Cards from '../../containers/toolbar/cards/cards'
 
 export default function Toolbar() {
 
-    const [disable,setDisable] = useState(false)
+    const [disable, setDisable] = useState(false)
     const { colorMode, toggleColorMode } = useColorMode();
     const str = window.location.search
     const paramObject = jwt.decode(str.replace("?token=", ''))
 
     return (
-        <Box id="toolbar" style={{overflowX: "auto"}} h="100%" p={2} color="white">
+        <Box id="toolbar" style={{ overflowX: "auto" }} h="100%" p={2} color="white">
             <Text
                 textAlign="center"
                 bgGradient={colorMode === "light" ? "linear(to-l, #7928CA,#2866ca)" : "linear(to-l, white,white)"}
@@ -32,14 +32,23 @@ export default function Toolbar() {
                     onClick={(e) => {
                         axios({
                             method: "post",
-                            url: "http://127.0.0.1:8080/print/invoice/", 
+                            url: "http://127.0.0.1:8080/print/invoice/",
                             data: {
                                 token: window.localStorage.getItem("invoice-token")
                             }
+                        }).then(res => {
+                            if (res.data.process) {
+                                var a = document.createElement("a")
+                                a.href = "data:application/pdf;base64," + res.data.file
+                                a.download = res.data.filename + ".pdf"
+                                return a.click();
+                            }
+                            return alert("Somethings were wrong..")
                         })
                         setDisable(true)
                     }}
-                    disabled={disable}
+                    isLoading={disable}
+                    loadingText="Printing"
                     background="#5ba2e6"
                     mb="3"
                     width="90%"

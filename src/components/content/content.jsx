@@ -26,5 +26,12 @@ export default function Content(props) {
         )
     }
 
-    return null
+    return (
+        <Container mt="7" textAlign="center">
+            <hr/>
+            <Text pt="5">developed by <a 
+            style={{color: colorMode === "light" ? "#2866ca" : "rgb(151, 179, 223)"}}
+            target="_blank" rel="noreferrer" href="https://github.com/jack5341">jack5341</a> </Text>
+        </Container>
+    )
 }

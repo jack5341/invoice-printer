@@ -45,8 +45,9 @@ export default function Header() {
             </Text>
             <Box boxShadow="sm" padding="4" bg={colorMode === "light" ? "blue.100" : "#bee3f80a"} maxW="3xl">
                 <div>
-                    There are many benefits to a joint design and development system. Not only
-                    does it bring benefits to the design team.
+                    You can only upload XLSX(Excel) and CSV(Comma-Separated Values).After upload process 
+                    you will see boxes then choose a box and go to editor.<br/><br/>
+                    Write your company name to under editeable text.
                     <Editable defaultValue={window.localStorage.getItem("company_name") ? window.localStorage.getItem("company_name") : "Your Company Name"}>
                         <Kbd>
                             <EditablePreview />
