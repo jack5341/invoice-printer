@@ -32,7 +32,7 @@ export default function Toolbar() {
                     onClick={(e) => {
                         axios({
                             method: "post",
-                            url: "http://127.0.0.1:8080/layout/invoice", 
+                            url: "http://127.0.0.1:8080/print/invoice/", 
                             data: {
                                 token: window.localStorage.getItem("invoice-token")
                             }

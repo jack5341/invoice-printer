@@ -15,15 +15,25 @@ export default function Header() {
 
     return (
         <>
-            <Button
-                onClick={() => toggleColorMode()}
-                bgGradient={colorMode === "light" ? "linear(to-l, #7928CA,#2866ca)" : "linear(to-l, white,white)"}
-                bgClip="text"
-                _hover="none"
-                _active="none"
+            <Text 
+            bgGradient={colorMode === "light" ? "linear(to-l, #7928CA,#2866ca)" : "linear(to-l, white,white)"}
+            bgClip="text"
             >
-                {colorMode === "light" ? "Light Mode ☀️" : "Dark Mode 🌙"}
-            </Button>
+                <Button
+                    _focus="none"
+                    onClick={() => toggleColorMode()}
+                    bgGradient={colorMode === "light" ? "linear(to-l, #7928CA,#2866ca)" : "linear(to-l, white,white)"}
+                    bgClip="text"
+                    _hover="none"
+                    _active="none"
+                    >
+                    {colorMode === "light" ? "Light Mode ☀️" : "Dark Mode 🌙"}
+                </Button>
+                <font>
+                    v0.5
+                </font>
+
+            </Text>
             <Text
                 pl="3"
                 bgGradient={colorMode === "light" ? "linear(to-l, #7928CA,#2866ca)" : "linear(to-l, white,white)"}

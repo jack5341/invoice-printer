@@ -1,10 +1,16 @@
 // Controller
-const print = require("../controller/printengine")
+const print = require("../controller/printer")
 
 const routes = [{
+    method: "POST",
+    url: "/print/invoice/",
+    handler: print.Invoice
+},
+{
     method: "GET",
-    url: "/print/invoice",
-    handler: print.printInvoice
-}]
+    url: "/layout/invoice/*",
+    handler: print.Layout
+}
+]
 
 module.exports = routes
