@@ -1,128 +1,40 @@
-## 📝 Work in process 📝
+![Repo gif](https://raw.githubusercontent.com/jack5341/invoice-printer-client/v2/media/MOSHED-2021-2-11-23-7-55.gif)<br/>
+<p>
+<a href="https://invoiceprinter.com/"><img src="https://img.shields.io/badge/-invoiceprinter-017180?style=flat&logo=Google-Chrome&logoColor=white"/></a>
+<img alt="Version" src="https://img.shields.io/badge/version-0.5.0-blue.svg?cacheSeconds=2592000" />
+<img alt="License" src="https://img.shields.io/github/license/jack5341/invoice-printer-client"/>
+<p>
 
-# Invoice-Printer
-Fetch from XLSX (Excel) and CSV (Comma-separated values) **Row's**  and **Collum's** and convert to array.
-**Then you can use it how you want !**
+[Buy me Beer 🍺](https://paypal.me/nedimakar5341)
 
-## Require Processing Process
-Then what will happen after then i post  to `http://localhost:8080/api/extension-separator`.
+# 📜 Invoice Printer 
 
-A basic diagram for beginner's  
+Do you have excel or csv file from business and want to parse it for print by pdf  ?
+**Here is open source solution !!**
+I used to React.js and Chakra UI on Client Side but on Server Side I used Fastify for a fast server. 
 
-``` mermaid
-graph LR
-A[/api/extension-separator] --> B
-B["regex  =  /(xlsx|csv?)/gm"] -- If file extension xlsx --> C(extension.XLSX)
-B -- If file extension csv --> D(extension.CSV)
-D --> F(.)
-C --> F(( parsedArray))
-```
+# ⛓ How Is It Working ? 
+Your EXCEL or CSV file will parsing on Client-Side after parsing you'll see some boxes on under upmenu.
+In editor path you'll see a4 layout you can replace your infos with default inputs then click just printing and take your pdf !  
 
-> - After i post to /api/extension-separator will filtering for file extension
-> - Then is what extension will go to that function
-> - With `parsedArray` will send to client side
-#
-> file.js - "/extension-separator"
-```js
-const regex = /(xlsx|csv?)/gm
-	
-// The element we want in the array is the last element on regex
-const fileExtension = regex.exec(file.name)[0]
+# Client Side
+Frontend is powered by React.js and Chakra UI.
 
-// If file extension is null
-if(fileExtension == null){
-	res.send("Invalid File Extension")
-	res.end()
-}
+# Server Side
+Server is powered by Fastify i choose it for speed.
+<a target="_blank" href="https://github.com/jack5341/invoice-printer-server">Server Repository</a>
 
-// Switch for xlsx and csv extensions
-switch (fileExtension) {
-	case "xlsx":
-		res.send({
-		// This boolean is for process is succesfully or not 
-		process: true,
-		type: "xlsx",
-		parsedArray: extension.XLSX()
-		})
-		res.end()
-	break;
-
-	case "csv":
-		res.send({
-		// This boolean is for process is succesfully or not 
-		process: true,
-		type: "csv",
-		parsedArray: extension.CSV()
-		})
-		res.end()
-	break;
-default:
-break;
-}
-```
-
->extensions.js - CSV( ) XLSX( )
-```js
-const xlsx = require("node-xlsx")
-const fs = require("fs")
-
-exports.XLSX = () => {
-// We parsing process-file.xlsx and define to parsedRaw
-const parsedRaw = xlsx.parse("./process-file.xlsx")
-return parsedRaw[0].data
-}
-
-exports.CSV = () => {
-// Reading file process-file.csv with fs.readFileSync 
-return fs.readFileSync('./process-file.csv')
-	.toString()
-	.split('\n')
-	.map(e => e.trim())
-	.map(e => e.split(',').map(e => e.trim()));
-}
-```
-## How to install ( client-side )
-
-> Clone this repository
-```sh
-git clone https://github.com/jack5341/invoice-printer.git
-```
-> Go to path
-```sh
-cd client
-```
->Install node modules and start
-```sh
-npm install && npm start
-```
-
-or
+# How to install ?
 
 ```sh
-yarn
+npm install
 ```
-
-## How to install ( server-side )
-> Go to path
+> Then...
 ```sh
-cd server
+npm start
 ```
-> Install node modules and start
-```sh
-npm install && npm start
-```   
+**Its done ! 🎉**
 
-# What i used ? 
-> On client-side 
-- [x] React.js
-- [x] Axios
-> On server-side
-- [x] Nodejs
-- [x] Cors
-- [x] Express
-- [x] Multer
-- [x] Morgan
-- [x] [node-xlsx](https://www.npmjs.com/package/node-xlsx)
-- [x] nodemon
-- [x] body-parser
-- [x] fs
+# 🔍 Is there a mistake or a line that you can make better quality? GO PR !!!
+
+### 🔫 <a target="_blank" href="https://github.com/jack5341/invoice-printer-client/blob/v2/media/templatefile.xlsx?raw=true">Template Excel File</a>
