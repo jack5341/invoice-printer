@@ -32,7 +32,7 @@ export default function Toolbar() {
                     onClick={(e) => {
                         axios({
                             method: "post",
-                            url: "https://invoice-printer-fastify.herokuapp.com/print/invoice/",
+                            url: "http://invoice-printer-fastify.herokuapp.com/print/invoice/",
                             data: {
                                 token: window.localStorage.getItem("invoice-token")
                             }
