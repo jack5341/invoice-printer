@@ -24,7 +24,7 @@ export default function TableSection(props) {
          }, {}), "shhhhh")}>
             <Box style={{ overflowX: "auto" }} boxShadow="xl" mt="5" mb="5" bg={colorMode === "light" ? "#2866ca38" : "#bee3f80a"}>
                 <Table variant="simple">
-                    <TableCaption>Invoice for {window.localStorage.getItem("company_name")} </TableCaption>
+                    <TableCaption>Invoice for {window.localStorage.getItem("company_name") ? window.localStorage.getItem("company_name") : "Company Name"} </TableCaption>
                         <Thead>
                             {props.title.map((element, key) => <ThSection title={element} key={key} />)}
                         </Thead>
