@@ -6,7 +6,7 @@ export default function Card(props) {
 
     return (
         <ScaleFade initialScale={0.9} in={true}>
-            <Center borderRadius="xl" shadow="md" bg={colorMode === "light" ? "#5ba2e6" : "#bee3f80a"} m={3} p={4}>
+            <Center className="tools" borderRadius="xl" shadow="md" bg={colorMode === "light" ? "#222a3a" : "#bee3f80a"} m={3} p={4}>
                 <Text>
                     {props.title} 
                 </Text>

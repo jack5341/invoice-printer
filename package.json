@@ -1,7 +1,7 @@
 {
   "name": "invoice-printer",
   "description": "Invoice Printer for XLSX and CSV files",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "private": true,
   "dependencies": {
     "@chakra-ui/icons": "^1.0.3",
@@ -26,6 +26,7 @@
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.14.1",
     "react-hot-toast": "^1.0.1",
+    "react-responsive": "^8.2.0",
     "react-router-dom": "^5.2.0",
     "react-scripts": "4.0.1",
     "read-excel-file": "^5.0.0",

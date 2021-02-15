@@ -15,7 +15,7 @@ ReactGA.initialize("G-VTPVN058D5");
 
 function App() {
 
-  useEffect( () => ReactGA.pageview(window.location.pathname + window.location.search));
+  useEffect(() => ReactGA.pageview(window.location.pathname + window.location.search));
 
   return (
     <ChakraProvider>

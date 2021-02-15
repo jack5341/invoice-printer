@@ -1,3 +1,4 @@
+import { useMediaQuery } from 'react-responsive'
 import { Container,Grid,GridItem } from '@chakra-ui/react'
 import Helmet from 'react-helmet'
 import { DndContext } from '@dnd-kit/core';
@@ -7,24 +8,26 @@ import Toolbar from '../components/toolbar/toolbar'
 import A4 from '../components/a4/a4'
 
 export default function Editor() {
+
+    var isTablet = useMediaQuery({ query: '(max-width: 1100px)'})
+
     return (
         <>
             <Helmet>
                 <title>Invoice Editor ⚙️</title>
             </Helmet>
             <DndContext>
-                <Container maxW="7xl">
+                <Container pl="0" pr="0" maxW="7xl">
                     <Grid
                         h="200px"
                         templateRows="repeat(2, 1fr)"
                         templateColumns="repeat(5, 1fr)"
                         gap={4}
                     >
-                        <GridItem style={{position: "fixed",height: "100%"}} >
+                        <GridItem colSpan={1} >
                             <Toolbar />
                         </GridItem>
-                        <GridItem colSpan={1} />
-                        <GridItem colSpan={4}>
+                        <GridItem colSpan={isTablet ? 12 : 4}>
                             <A4 />
                         </GridItem>
                     </Grid>

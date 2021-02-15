@@ -8,12 +8,10 @@ import Header from '../../containers/header/header'
 
 export default function Upmenu(props) {
 
-    let fileReader;
     const [hide, setHide] = useState(true)
     const { colorMode } = useColorMode();
 
     const handleFileChosen = (file) => {
-
         if (!file) {
             alert("Upload one Excel or Csv File.")
             return null
@@ -38,7 +36,7 @@ export default function Upmenu(props) {
 
             case "csv":
                 props.setType("csv")
-                fileReader = new FileReader();
+                let fileReader = new FileReader();
                 fileReader.onloadend = (e) => {
                     props.setList(fileReader.result.toString()
                         .split('\n')
@@ -62,7 +60,7 @@ export default function Upmenu(props) {
                         <Box bg={colorMode === "light" ? "#2866ca38" : "#bee3f80a"} mt="4">
                             <center>
                                 <form>
-                                    <input name="document" onChange={e => handleFileChosen(e.target.files[0])} style={{ padding: "2.5rem" }} accept=".xlsx, .csv" type="file" />
+                                    <input name="document" onChange={e => handleFileChosen(e.target.files[0])} style={{ padding: "2.5rem", width: "100%" }} accept=".xlsx, .csv" type="file" />
                                 </form>
                             </center>
                         </Box>
