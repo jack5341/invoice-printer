@@ -7,25 +7,16 @@ import {
     EditableInput,
     useColorMode,
     Button,
-    useDisclosure,
-    Modal,
-    ModalOverlay,
-    ModalContent,
-    ModalHeader,
-    ModalCloseButton,
-    ModalBody,
-    ModalFooter,
-    Link,
-    UnorderedList,
-    ListItem
+    Link
 } from "@chakra-ui/react"
-import { ExternalLinkIcon } from '@chakra-ui/icons'
+import { DeleteIcon } from '@chakra-ui/icons'
+
+// Containers
+import Feature from '../modal/feature/feature'
 
 export default function Header() {
 
-    const version = "v0.6"
     const { colorMode, toggleColorMode } = useColorMode();
-    const { isOpen, onOpen, onClose } = useDisclosure()
 
     return (
         <>
@@ -43,49 +34,16 @@ export default function Header() {
                 >
                     {colorMode === "light" ? "Light Mode ☀️" : "Dark Mode 🌙"}
                 </Button>
-                <Button 
-                color={colorMode === "light" ? "#1941b3" : "white"} onClick={onOpen}>
-                    {version}
+                <Feature colorMode={colorMode} />
+                <Button float="right"
+                 leftIcon={<DeleteIcon />}
+                 colorScheme="messenger"
+                 variant="solid"
+                 color="white"
+                 onClick={() => window.location.reload() }
+                 background={colorMode === "light" ? "#6387ec" : "rgba(255, 255, 255, 0.08)"}>
+                    Refresh
                 </Button>
-                {/* Modal */}
-                <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
-                    <ModalOverlay />
-                    <ModalContent>
-                        <ModalHeader>Features</ModalHeader>
-                        <ModalCloseButton />
-                        <ModalBody>
-                            <Text fontWeight="bold" mb="1rem">
-                                <UnorderedList>
-                                    <ListItem>v0.5</ListItem>
-                                    <UnorderedList>
-                                        <ListItem>
-                                            First version
-                                        </ListItem>
-                                    </UnorderedList>
-                                    <ListItem>v0.6</ListItem>
-                                    <UnorderedList>
-                                        <ListItem>
-                                            Added feature panel
-                                        </ListItem>
-                                        <ListItem>
-                                            New Responsive design for edit page
-                                        </ListItem>
-                                    </UnorderedList>
-                                </UnorderedList>
-                            </Text>
-                        </ModalBody>
-                        <ModalFooter>
-                            <Button colorScheme="blue" mr={3} onClick={onClose}>
-                                Close
-                        </Button>
-                            <Button variant="ghost">
-                                <Link href="https://github.com/jack5341/invoice-printer" isExternal>
-                                    Github Repository <ExternalLinkIcon mx="2px" />
-                                </Link>
-                            </Button>
-                        </ModalFooter>
-                    </ModalContent>
-                </Modal>
             </Text>
             <Text
                 pl="3"
@@ -98,9 +56,11 @@ export default function Header() {
             </Text>
             <Box boxShadow="sm" padding="4" bg={colorMode === "light" ? "blue.100" : "#bee3f80a"} maxW="3xl">
                 <div>
-                    You can only upload XLSX(Excel) and CSV(Comma-Separated Values).After upload process
-                    you will see boxes then choose a box and go to editor.<br /><br />
-                    Write your company name to under editeable text.
+                    <p>
+                        You can only upload <Link color={colorMode === "light" ? "teal.600" : "teal.300"}>XLSX(Excel)</Link> and <Link color={colorMode === "light" ? "blue.500" : "blue.200"}>CSV(Comma-Separated Values)</Link>.After upload process
+                        you will see boxes then choose a box and go to editor.<br /><br />
+                        Write your company name to under editeable text.
+                    </p>
                     <Editable defaultValue={window.localStorage.getItem("company_name") ? window.localStorage.getItem("company_name") : "Your Company Name"}>
                         <Kbd>
                             <EditablePreview />

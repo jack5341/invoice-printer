@@ -31,7 +31,6 @@ export default function Upmenu(props) {
                 readXlsxFile(file).then((rows) => {
                     props.setList(rows)
                 })
-                setHide(false)
                 break;
 
             case "csv":
@@ -43,7 +42,6 @@ export default function Upmenu(props) {
                         .map(e => e.trim())
                         .map(e => e.split(',').map(e => e.trim())))
                 };
-                setHide(false)
                 break;
 
             default:
@@ -56,7 +54,7 @@ export default function Upmenu(props) {
             <Box padding="4" boxShadow={colorMode === "light" ? "md" : "none"} bg={colorMode === "light" ? "gray.100" : "none"} maxW="10xl">
                 <SlideFade in={hide} offsetY="20px">
                     <div style={{ display: !hide ? "none" : "block" }}>
-                        <Header />
+                        <Header/>
                         <Box bg={colorMode === "light" ? "#2866ca38" : "#bee3f80a"} mt="4">
                             <center>
                                 <form>
