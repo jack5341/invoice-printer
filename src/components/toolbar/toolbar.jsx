@@ -1,13 +1,12 @@
 import { useState } from 'react'
 import { Box, Text, useColorMode, Button, UnorderedList, ListItem } from "@chakra-ui/react"
 import jwt from 'jsonwebtoken'
-import axios from 'axios'
 import { useMediaQuery } from 'react-responsive'
 
 // Containers
 import Cards from '../../containers/toolbar/cards/cards'
 
-export default function Toolbar() {
+export default function Toolbar(props) {
 
     const [disable, setDisable] = useState(false)
     const { colorMode, toggleColorMode } = useColorMode();
@@ -18,23 +17,11 @@ export default function Toolbar() {
 
     function sendToApiToken(e){
         e.preventDefault()
-        axios({
-            method: "post",
-            url: "https://invoice-printer-fastify.herokuapp.com/print/invoice/",
-            data: {
-                token: window.localStorage.getItem("invoice-token")
-            }
-        }).then(res => {
-            if (res.data) {
-                var a = document.createElement("a")
-                a.href = "data:application/pdf;base64," + res.data.file
-                a.download = res.data.fileName + ".pdf"
-                a.click();
-                return setDisable(false)
-            }
-            return alert("Somethings were wrong..")
-        })
+        props.setPrint(true)
         setDisable(true)
+        setTimeout(() => {
+            setDisable(false)
+        }, window.onload);
     }
 
     return (

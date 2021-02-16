@@ -1,3 +1,4 @@
+import { useState,useEffect } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { Container, Grid, GridItem, Box, Center } from '@chakra-ui/react'
 import Helmet from 'react-helmet'
@@ -9,8 +10,19 @@ import A4Print from '../components/a4-print/a4.print'
 
 export default function Editor() {
 
+    const [print,setPrint] = useState(false)
     var isTablet = useMediaQuery({ query: '(max-width: 1100px)' })
     var isPrint = useMediaQuery({ print: true })
+
+    useEffect(() => {
+        if(print){
+            setTimeout(() => {
+                window.print()
+                setPrint(false)
+            }, window.onload);
+        }
+        return null
+    },[print])
 
     return (
         <>
@@ -27,7 +39,7 @@ export default function Editor() {
                             gap={4}
                         >
                             <GridItem colSpan={1} >
-                                <Toolbar />
+                                <Toolbar setPrint={setPrint} />
                             </GridItem>
                             <GridItem colSpan={isTablet ? 12 : 4}>
                                 <A4 />

@@ -11,8 +11,14 @@ import { Box,
      ListItem
  } from '@chakra-ui/react'
 import dayjs from 'dayjs'
+import jwt from 'jsonwebtoken'
 
 export default function A4Print() {
+
+    const str = window.location.search
+    const decodedObject = jwt.decode(str.replace("?token=", ''))
+    console.log(decodedObject)
+
     return (
         <Box width="210mm" height="297mm" p="12" color="black" background="white">
             <SimpleGrid columns={2} spacing={5}>
@@ -20,7 +26,7 @@ export default function A4Print() {
                     <Text fontSize="4xl"
                         fontWeight="bold"
                     >
-                        Company Name
+                        {window.localStorage.getItem("company_name") ? window.localStorage.getItem("company_name") : "Company Name"}
                     </Text>
                     <Text fontWeight="600">
                         Company Slogan is here
@@ -32,10 +38,10 @@ export default function A4Print() {
                         Company Location
                     </Text>
                     <Text>
-                        <b>Tel:</b> 177 1777 777
+                        <b>Tel:</b> {decodedObject["Phone Number"] ? decodedObject["Phone Number"] : "177 1777 177"}
                     </Text>
                     <Text>
-                        <b>E-Mail:</b> examplemail@gmail.com
+                        <b>E-Mail:</b> {decodedObject["E-Mail"] ? decodedObject["E-Mail"] : "templatemail@gmail.com"}
                     </Text>
                     <Text>
                         <b>Domain:</b> invoiceprinter.com
@@ -100,9 +106,9 @@ export default function A4Print() {
                         <Td>400.00</Td>
                     </Tr>
                     <Tr>
-                        <Td>Iphone XR</Td>
+                        <Td>{decodedObject.Product ? decodedObject.Product : "Template Product"}</Td>
                         <Td>X</Td>
-                        <Td>1200.00</Td>
+                        <Td>{decodedObject.Price ? decodedObject.Price : 10}</Td>
                     </Tr>
                 </Tbody>
             </Table>

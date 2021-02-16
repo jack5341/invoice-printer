@@ -15,9 +15,6 @@ ReactGA.initialize("G-VTPVN058D5");
 
 function App() {
 
-  // Solve problem with this function
-  window.print()
-
   useEffect(() => ReactGA.pageview(window.location.pathname + window.location.search));
 
   return (
