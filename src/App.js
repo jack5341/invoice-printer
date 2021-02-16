@@ -11,9 +11,12 @@ import ReactGA from 'react-ga';
 import Homepage from './pages/homepage'
 import Editor from './pages/editor'
 
-ReactGA.initialize("G-VTPVN058D5"); 
+ReactGA.initialize("G-VTPVN058D5");
 
 function App() {
+
+  // Solve problem with this function
+  window.print()
 
   useEffect(() => ReactGA.pageview(window.location.pathname + window.location.search));
 
@@ -23,7 +26,6 @@ function App() {
         <Switch>
           <Route component={Homepage} exact path="/" />
           <Route component={Editor} path="/invoice-edit" />
-          <Route path="/print" />
         </Switch>
       </Router>
     </ChakraProvider>
