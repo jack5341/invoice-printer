@@ -14,15 +14,16 @@ Do you have excel or csv file from business and want to parse it for print by pd
 I used to React.js and Chakra UI on Client Side but on Server Side I used Fastify for a fast server. 
 
 # ⛓ How Is It Working ? 
-Your EXCEL or CSV file will parsing on Client-Side after parsing you'll see some boxes on under upmenu.
+Your EXCEL or CSV file will parsing on Client-Side < parsing you'll see some boxes on under upmenu.
 In editor path you'll see a4 layout you can replace your infos with default inputs then click just printing and take your pdf !  
 
 # Client Side
 Frontend is powered by React.js and Chakra UI.
 
-# Server Side
-Server is powered by Fastify i choose it for speed.
-<a target="_blank" href="https://github.com/jack5341/invoice-printer-server">Server Repository</a>
+> !! After last commit i have extract my project from server. 
+> # Server Side
+> Server is powered by Fastify i choose it for speed.
+> <a target="_blank" href="https://github.com/jack5341/invoice-printer-server">Server Repository</a>
 
 # How to install ?
 
