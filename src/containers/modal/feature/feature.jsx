@@ -15,7 +15,7 @@ import {
 } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 
-const version = "v0.7"
+const version = "v0.8"
 
 export default function Feature(props) {
 
@@ -61,6 +61,12 @@ export default function Feature(props) {
                                     </ListItem>
                                     <ListItem>
                                         Some optimization processes 
+                                    </ListItem>
+                                </UnorderedList>
+                                <ListItem>v0.8</ListItem>
+                                <UnorderedList>
+                                    <ListItem>
+                                        Invoice Printer is serverless now ! 🎉🎉
                                     </ListItem>
                                 </UnorderedList>
                             </UnorderedList>
