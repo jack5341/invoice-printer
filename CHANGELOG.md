@@ -19,3 +19,8 @@
 
 ## Version: [v0.8] (02-16-2020)
 - Invoice Printer is serverless now ! 🎉🎉
+
+## Version: [v0.9] (02-24-2020)
+- Added Logo Input
+- Edited mobile designed
+- Removed minimize button

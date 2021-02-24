@@ -13,14 +13,15 @@ import { Box,
 import dayjs from 'dayjs'
 import jwt from 'jsonwebtoken'
 
+import './style.css'
+
 export default function A4Print() {
 
     const str = window.location.search
     const decodedObject = jwt.decode(str.replace("?token=", ''))
-    console.log(decodedObject)
 
     return (
-        <Box width="210mm" height="297mm" p="12" color="black" background="white">
+        <Box className="a4-print" width="210mm" height="297mm" p="12" color="black">
             <SimpleGrid columns={2} spacing={5}>
                 <Box>
                     <Text fontSize="4xl"

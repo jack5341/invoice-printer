@@ -35,13 +35,15 @@ export default function Header() {
                     {colorMode === "light" ? "Light Mode ☀️" : "Dark Mode 🌙"}
                 </Button>
                 <Feature colorMode={colorMode} />
-                <Button float="right"
+                <Button 
+                 className="refresh-btn"
+                 float="right"
                  leftIcon={<DeleteIcon />}
                  colorScheme="messenger"
                  variant="solid"
-                 color="white"
+                 color={colorMode === "light" ? "white" : "black"}
                  onClick={() => window.location.reload() }
-                 background={colorMode === "light" ? "#6387ec" : "rgba(255, 255, 255, 0.08)"}>
+                 bgGradient={colorMode === "light" ? "linear(to-l, #7928CA,#2866ca)" : "#fff"}>
                     Refresh
                 </Button>
             </Text>
