@@ -56,11 +56,11 @@ export default function Upmenu(props) {
   };
 
   const handleFileChosenLogo = async (file) => {
-    var fileReader = new FileReader();
     if (!file) return null;
-    fileReader.onload = function () {
-      console.log(fileReader.result); //base64encoded string
-      window.localStorage.setItem("company_logo", fileReader.result);
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        window.localStorage.setItem("company_logo", reader.result);
     };
   };
 
