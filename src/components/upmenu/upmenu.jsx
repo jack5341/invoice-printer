@@ -19,7 +19,7 @@ export default function Upmenu(props) {
   const [postupload, setPostUpload] = useState(false);
 
   const handleFileChosenDoc = (file) => {
-    if (!file) return alert("You have to upload an file")
+    if (!file) return alert("You have to upload an file");
 
     const regex = /(xlsx|csv?)/gm;
     const fileExtension = regex.exec(file.name)[0];
@@ -55,10 +55,13 @@ export default function Upmenu(props) {
     }
   };
 
-  const handleFileChosenLogo = async(file) => {
-    var fileReader = new FileReader()
-    if (!file) return null
-    window.localStorage.setItem("company_logo", fileReader.readAsDataURL(file))
+  const handleFileChosenLogo = async (file) => {
+    if (!file) return null;
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+        window.localStorage.setItem("company_logo", reader.result);
+    };
   };
 
   return (
@@ -82,12 +85,15 @@ export default function Upmenu(props) {
                   <Text
                     pl="5"
                     pt="3"
-                    
                     fontWeight="extrabold"
                     color={colorMode === "light" ? "#2866ca" : "white"}
                   >
-                    {window.localStorage.getItem("company_logo") ? <CheckIcon /> : <CopyIcon />} Company Logo
-                    (should be .PNG)
+                    {window.localStorage.getItem("company_logo") ? (
+                      <CheckIcon />
+                    ) : (
+                      <CopyIcon />
+                    )}{" "}
+                    Company Logo (should be .PNG)
                   </Text>
                   <input
                     className="inputs"
