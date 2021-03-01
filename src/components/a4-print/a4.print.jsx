@@ -29,7 +29,7 @@ export default function A4Print() {
               ? window.localStorage.getItem("company_name")
               : "Company Name"}
           </Text>
-          <Text fontWeight="600">Company Slogan is here</Text>
+          <Text fontWeight="600"> {window.localStorage.getItem("company_slogan") ? window.localStorage.getItem("company_slogan") : ""} </Text>
           <Text>Mr/Mrs Company Owner Name</Text>
           <Text>Company Location</Text>
           <Text>

@@ -11,21 +11,23 @@ import {
     useDisclosure,
     Button,
     Text,
-    Link
+    Link,
+    useColorMode
 } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 
 const version = "v0.9"
 
-export default function Feature(props) {
+export default function Feature() {
 
     const { isOpen, onOpen, onClose } = useDisclosure()
-    
+    const { colorMode } = useColorMode();
+
     return (
         <>
             <Button
                 className="version-btn"
-                color={props.colorMode === "light" ? "#1941b3" : "white"} onClick={onOpen}>
+                color={colorMode === "light" ? "#1941b3" : "white"} onClick={onOpen}>
                 {version}
             </Button>
             {/* Modal */}

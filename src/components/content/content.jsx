@@ -18,7 +18,7 @@ export default function Content(props) {
                     fontSize="4xl"
                     fontWeight="extrabold"
                 >
-                    Export Results
+                    Export Results <Text fontSize="sm">Parsed Item:{(Object.entries(props.list)).length}</Text>
                     </Text>
                 <hr />
                 <ListItem namesCol={props.list[0]} parsedlist={props.list} />
