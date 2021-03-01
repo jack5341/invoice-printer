@@ -1,18 +1,15 @@
 import {
   Text,
   Box,
-  Editable,
-  Kbd,
-  EditablePreview,
-  EditableInput,
   useColorMode,
   Button,
-  Link,
+  Link
 } from "@chakra-ui/react";
-import { DeleteIcon } from "@chakra-ui/icons";
+import { DeleteIcon,MoonIcon,SunIcon } from "@chakra-ui/icons";
 
 // Containers
 import Feature from "../modal/feature/feature";
+import ModalForm from "../modal/modal-form/modalform"
 
 export default function Header() {
   const { colorMode, toggleColorMode } = useColorMode();
@@ -31,19 +28,12 @@ export default function Header() {
           _hover="none"
           _active="none"
           marginRight="1"
-          color={colorMode === "light" ? "white" : "black"}
+          color={colorMode === "light" ? "blue.700" : "white"}
           onClick={() => toggleColorMode()}
-          bgGradient={
-            colorMode === "light"
-              ? "linear(to-l, #7928CA,#2866ca)"
-              : "linear(to-l, white,white)"
-          }
         >
-          {colorMode === "light"
-            ? "Light Mode ☀️"
-            : "Dark Mode 🌙"}
+          {colorMode === "light" ? <SunIcon/> : <MoonIcon/>}
         </Button>
-        <Feature colorMode={colorMode} />
+        <Feature/>
         <Button
           className="refresh-btn"
           float="right"
@@ -53,7 +43,9 @@ export default function Header() {
           color={colorMode === "light" ? "white" : "black"}
           onClick={() => window.location.reload()}
           bgGradient={
-            colorMode === "light" ? "linear(to-l, #7928CA,#2866ca)" : "#fff"
+            colorMode === "light"
+              ? "linear(to-l, #7928CA,#2866ca)"
+              : "linear(to-l, white,white)"
           }
         >
           Refresh
@@ -75,11 +67,12 @@ export default function Header() {
       <Box
         boxShadow="sm"
         padding="4"
+        borderRadius="0.5rem"
         bg={colorMode === "light" ? "blue.100" : "#bee3f80a"}
         maxW="3xl"
       >
-        <div>
-          <p>
+        <Box>
+          <Text>
             You can only upload{" "}
             <Link color={colorMode === "light" ? "teal.600" : "teal.300"}>
               XLSX(Excel)
@@ -92,25 +85,9 @@ export default function Header() {
             editor.
             <br />
             <br />
-            Write your company name to under editeable text.
-          </p>
-          <Editable
-            defaultValue={
-              window.localStorage.getItem("company_name")
-                ? window.localStorage.getItem("company_name")
-                : "Your Company Name"
-            }
-          >
-            <Kbd>
-              <EditablePreview />
-              <EditableInput
-                onChange={(e) =>
-                  window.localStorage.setItem("company_name", e.target.value)
-                }
-              />
-            </Kbd>
-          </Editable>
-        </div>
+          </Text>
+          <ModalForm/>
+        </Box>
       </Box>
     </>
   );

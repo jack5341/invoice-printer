@@ -5,13 +5,14 @@ import {
     TableCaption,
     Thead,
     Tbody,
+    Tr,
     useColorMode
 } from "@chakra-ui/react"
 import jwt from 'jsonwebtoken'
 
 // Containers
-import ThSection from '../th-section/th.section'
-import TdSection from '../td-section/td.section'
+import ThSection from './th-section/th.section'
+import TdSection from './td-section/td.section'
 
 export default function TableSection(props) {
     const { colorMode } = useColorMode();
@@ -26,10 +27,14 @@ export default function TableSection(props) {
                 <Table variant="simple">
                     <TableCaption>Invoice for {window.localStorage.getItem("company_name") ? window.localStorage.getItem("company_name") : "Company Name"} </TableCaption>
                         <Thead>
-                            {props.title.map((element, key) => <ThSection title={element} key={key} />)}
+                            <Tr>
+                                {props.title.map((element, key) => <ThSection title={element} key={key} />)}
+                            </Tr>
                         </Thead>
                         <Tbody>
-                            {props.output.map((element, index) => <TdSection key={index} output={element} />)}
+                            <Tr>
+                                {props.output.map((element, index) => <TdSection key={index} output={element} />)}
+                            </Tr>
                         </Tbody>
                 </Table>
             </Box>
