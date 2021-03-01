@@ -25,7 +25,7 @@
 - Edited mobile designed
 - Removed minimize button
 
-## Version: [v0.9.5] (02-24-21)
+## Version: [v1.0] (02-24-21)
 - Deleted Stupidly Lines
 - Added to export result lenght
 - Optimized
