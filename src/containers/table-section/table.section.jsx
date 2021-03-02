@@ -22,7 +22,7 @@ export default function TableSection(props) {
             <a target="_blank" rel="noreferrer" href={"/invoice-edit/?token=" + jwt.sign(props.namesCol.reduce((acc, val, ind) => {
             acc[val] = props.output[ind];
             return acc;
-            }, {}), "shhhhh")}>
+         }, {}), "shhhhh")}>
             <Box style={{ overflowX: "auto" }} boxShadow="xl" mt="5" mb="5" bg={colorMode === "light" ? "#2866ca38" : "#bee3f80a"}>
                 <Table variant="simple">
                     <TableCaption>Invoice for {window.localStorage.getItem("company_name") ? window.localStorage.getItem("company_name") : "Company Name"} </TableCaption>

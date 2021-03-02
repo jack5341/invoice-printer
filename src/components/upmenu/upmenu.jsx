@@ -1,4 +1,4 @@
-import { Box, Container, useColorMode, Text, Input } from "@chakra-ui/react";
+import { Box, Container, useColorMode, Text, Input,useToast } from "@chakra-ui/react";
 import readXlsxFile from "read-excel-file";
 import { CopyIcon, CheckIcon } from "@chakra-ui/icons";
 
@@ -11,10 +11,18 @@ import { useState } from "react";
 
 export default function Upmenu(props) {
   const { colorMode } = useColorMode();
+  const toast = useToast()
   const [postupload, setPostUpload] = useState(false);
 
   const handleFileChosenDoc = (file) => {
-    if (!file) return alert("You have to upload an file");
+    if (!file) return toast({
+      title: "Error !",
+      description: "You didn't upload file.",
+      position: "top",
+      status: "error",
+      duration: 3000,
+      isClosable: true,
+    })
 
     const regex = /(xlsx|csv?)/gm;
     const fileExtension = regex.exec(file.name)[0];
