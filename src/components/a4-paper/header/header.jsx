@@ -41,7 +41,8 @@ export default function Header() {
       <Box>
         <Image
           src="https://logosmarken.com/wp-content/uploads/2020/04/Huawei-Logo.png"
-          width="100%"
+          width="80%"
+          float="right"
         />
       </Box>
     </>

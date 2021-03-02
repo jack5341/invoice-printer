@@ -11,6 +11,7 @@ import { EditIcon } from "@chakra-ui/icons";
 
 import A4Header from "../components/a4-paper/header/header"
 import A4Body from "../components/a4-paper/body/body"
+import A4Table from "../components/a4-paper/table/table"
 
 export default function Editors() {
   return (
@@ -34,10 +35,11 @@ export default function Editors() {
         />
       </Alert>
       <Box color="black" padding="3rem" background="white" width="21cm" height="29.7cm">
-        <SimpleGrid columns={2} spacing={10}>
+        <SimpleGrid fontWeight="500" columns={2} spacing={10}>
           <A4Header/>
           <A4Body />
         </SimpleGrid>
+        <A4Table />
       </Box>
     </Container>
   );
