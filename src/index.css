@@ -10,3 +10,9 @@ body {
   scrollbar-width: thin;          
   scrollbar-color: gray rgba(0, 0, 255, 0);  
 }
+
+.photosvg-1{
+  transform: skewX(6deg);
+  margin: 5rem;
+  fill: white;
+}

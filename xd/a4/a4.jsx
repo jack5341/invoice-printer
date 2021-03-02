@@ -16,7 +16,7 @@ import dayjs from 'dayjs'
 import jwt from 'jsonwebtoken'
 
 // Container's
-import EditableBox from '../../containers/editable/editable'
+import EditableBox from '../../src/containers/editable/editable'
 
 import './style.css'
 

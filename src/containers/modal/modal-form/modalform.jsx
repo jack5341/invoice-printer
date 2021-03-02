@@ -22,6 +22,7 @@ export default function ModalForm() {
   const { colorMode } = useColorMode();
 
   const [companyName, setCompanyName] = useState(null);
+  const [companySlogan, setCompanySlogan] = useState(null);
   const [companyLocation, setLocationName] = useState(null);
   const [companyOwnerName, setCompanyOwnerName] = useState(null);
   const [companyPhone, setCompanyPhone] = useState(null);
@@ -36,6 +37,7 @@ export default function ModalForm() {
   function setLocalInfo() {
     const localInfo = {
       name: companyName,
+      slogan: companySlogan,
       location: companyLocation,
       ownername: companyOwnerName,
       phone: companyPhone,
@@ -83,6 +85,14 @@ export default function ModalForm() {
                 onChange={(e) => setCompanyName(e.target.value)}
                 required
                 placeholder={have ? have.name : "Company Name"}
+              />
+            </FormControl>
+            <FormControl mt="5">
+              <FormLabel>Company Slogan: </FormLabel>
+              <Input
+                onChange={(e) => setCompanySlogan(e.target.value)}
+                required
+                placeholder={have ? have.slogan : "Company Slogan"}
               />
             </FormControl>
             <FormControl mt="5">

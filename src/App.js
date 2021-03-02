@@ -9,7 +9,7 @@ import ReactGA from 'react-ga';
 
 // Pages
 import Homepage from './pages/homepage'
-import Editor from './pages/editor'
+import Editor from './pages/editors'
 
 ReactGA.initialize("G-VTPVN058D5");
 
