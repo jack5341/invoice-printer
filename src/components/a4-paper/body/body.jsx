@@ -81,7 +81,7 @@ export default function Body(props) {
           color="black"
           defaultValue={props.query.Company}
         >
-          <Tooltip hasArrow label={props.query.company} bg="gray.300" color="black">
+          <Tooltip hasArrow label={props.query.Company} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />

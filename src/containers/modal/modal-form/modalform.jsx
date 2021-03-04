@@ -29,6 +29,7 @@ export default function ModalForm() {
   const [companyName, setCompanyName] = useState(null);
   const [companySlogan, setCompanySlogan] = useState(null);
   const [companyLocation, setLocationName] = useState(null);
+  const [companyAdress, setAdressName] = useState(null);
   const [companyOwnerName, setCompanyOwnerName] = useState(null);
   const [companyPhone, setCompanyPhone] = useState(null);
   const [companyEmail, setCompanyEmail] = useState(null);
@@ -45,6 +46,7 @@ export default function ModalForm() {
       name: companyName,
       slogan: companySlogan,
       location: companyLocation,
+      adress: companyAdress,
       ownername: companyOwnerName,
       phone: companyPhone,
       email: companyEmail,
@@ -108,6 +110,14 @@ export default function ModalForm() {
                 onChange={(e) => setLocationName(e.target.value)}
                 required
                 placeholder={have ? have.location : "Company Location"}
+              />
+            </FormControl>
+            <FormControl mt="5">
+              <FormLabel>Company Adress: </FormLabel>
+              <Input
+                onChange={(e) => setAdressName(e.target.value)}
+                required
+                placeholder={have ? have.adress : "Company Adress"}
               />
             </FormControl>
             <FormControl mt="5">
