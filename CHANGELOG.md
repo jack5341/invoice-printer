@@ -35,4 +35,5 @@
 - Added Configuration Modal for company informations 
 - 2 new input for bill to company
 - Designed new smartly and basic edit page
- 
+
+.
