@@ -33,3 +33,5 @@
 - Styled again Dark mode button and refresh button
 - Added basic how should be image
 - Added Configuration Modal for company informations 
+- 2 new input for bill to company
+- New smartly and basic edit page

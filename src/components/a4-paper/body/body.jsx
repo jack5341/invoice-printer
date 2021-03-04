@@ -13,7 +13,43 @@ export default function Body(props) {
   console.log(props)
   return (
     <>
-      <Box>
+      <Box textAlign="left">
+        <Editable
+          fontSize="xl"
+          fontWeight="bold"
+          pl="2"
+          color="black"
+          defaultValue={props.query.Company}
+        >
+          <Tooltip hasArrow label={props.query.Company} bg="gray.300" color="black">
+            <EditablePreview />
+          </Tooltip>
+          <EditableInput />
+        </Editable>
+        <Editable pl="2" color="black" defaultValue="Nedime Tatlici">
+          <Tooltip hasArrow label="Nedime Tatlici" bg="gray.300" color="black">
+            <EditablePreview />
+          </Tooltip>
+          <EditableInput />
+        </Editable>
+        <Editable
+          pl="2"
+          color="black"
+          defaultValue={props.local.location}
+        >
+          <Tooltip
+            hasArrow
+            label={props.local.location}
+            bg="gray.300"
+            color="black"
+          >
+            <EditablePreview />
+          </Tooltip>
+          <EditableInput />
+        </Editable>
+      </Box>
+
+      <Box textAlign="right">
         <Editable
           fontSize="l"
           pl="2"
@@ -73,41 +109,6 @@ export default function Body(props) {
       </Box>
 
       {/* Add adress for bill to company  */}
-      <Box textAlign="right">
-        <Editable
-          fontSize="xl"
-          fontWeight="bold"
-          pl="2"
-          color="black"
-          defaultValue={props.query.Company}
-        >
-          <Tooltip hasArrow label={props.query.Company} bg="gray.300" color="black">
-            <EditablePreview />
-          </Tooltip>
-          <EditableInput />
-        </Editable>
-        <Editable pl="2" color="black" defaultValue="Nedime Tatlici">
-          <Tooltip hasArrow label="Nedime Tatlici" bg="gray.300" color="black">
-            <EditablePreview />
-          </Tooltip>
-          <EditableInput />
-        </Editable>
-        <Editable
-          pl="2"
-          color="black"
-          defaultValue={props.local.location}
-        >
-          <Tooltip
-            hasArrow
-            label={props.local.location}
-            bg="gray.300"
-            color="black"
-          >
-            <EditablePreview />
-          </Tooltip>
-          <EditableInput />
-        </Editable>
-      </Box>
       <Box></Box>
       <Box textAlign="right">
         <Editable pl="2" color="black" defaultValue={`Tel: ${props.local.phone}`}>
