@@ -7,7 +7,7 @@ import {
   Image,
 } from "@chakra-ui/react";
 
-export default function Header() {
+export default function Header(props) {
   return (
     <>
       <Box>
@@ -16,9 +16,9 @@ export default function Header() {
           fontWeight="bolder"
           pl="2"
           color="black"
-          defaultValue="Example LLC"
+          defaultValue={props.local.name}
         >
-          <Tooltip hasArrow label="Example LLC" bg="gray.300" color="black">
+          <Tooltip hasArrow label={props.local.name} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />
@@ -30,9 +30,9 @@ export default function Header() {
           marginTop="0"
           borderRadius="0.5rem"
           color="black"
-          defaultValue="Take some chakra"
+          defaultValue={props.local.slogan}
         >
-          <Tooltip hasArrow label="Company Slogan" bg="gray.300" color="black">
+          <Tooltip hasArrow label={props.local.slogan} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />

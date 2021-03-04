@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 
-const version = "v0.9"
+const version = "v1.0"
 
 export default function Feature() {
 

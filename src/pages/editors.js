@@ -6,14 +6,21 @@ import {
   Alert,
   AlertTitle,
   CloseButton,
+  useColorMode
 } from "@chakra-ui/react";
 import { EditIcon } from "@chakra-ui/icons";
+import jwt from "jsonwebtoken"
 
 import A4Header from "../components/a4-paper/header/header"
 import A4Body from "../components/a4-paper/body/body"
 import A4Table from "../components/a4-paper/table/table"
 
 export default function Editors() {
+  const { colorMode } = useColorMode();
+
+  var queryObject = jwt.decode((window.location.search).replace("?token=", ''))
+  const localSettings = jwt.decode(window.localStorage.getItem("configuration_settings"))
+
   return (
     <Container padding="2rem" maxW="4xl">
       <Alert className="alert" mb="5" width="21cm">
@@ -34,12 +41,12 @@ export default function Editors() {
           top="8px"
         />
       </Alert>
-      <Box color="black" padding="3rem" background="white" width="21cm" height="29.7cm">
+      <Box color="black" padding="3rem" background={ colorMode === "light" ? "whitesmoke" : "white"} width="21cm" height="29cm">
         <SimpleGrid fontWeight="500" columns={2} spacing={10}>
-          <A4Header/>
-          <A4Body />
+          <A4Header local={localSettings} query={queryObject} />
+          <A4Body local={localSettings} query={queryObject} />
         </SimpleGrid>
-        <A4Table />
+        <A4Table local={localSettings} query={queryObject} />
       </Box>
     </Container>
   );

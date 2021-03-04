@@ -13,6 +13,11 @@ import {
   useDisclosure,
   Textarea,
   useColorMode,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper
 } from "@chakra-ui/react";
 import jwt from "jsonwebtoken";
 import { useEffect, useState } from "react";
@@ -29,10 +34,11 @@ export default function ModalForm() {
   const [companyEmail, setCompanyEmail] = useState(null);
   const [companyDomain, setCompanyDomain] = useState(null);
   const [companyDescription, setCompanyDescription] = useState(null);
+  const [tax, setTax] = useState(15);
 
   const [have, setHave] = useState(null);
 
-  useEffect(() => setHave(jwt.decode(window.localStorage.getItem("configuration_settings"))),[]);
+  useEffect(() => setHave(jwt.decode(window.localStorage.getItem("configuration_settings"))), []);
 
   function setLocalInfo() {
     const localInfo = {
@@ -44,6 +50,7 @@ export default function ModalForm() {
       email: companyEmail,
       domain: companyDomain,
       description: companyDescription,
+      tax: tax
     };
 
     window.localStorage.setItem(
@@ -144,6 +151,16 @@ export default function ModalForm() {
                   have ? have.description : "Invoice Description"
                 }
               />
+            </FormControl>
+            <FormControl mt="5">
+              <FormLabel>Tax (%)</FormLabel>
+              <NumberInput onChange={e => setTax(e)} defaultValue={15} precision={2} step={0.2}>
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
             </FormControl>
           </ModalBody>
           <ModalFooter>

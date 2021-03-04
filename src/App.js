@@ -22,7 +22,7 @@ function App() {
       <Router>
         <Switch>
           <Route component={Homepage} exact path="/" />
-          <Route component={Editor} path="/invoice-edit" />
+          <Route component={Editor} path="/edit" />
         </Switch>
       </Router>
     </ChakraProvider>

@@ -1,5 +1,4 @@
 import { useState } from "react";
-import Helmet from "react-helmet";
 
 // Components
 import Upmenu from "../components/upmenu/upmenu";
@@ -12,9 +11,6 @@ export default function Homepage() {
 
   return (
     <>
-      <Helmet>
-        <title>Invoice Parser 🧐</title>
-      </Helmet>
       <Upmenu setType={setType} setList={setList} loadState={isLoad} />
       <Content type={type} list={list} loadState={load} />
     </>

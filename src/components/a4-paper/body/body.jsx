@@ -9,7 +9,8 @@ import crypto from "crypto";
 
 const uniqueId = crypto.randomBytes(8).toString("hex")
 
-export default function Body() {
+export default function Body(props) {
+  console.log(props)
   return (
     <>
       <Box>
@@ -17,11 +18,11 @@ export default function Body() {
           fontSize="l"
           pl="2"
           color="black"
-          defaultValue="Adolf-Flecken-Straße 6"
+          defaultValue={props.local.adress}
         >
           <Tooltip
             hasArrow
-            label="Adolf-Flecken-Straße 6"
+            label={props.local.adress}
             bg="gray.300"
             color="black"
           >
@@ -33,11 +34,11 @@ export default function Body() {
           fontSize="l"
           pl="2"
           color="black"
-          defaultValue="41460 Neuss,Germany"
+          defaultValue={props.local.location}
         >
           <Tooltip
             hasArrow
-            label="41460 Neuss,Germany"
+            label={props.local.location}
             bg="gray.300"
             color="black"
           >
@@ -50,9 +51,9 @@ export default function Body() {
           fontSize="l"
           marginTop="0"
           color="black"
-          defaultValue="Example LLC"
+          defaultValue={props.local.name}
         >
-          <Tooltip hasArrow label="Example LLC" bg="gray.300" color="black">
+          <Tooltip hasArrow label={props.local.name} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />
@@ -62,23 +63,25 @@ export default function Body() {
           fontSize="l"
           marginTop="0"
           color="black"
-          defaultValue="Nedim Akar"
+          defaultValue={props.local.ownername}
         >
-          <Tooltip hasArrow label="Nedim Akar" bg="gray.300" color="black">
+          <Tooltip hasArrow label={props.local.ownername} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />
         </Editable>
       </Box>
+
+      {/* Add adress for bill to company  */}
       <Box textAlign="right">
         <Editable
           fontSize="xl"
           fontWeight="bold"
           pl="2"
           color="black"
-          defaultValue="Google LLC"
+          defaultValue={props.query.Company}
         >
-          <Tooltip hasArrow label="Google LLC" bg="gray.300" color="black">
+          <Tooltip hasArrow label={props.query.company} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />
@@ -92,13 +95,11 @@ export default function Body() {
         <Editable
           pl="2"
           color="black"
-          defaultValue="1600 Amphitheatre Parkway
-          Mountain View, CA 94043 USA"
+          defaultValue={props.local.location}
         >
           <Tooltip
             hasArrow
-            label="1600 Amphitheatre Parkway
-            Mountain View, CA 94043 USA"
+            label={props.local.location}
             bg="gray.300"
             color="black"
           >
@@ -109,8 +110,8 @@ export default function Body() {
       </Box>
       <Box></Box>
       <Box textAlign="right">
-        <Editable pl="2" color="black" defaultValue={"Tel: 177 1777 177"}>
-          <Tooltip hasArrow label="177 1777 177" bg="gray.300" color="black">
+        <Editable pl="2" color="black" defaultValue={`Tel: ${props.local.phone}`}>
+          <Tooltip hasArrow label={props.local.phone} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />
@@ -118,11 +119,11 @@ export default function Body() {
         <Editable
           pl="2"
           color="black"
-          defaultValue={"E-Mail: nedim.akar53411@gmail.com"}
+          defaultValue={`Email: ${props.local.email}`}
         >
           <Tooltip
             hasArrow
-            label="nedim.akar53411@gmail.com"
+            label={props.local.email}
             bg="gray.300"
             color="black"
           >
@@ -133,11 +134,11 @@ export default function Body() {
         <Editable
           pl="2"
           color="black"
-          defaultValue={"Domain: invoiceprinter.com"}
+          defaultValue={`Domain: ${props.local.domain}`}
         >
           <Tooltip
             hasArrow
-            label="invoiceprinter.com"
+            label={props.local.domain}
             bg="gray.300"
             color="black"
           >
