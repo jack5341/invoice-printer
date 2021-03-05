@@ -86,8 +86,8 @@ export default function TableComponent(props) {
               <EditableInput />
             </Editable>
           </Th>
-          <Th>{props.local.tax + "%"}</Th>
-          <Th isNumeric>{ props.query.Price / 100 * props.local.tax } €</Th>
+          <Th>{props.local ? props.local.tax + "%" : null}</Th>
+          <Th isNumeric>{ props.query.Price / 100 * props.local ? props.local.tax : null } €</Th>
         </Tr>
       </Tfoot>
     </Table>

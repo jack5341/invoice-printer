@@ -16,9 +16,9 @@ export default function Header(props) {
           fontWeight="bolder"
           pl="2"
           color="black"
-          defaultValue={props.local.name}
+          defaultValue={props.local ? props.local.name : null}
         >
-          <Tooltip hasArrow label={props.local.name} bg="gray.300" color="black">
+          <Tooltip hasArrow label={props.local ? props.local.name : null} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />
@@ -30,9 +30,9 @@ export default function Header(props) {
           marginTop="0"
           borderRadius="0.5rem"
           color="black"
-          defaultValue={props.local.slogan}
+          defaultValue={props.local ? props.local.slogan : null}
         >
-          <Tooltip hasArrow label={props.local.slogan} bg="gray.300" color="black">
+          <Tooltip hasArrow label={props.local ? props.local.slogan : null} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
           <EditableInput />

@@ -16,7 +16,6 @@ import TdSection from './td-section/td.section'
 
 export default function TableSection(props) {
     const { colorMode } = useColorMode();
-    const companyName = (jwt.decode(window.localStorage.getItem("configuration_settings"))).name
 
     return (
         <Tooltip hasArrow label="Click for Edit !" placement="top">
@@ -26,7 +25,7 @@ export default function TableSection(props) {
          }, {}), "shhhhh")}>
             <Box style={{ overflowX: "auto" }} boxShadow="xl" mt="5" mb="5" bg={colorMode === "light" ? "#2866ca38" : "#bee3f80a"}>
                 <Table variant="simple">
-                    <TableCaption>Invoice for {companyName ? companyName : "Undefined"} </TableCaption>
+                    <TableCaption>Invoice for {window.localStorage.getItem("configuration_settings") ? jwt.decode(window.localStorage.getItem("configuration_settings")).name : "Undefined"} </TableCaption>
                         <Thead>
                             <Tr>
                                 {props.title.map((element, key) => <ThSection title={element} key={key} />)}
