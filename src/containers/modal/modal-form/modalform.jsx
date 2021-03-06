@@ -13,6 +13,11 @@ import {
   useDisclosure,
   Textarea,
   useColorMode,
+  NumberInput,
+  NumberInputField,
+  NumberInputStepper,
+  NumberIncrementStepper,
+  NumberDecrementStepper
 } from "@chakra-ui/react";
 import jwt from "jsonwebtoken";
 import { useEffect, useState } from "react";
@@ -22,26 +27,32 @@ export default function ModalForm() {
   const { colorMode } = useColorMode();
 
   const [companyName, setCompanyName] = useState(null);
+  const [companySlogan, setCompanySlogan] = useState(null);
   const [companyLocation, setLocationName] = useState(null);
+  const [companyAdress, setAdressName] = useState(null);
   const [companyOwnerName, setCompanyOwnerName] = useState(null);
   const [companyPhone, setCompanyPhone] = useState(null);
   const [companyEmail, setCompanyEmail] = useState(null);
   const [companyDomain, setCompanyDomain] = useState(null);
   const [companyDescription, setCompanyDescription] = useState(null);
+  const [tax, setTax] = useState(15);
 
   const [have, setHave] = useState(null);
 
-  useEffect(() => setHave(jwt.decode(window.localStorage.getItem("configuration_settings"))),[]);
+  useEffect(() => setHave(jwt.decode(window.localStorage.getItem("configuration_settings"))), []);
 
   function setLocalInfo() {
     const localInfo = {
       name: companyName,
+      slogan: companySlogan,
       location: companyLocation,
+      adress: companyAdress,
       ownername: companyOwnerName,
       phone: companyPhone,
       email: companyEmail,
       domain: companyDomain,
       description: companyDescription,
+      tax: tax
     };
 
     window.localStorage.setItem(
@@ -86,11 +97,27 @@ export default function ModalForm() {
               />
             </FormControl>
             <FormControl mt="5">
+              <FormLabel>Company Slogan: </FormLabel>
+              <Input
+                onChange={(e) => setCompanySlogan(e.target.value)}
+                required
+                placeholder={have ? have.slogan : "Company Slogan"}
+              />
+            </FormControl>
+            <FormControl mt="5">
               <FormLabel>Company Location: </FormLabel>
               <Input
                 onChange={(e) => setLocationName(e.target.value)}
                 required
                 placeholder={have ? have.location : "Company Location"}
+              />
+            </FormControl>
+            <FormControl mt="5">
+              <FormLabel>Company Adress: </FormLabel>
+              <Input
+                onChange={(e) => setAdressName(e.target.value)}
+                required
+                placeholder={have ? have.adress : "Company Adress"}
               />
             </FormControl>
             <FormControl mt="5">
@@ -134,6 +161,16 @@ export default function ModalForm() {
                   have ? have.description : "Invoice Description"
                 }
               />
+            </FormControl>
+            <FormControl mt="5">
+              <FormLabel>Tax (%)</FormLabel>
+              <NumberInput onChange={e => setTax(e)} defaultValue={15} precision={2} step={0.2}>
+                <NumberInputField />
+                <NumberInputStepper>
+                  <NumberIncrementStepper />
+                  <NumberDecrementStepper />
+                </NumberInputStepper>
+              </NumberInput>
             </FormControl>
           </ModalBody>
           <ModalFooter>

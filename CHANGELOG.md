@@ -25,10 +25,13 @@
 - Edited mobile designed
 - Removed minimize button
 
-## Version: [v0.9.5] (02-24-21)
+## Version: [v1.0] (02-24-21)
+- Added how many item parsed indicator to export result
 - Deleted Stupidly Lines
 - Added to export result lenght
 - Optimized
-- Styled again Dark mode button
+- Styled again Dark mode button and refresh button
 - Added basic how should be image
 - Added Configuration Modal for company informations 
+- 2 new input for bill to company
+- Designed new smartly and basic edit page

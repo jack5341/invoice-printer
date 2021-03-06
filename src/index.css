@@ -3,10 +3,22 @@
 body {
   margin: 0;
   font-family: 'Oxygen', sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
   background: rgb(83,168,214);
   background: linear-gradient(0deg, rgba(83,168,214,0.13627457819065125) 0%, rgba(0,212,255,0) 100%); 
-  scrollbar-width: thin;          
-  scrollbar-color: gray rgba(0, 0, 255, 0);  
+}
+
+
+@media print {
+  @page{
+    size: auto; 
+    margin: 0; 
+  }
+
+  .editor .alert {
+    display: none
+  }
+
+  .editor .print-btn{
+    display: none;
+  }
 }

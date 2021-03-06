@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/react'
 import { ExternalLinkIcon } from '@chakra-ui/icons'
 
-const version = "v0.9"
+const version = "v1.0"
 
 export default function Feature() {
 
@@ -28,9 +28,8 @@ export default function Feature() {
             <Button
                 className="version-btn"
                 color={colorMode === "light" ? "#1941b3" : "white"} onClick={onOpen}>
-                {version}
+                {version + " 🎉"}
             </Button>
-            {/* Modal */}
             <Modal blockScrollOnMount={false} isOpen={isOpen} onClose={onClose}>
                 <ModalOverlay />
                 <ModalContent>
@@ -40,11 +39,11 @@ export default function Feature() {
                         <Text fontWeight="bold" mb="1rem">
                             <UnorderedList>
                                 <ListItem>v0.5</ListItem>
-                                    <UnorderedList>
-                                        <ListItem>
-                                            First version
+                                <UnorderedList>
+                                    <ListItem>
+                                        First version
                                         </ListItem>
-                                    </UnorderedList>
+                                </UnorderedList>
                                 <ListItem>v0.6</ListItem>
                                 <UnorderedList>
                                     <ListItem>
@@ -63,7 +62,7 @@ export default function Feature() {
                                         Colored XLSX and CSV texts in description
                                     </ListItem>
                                     <ListItem>
-                                        Some optimization processes 
+                                        Some optimization processes
                                     </ListItem>
                                 </UnorderedList>
                                 <ListItem>v0.8</ListItem>
@@ -84,6 +83,33 @@ export default function Feature() {
                                         Removed minimize button
                                     </ListItem>
                                 </UnorderedList>
+                                <ListItem>v1.0</ListItem>
+                                <UnorderedList>
+                                    <ListItem>
+                                        Added how many item parsed indicator to export result
+                                    </ListItem>
+                                    <ListItem>
+                                        Deleted Stupidly Lines
+                                    </ListItem>
+                                    <ListItem>
+                                        Added to export result lenght
+                                    </ListItem>
+                                    <ListItem>
+                                        Styled again Dark mode button and refresh button
+                                    </ListItem>
+                                    <ListItem>
+                                        Added basic how should be image
+                                    </ListItem>
+                                    <ListItem>
+                                        Added Configuration Modal for company informations
+                                    </ListItem>
+                                    <ListItem>
+                                        2 new input for bill to company
+                                    </ListItem>
+                                    <ListItem>
+                                        Designed new smartly and basic edit page
+                                    </ListItem>
+                                </UnorderedList>
                             </UnorderedList>
                         </Text>
                     </ModalBody>
@@ -91,11 +117,11 @@ export default function Feature() {
                         <Button colorScheme="blue" mr={3} onClick={onClose}>
                             Close
                         </Button>
-                        <Button variant="ghost">
-                            <Link href="https://github.com/jack5341/invoice-printer" isExternal>
+                        <Link href="https://github.com/jack5341/invoice-printer" isExternal>
+                            <Button variant="ghost">
                                 Github Repository <ExternalLinkIcon mx="2px" />
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

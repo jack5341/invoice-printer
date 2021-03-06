@@ -38,15 +38,9 @@ export default function Header() {
           className="refresh-btn"
           float="right"
           leftIcon={<DeleteIcon />}
-          colorScheme="messenger"
           variant="solid"
-          color={colorMode === "light" ? "white" : "black"}
+          color={colorMode === "light" ? "#2866ca" : "white"}
           onClick={() => window.location.reload()}
-          bgGradient={
-            colorMode === "light"
-              ? "linear(to-l, #7928CA,#2866ca)"
-              : "linear(to-l, white,white)"
-          }
         >
           Refresh
         </Button>

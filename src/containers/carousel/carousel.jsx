@@ -16,7 +16,7 @@ export default function Carousel() {
         fontSize="2xl"
         fontWeight="bolder"
       >
-        <InfoIcon mr="2" /> How should be layout ?
+        <InfoIcon mr="2" /> How layout should be look like?
       </Text>
       <Image borderRadius="0.5rem" mt="2" width="100%" src={photo} />
     </Box>

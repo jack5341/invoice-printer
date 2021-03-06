@@ -19,13 +19,13 @@ export default function TableSection(props) {
 
     return (
         <Tooltip hasArrow label="Click for Edit !" placement="top">
-            <a target="_blank" rel="noreferrer" href={"/invoice-edit/?token=" + jwt.sign(props.namesCol.reduce((acc, val, ind) => {
+            <a target="_blank" rel="noreferrer" href={"/edit/?token=" + jwt.sign(props.namesCol.reduce((acc, val, ind) => {
             acc[val] = props.output[ind];
             return acc;
          }, {}), "shhhhh")}>
             <Box style={{ overflowX: "auto" }} boxShadow="xl" mt="5" mb="5" bg={colorMode === "light" ? "#2866ca38" : "#bee3f80a"}>
                 <Table variant="simple">
-                    <TableCaption>Invoice for {window.localStorage.getItem("company_name") ? window.localStorage.getItem("company_name") : "Company Name"} </TableCaption>
+                    <TableCaption>Invoice for {window.localStorage.getItem("configuration_settings") ? jwt.decode(window.localStorage.getItem("configuration_settings")).name : "Undefined"} </TableCaption>
                         <Thead>
                             <Tr>
                                 {props.title.map((element, key) => <ThSection title={element} key={key} />)}
