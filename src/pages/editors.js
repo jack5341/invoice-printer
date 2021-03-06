@@ -6,20 +6,24 @@ import {
   Alert,
   AlertTitle,
   CloseButton,
-  useColorMode
+  useColorMode,
+  Button,
 } from "@chakra-ui/react";
+import { ArrowForwardIcon } from "@chakra-ui/icons";
 import { EditIcon } from "@chakra-ui/icons";
-import jwt from "jsonwebtoken"
+import jwt from "jsonwebtoken";
 
-import A4Header from "../components/a4-paper/header/header"
-import A4Body from "../components/a4-paper/body/body"
-import A4Table from "../components/a4-paper/table/table"
+import A4Header from "../components/a4-paper/header/header";
+import A4Body from "../components/a4-paper/body/body";
+import A4Table from "../components/a4-paper/table/table";
 
 export default function Editors() {
   const { colorMode } = useColorMode();
 
-  var queryObject = jwt.decode((window.location.search).replace("?token=", ''))
-  const localSettings = jwt.decode(window.localStorage.getItem("configuration_settings"))
+  const queryObject = jwt.decode(window.location.search.replace("?token=", ""));
+  const localSettings = jwt.decode(
+    window.localStorage.getItem("configuration_settings")
+  );
 
   return (
     <Container padding="2rem" maxW="4xl">
@@ -35,19 +39,41 @@ export default function Editors() {
           </AlertDescription>
         </Box>
         <CloseButton
-          onClick={() => document.querySelector(".alert").style = "display:none"}
+          onClick={() =>
+            (document.querySelector(".alert").style = "display:none")
+          }
           position="absolute"
           right="8px"
           top="8px"
         />
       </Alert>
-      <Box color="black" padding="3rem" background={ colorMode === "light" ? "whitesmoke" : "white"} width="21cm" height="29cm">
+      <Box
+        color="black"
+        padding="3rem"
+        background={colorMode === "light" ? "whitesmoke" : "white"}
+        width="21cm"
+        height="29cm"
+      >
         <SimpleGrid fontWeight="500" columns={2} spacing={10}>
           <A4Header local={localSettings} query={queryObject} />
           <A4Body local={localSettings} query={queryObject} />
         </SimpleGrid>
         <A4Table local={localSettings} query={queryObject} />
       </Box>
+      <Button
+        onClick={() => window.print()}
+        _hover="none"
+        _focus="none"
+        shadow="lg"
+        position="fixed"
+        bottom="5px"
+        margin="4rem"
+        rightIcon={<ArrowForwardIcon />}
+        background="blue.300"
+        size="lg"
+      >
+        Print
+      </Button>
     </Container>
   );
 }

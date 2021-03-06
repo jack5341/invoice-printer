@@ -16,7 +16,7 @@ export default function Header(props) {
           fontWeight="bolder"
           pl="2"
           color="black"
-          defaultValue={props.local ? props.local.name : null}
+          defaultValue={props.local ? props.local.name : "No Name"}
         >
           <Tooltip hasArrow label={props.local ? props.local.name : null} bg="gray.300" color="black">
             <EditablePreview />
@@ -30,7 +30,7 @@ export default function Header(props) {
           marginTop="0"
           borderRadius="0.5rem"
           color="black"
-          defaultValue={props.local ? props.local.slogan : null}
+          defaultValue={props.local ? props.local.slogan : "No Slogan"}
         >
           <Tooltip hasArrow label={props.local ? props.local.slogan : null} bg="gray.300" color="black">
             <EditablePreview />
@@ -40,7 +40,7 @@ export default function Header(props) {
       </Box>
       <Box>
         <Image
-          src="https://logosmarken.com/wp-content/uploads/2020/04/Huawei-Logo.png"
+          src={window.localStorage.getItem("company_logo") ? window.localStorage.getItem("company_logo") : null}
           width="80%"
           float="right"
         />

@@ -6,9 +6,3 @@ body {
   background: rgb(83,168,214);
   background: linear-gradient(0deg, rgba(83,168,214,0.13627457819065125) 0%, rgba(0,212,255,0) 100%); 
 }
-
-.photosvg-1{
-  transform: skewX(6deg);
-  margin: 5rem;
-  fill: white;
-}

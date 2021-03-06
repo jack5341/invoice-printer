@@ -117,11 +117,11 @@ export default function Feature() {
                         <Button colorScheme="blue" mr={3} onClick={onClose}>
                             Close
                         </Button>
-                        <Button variant="ghost">
-                            <Link href="https://github.com/jack5341/invoice-printer" isExternal>
+                        <Link href="https://github.com/jack5341/invoice-printer" isExternal>
+                            <Button variant="ghost">
                                 Github Repository <ExternalLinkIcon mx="2px" />
-                            </Link>
-                        </Button>
+                            </Button>
+                        </Link>
                     </ModalFooter>
                 </ModalContent>
             </Modal>

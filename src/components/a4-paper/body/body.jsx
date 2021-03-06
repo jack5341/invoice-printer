@@ -35,7 +35,7 @@ export default function Body(props) {
         <Editable
           pl="2"
           color="black"
-          defaultValue={props.local ? props.local.location : null}
+          defaultValue={props.local ? props.local.location : "No location"}
         >
           <Tooltip
             hasArrow
@@ -54,7 +54,7 @@ export default function Body(props) {
           fontSize="l"
           pl="2"
           color="black"
-          defaultValue={props.local ? props.local.adress : null}
+          defaultValue={props.local ? props.local.adress : "No adress"}
         >
           <Tooltip
             hasArrow
@@ -70,7 +70,7 @@ export default function Body(props) {
           fontSize="l"
           pl="2"
           color="black"
-          defaultValue={props.local ? props.local.location : null}
+          defaultValue={props.local ? props.local.location : "No location"}
         >
           <Tooltip
             hasArrow
@@ -87,7 +87,7 @@ export default function Body(props) {
           fontSize="l"
           marginTop="0"
           color="black"
-          defaultValue={props.local ? props.local.name : null}
+          defaultValue={props.local ? props.local.name : "No Name"}
         >
           <Tooltip hasArrow label={props.local ? props.local.name : null} bg="gray.300" color="black">
             <EditablePreview />
@@ -99,7 +99,7 @@ export default function Body(props) {
           fontSize="l"
           marginTop="0"
           color="black"
-          defaultValue={props.local ? props.local.ownername : null}
+          defaultValue={props.local ? props.local.ownername : "No owner name"}
         >
           <Tooltip hasArrow label={props.local ? props.local.ownername : null} bg="gray.300" color="black">
             <EditablePreview />
@@ -108,10 +108,9 @@ export default function Body(props) {
         </Editable>
       </Box>
 
-      {/* Add adress for bill to company  */}
       <Box></Box>
       <Box textAlign="right">
-        <Editable pl="2" color="black" defaultValue={`Tel: ${props.local ? props.local.phone : null}`}>
+        <Editable pl="2" color="black" defaultValue={`Tel: ${props.local ? props.local.phone : "No phone"}`}>
           <Tooltip hasArrow label={props.local ? props.local.phone : null} bg="gray.300" color="black">
             <EditablePreview />
           </Tooltip>
@@ -120,7 +119,7 @@ export default function Body(props) {
         <Editable
           pl="2"
           color="black"
-          defaultValue={`Email: ${props.local ? props.local.email : null}`}
+          defaultValue={`Email: ${props.local ? props.local.email : "No email"}`}
         >
           <Tooltip
             hasArrow
@@ -135,7 +134,7 @@ export default function Body(props) {
         <Editable
           pl="2"
           color="black"
-          defaultValue={`Domain: ${props.local ? props.local.domain : null}`}
+          defaultValue={`Domain: ${props.local ? props.local.domain : "No Domain"}`}
         >
           <Tooltip
             hasArrow
