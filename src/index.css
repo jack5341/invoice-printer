@@ -6,3 +6,19 @@ body {
   background: rgb(83,168,214);
   background: linear-gradient(0deg, rgba(83,168,214,0.13627457819065125) 0%, rgba(0,212,255,0) 100%); 
 }
+
+
+@media print {
+  @page{
+    size: auto; 
+    margin: 0; 
+  }
+
+  .editor .alert {
+    display: none
+  }
+
+  .editor .print-btn{
+    display: none;
+  }
+}

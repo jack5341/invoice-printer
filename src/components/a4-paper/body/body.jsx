@@ -10,7 +10,6 @@ import crypto from "crypto";
 const uniqueId = crypto.randomBytes(8).toString("hex")
 
 export default function Body(props) {
-  console.log(props)
   return (
     <>
       <Box textAlign="left">

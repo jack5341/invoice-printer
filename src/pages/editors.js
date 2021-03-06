@@ -27,7 +27,7 @@ export default function Editors() {
 
   if (queryObject) {
     return (
-      <Container padding="2rem" maxW="4xl">
+      <Container className="editor" padding="2rem" maxW="4xl">
         <Alert className="alert" mb="5" width="21cm">
           <EditIcon mr="5" />
           <Box flex="1">
@@ -62,6 +62,7 @@ export default function Editors() {
           <A4Table local={localSettings} query={queryObject} />
         </Box>
         <Button
+          className="print-btn"
           onClick={() => window.print()}
           _hover="none"
           _focus="none"
