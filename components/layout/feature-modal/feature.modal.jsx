@@ -10,7 +10,9 @@ import {
   UnorderedList,
   ListItem,
   Badge,
+  Link
 } from "@chakra-ui/react";
+import { ExternalLinkIcon } from "@chakra-ui/icons"
 
 export default function FeatureModal(props) {
   return (
@@ -84,13 +86,16 @@ export default function FeatureModal(props) {
           </UnorderedList>
         </ModalBody>
         <ModalFooter>
-          <Button
-            _focus="none"
-            background="none"
-            color={props.colorMode === "light" ? "#107c41" : "white"}
-          >
-            Github Repository
-          </Button>
+          <Link href="https://github.com/jack5341/invoice-printer" target="_blank">
+            <Button
+              _focus="none"
+              background="none"
+              rightIcon={<ExternalLinkIcon/>}
+              color={props.colorMode === "light" ? "#107c41" : "white"}
+            >
+              Github Repository
+            </Button>
+          </Link>
         </ModalFooter>
       </ModalContent>
     </Modal>
