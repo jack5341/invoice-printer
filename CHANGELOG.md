@@ -35,3 +35,6 @@
 - Added Configuration Modal for company informations 
 - 2 new input for bill to company
 - Designed new smartly and basic edit page
+
+## Version: [v1.1] (03-10-21)
+- Moved substructure from pure React.js to Next.js
