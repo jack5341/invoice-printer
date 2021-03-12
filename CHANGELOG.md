@@ -1,21 +1,13 @@
-# INVOICE-PRINTER CHANGELOG
-
 ## Version: [v0.5] (02-12-2021)
-### Add
 - First Version
 
 ## Version: [v0.6] (02-15-2021)
-### Add
 - New feature panel
 - New repsonsive design for edit page
 
 ## Version: [v0.7] (02-16-2021)
-### Add
 - Refresh button for clean cache
 - Colored XLSX and CSV texts in description
-
-### Edit
-- Some optimization processes
 
 ## Version: [v0.8] (02-16-2021)
 - Invoice Printer is serverless now ! 🎉🎉
@@ -38,3 +30,4 @@
 
 ## Version: [v1.1] (03-10-21)
 - Moved substructure from pure React.js to Next.js
+- CHANGELOG.md file has connected to feature modal
