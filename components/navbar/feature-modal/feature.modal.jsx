@@ -1,0 +1,56 @@
+import { ExternalLinkIcon } from "@chakra-ui/icons";
+import ReactMarkdown from "react-markdown";
+import {
+    Button,
+    Modal,
+    ModalBody,
+    ModalHeader,
+    ModalOverlay,
+    ModalContent,
+    ModalCloseButton,
+    ModalFooter,
+    Link,
+  } from "@chakra-ui/react";
+export default function FeatureModal(props) {
+  return (
+    <Modal isOpen={props.isOpen} onClose={props.onClose}>
+      <ModalOverlay />
+      <ModalContent
+        padding="1.5rem"
+        paddingBottom="0rem"
+        paddingTop="0rem"
+        background={props.colorMode === "light" ? "white" : "#107c41"}
+      >
+        <ModalHeader
+          fontSize="2rem"
+          color={props.colorMode === "light" ? "#107c41" : "white"}
+        >
+          Changelog
+        </ModalHeader>
+        <ModalCloseButton _hover="none" _active="none" _focus="none" />
+        <ModalBody
+          fontWeight="600"
+          color={props.colorMode === "light" ? "#094223" : "white"}
+        >
+          <ReactMarkdown>{props.logs}</ReactMarkdown>
+        </ModalBody>
+        <ModalFooter>
+          <Link
+            href="https://github.com/jack5341/invoice-printer"
+            target="_blank"
+          >
+            <Button
+              _focus="none"
+              background="none"
+              rightIcon={<ExternalLinkIcon />}
+              value=""
+              color={props.colorMode === "light" ? "#107c41" : "white"}
+            >
+              Github Repository
+            </Button>
+          </Link>
+        </ModalFooter>
+      </ModalContent>
+    </Modal>
+  );
+}
