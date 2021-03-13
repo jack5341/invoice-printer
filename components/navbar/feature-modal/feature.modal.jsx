@@ -12,9 +12,10 @@ import {
     Divider,
     Link,
   } from "@chakra-ui/react";
+
 export default function FeatureModal(props) {
   return (
-    <Modal isOpen={props.isOpen} onClose={props.onClose}>
+    <Modal scrollBehavior="inside" isOpen={props.isOpen} onClose={props.onClose}>
       <ModalOverlay />
       <ModalContent
         padding="1.5rem"
