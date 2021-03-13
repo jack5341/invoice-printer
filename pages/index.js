@@ -5,6 +5,7 @@ import { useMediaQuery } from "react-responsive";
 // Components
 import Navbar from "../components/navbar/navbar";
 import Howto from "../components/howto/howto";
+import Form from "../components/form/form"
 
 // Utils
 import { getChangelog } from "../utils/changelog";
@@ -29,10 +30,12 @@ export default function Home({ logs }) {
       <Container
         padding={isTablet ? "0px" : "1rem"}
         paddingTop="0px"
+        paddingBottom="0px"
         maxW="container.lg"
       >
         <Navbar logs={logs} />
         <Howto />
+        <Form />
       </Container>
     </>
   );

@@ -15,3 +15,8 @@ a {
 * {
   box-sizing: border-box;
 }
+
+.modal-body h2{
+  font-size: 1.2rem;
+  font-weight: bolder;
+}

@@ -9,6 +9,7 @@ import {
     ModalContent,
     ModalCloseButton,
     ModalFooter,
+    Divider,
     Link,
   } from "@chakra-ui/react";
 export default function FeatureModal(props) {
@@ -23,17 +24,21 @@ export default function FeatureModal(props) {
       >
         <ModalHeader
           fontSize="2rem"
+          paddingBottom="0rem"
           color={props.colorMode === "light" ? "#107c41" : "white"}
         >
           Changelog
         </ModalHeader>
+        <Divider/>
         <ModalCloseButton _hover="none" _active="none" _focus="none" />
         <ModalBody
           fontWeight="600"
+          className="modal-body"
           color={props.colorMode === "light" ? "#094223" : "white"}
         >
           <ReactMarkdown>{props.logs}</ReactMarkdown>
         </ModalBody>
+        <Divider/>
         <ModalFooter>
           <Link
             href="https://github.com/jack5341/invoice-printer"
