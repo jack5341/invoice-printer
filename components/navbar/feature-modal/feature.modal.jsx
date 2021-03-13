@@ -21,12 +21,12 @@ export default function FeatureModal(props) {
         padding="1.5rem"
         paddingBottom="0rem"
         paddingTop="0rem"
-        background={props.colorMode === "light" ? "white" : "#107c41"}
+        background={props.colorMode === "light" ? "white" : "#15151f"}
       >
         <ModalHeader
           fontSize="2rem"
           paddingBottom="0rem"
-          color={props.colorMode === "light" ? "#107c41" : "white"}
+          color={props.colorMode === "light" ? "#107c41" : "#27d476"}
         >
           Changelog
         </ModalHeader>
@@ -35,7 +35,7 @@ export default function FeatureModal(props) {
         <ModalBody
           fontWeight="600"
           className="modal-body"
-          color={props.colorMode === "light" ? "#094223" : "white"}
+          color={props.colorMode === "light" ? "#094223" : "whitesmoke"}
         >
           <ReactMarkdown>{props.logs}</ReactMarkdown>
         </ModalBody>
@@ -49,7 +49,6 @@ export default function FeatureModal(props) {
               _focus="none"
               background="none"
               rightIcon={<ExternalLinkIcon />}
-              value=""
               color={props.colorMode === "light" ? "#107c41" : "white"}
             >
               Github Repository
