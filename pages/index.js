@@ -5,8 +5,6 @@ import { useMediaQuery } from "react-responsive";
 // Components
 import Navbar from "../components/navbar/navbar";
 import Howto from "../components/howto/howto";
-import Form from "../components/form/form"
-import Alert from "../components/alert/alert"
 
 // Utils
 import { getChangelog } from "../utils/changelog";
@@ -28,7 +26,6 @@ export default function Home({ logs }) {
         <title>Invoice Printer</title>
       </Head>
       <Box height="8px" background="#107c41"></Box>
-      {/* <Alert /> */}
       <Container
         padding={isTablet ? "0px" : "1rem"}
         paddingTop="0px"
@@ -37,7 +34,6 @@ export default function Home({ logs }) {
       >
         <Navbar logs={logs} />
         <Howto />
-        {/* <Form /> */}
       </Container>
     </>
   );

@@ -5,20 +5,24 @@ import {
   useColorMode,
   Flex,
   Spacer,
-  useDisclosure,
 } from "@chakra-ui/react";
 import { DeleteIcon, MoonIcon, SunIcon } from "@chakra-ui/icons";
 import { useMediaQuery } from "react-responsive";
 
 import FeatureModal from "./feature-modal/feature.modal";
+import Alert from "./alert/alert"
 
 export default function Navbar(props) {
   const { colorMode, toggleColorMode } = useColorMode();
   const isMobile = useMediaQuery({ query: "(max-width: 580px)" });
-  const { isOpen, onOpen, onClose } = useDisclosure();
 
   return (
-    <Box padding="1.5rem" paddingTop="0.5rem" background="none">
+    <Box
+      padding="1.5rem"
+      paddingBottom="0.5rem"
+      paddingTop="0.5rem"
+      background="none"
+    >
       <Box>
         <Flex>
           <Button
@@ -32,22 +36,8 @@ export default function Navbar(props) {
           >
             {colorMode === "light" ? <SunIcon /> : <MoonIcon />}
           </Button>
-          <Button
-            letterSpacing="2px"
-            _hover="none"
-            _active="none"
-            _focus="none"
-            onClick={onOpen}
-            background="none"
-            color={colorMode === "light" ? "#107c41" : "white"}
-            size="md"
-          >
-            v1.1
-          </Button>
           <FeatureModal
             logs={props.logs}
-            isOpen={isOpen}
-            onClose={onClose}
             colorMode={colorMode}
           />
           <Spacer />
@@ -89,6 +79,7 @@ export default function Navbar(props) {
           editor.
         </Text>
       </Box>
+      <Alert colorMode={colorMode}/>
     </Box>
   );
 }

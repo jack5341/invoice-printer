@@ -15,6 +15,7 @@
     "@emotion/styled": "^11.1.5",
     "framer-motion": "^3.10.2",
     "gray-matter": "^4.0.2",
+    "jsonwebtoken": "^8.5.1",
     "next": "10.0.8",
     "react": "17.0.1",
     "react-dom": "17.0.1",
