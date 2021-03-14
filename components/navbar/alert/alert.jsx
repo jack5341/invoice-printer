@@ -40,11 +40,13 @@ export default function AlertSection(props) {
   const [logo, setLogo] = useState(null);
   const [isSaved, isSetSaved] = useState(false);
   const [isUpload, setIsUploaded] = useState(false);
+  const [obj, setObj] = useState(null);
 
   useEffect(() => {
-    return window.localStorage.getItem("company_information")
+    window.localStorage.getItem("company_information")
       ? isSetSaved(true)
       : isSetSaved(false);
+    setObj(jwt.decode(window.localStorage.getItem("company_information")));
   }, []);
 
   function toLocalStorage() {
@@ -133,11 +135,16 @@ export default function AlertSection(props) {
               </FormControl>
               <FormControl mt="3">
                 <FormLabel>Company Name:</FormLabel>
-                <Input onChange={(e) => setName(e.target.value)} type="text" />
+                <Input
+                  placeholder={obj ? obj.name : null}
+                  onChange={(e) => setName(e.target.value)}
+                  type="text"
+                />
               </FormControl>
               <FormControl mt="3">
                 <FormLabel>Company Slogan:</FormLabel>
                 <Input
+                  placeholder={obj ? obj.slogan : null}
                   onChange={(e) => setSlogan(e.target.value)}
                   type="text"
                 />
@@ -145,6 +152,7 @@ export default function AlertSection(props) {
               <FormControl mt="3">
                 <FormLabel>Company Location:</FormLabel>
                 <Input
+                  placeholder={obj ? obj.location : null}
                   onChange={(e) => setLocation(e.target.value)}
                   type="text"
                 />
@@ -152,6 +160,7 @@ export default function AlertSection(props) {
               <FormControl mt="3">
                 <FormLabel>Company Adress:</FormLabel>
                 <Input
+                  placeholder={obj ? obj.adress : null}
                   onChange={(e) => setAdress(e.target.value)}
                   type="text"
                 />
@@ -159,21 +168,27 @@ export default function AlertSection(props) {
               <FormControl mt="3">
                 <FormLabel>Company Owner Name:</FormLabel>
                 <Input
+                  placeholder={obj ? obj.ownername : null}
                   onChange={(e) => setOwnerName(e.target.value)}
                   type="text"
                 />
               </FormControl>
               <FormControl mt="3">
                 <FormLabel>Company Phone Number:</FormLabel>
-                <Input onChange={(e) => setPhone(e.target.value)} type="text" />
+                <Input
+                placeholder={obj ? obj.phone : null}
+                onChange={(e) => setPhone(e.target.value)} type="text" />
               </FormControl>
               <FormControl mt="3">
                 <FormLabel>Company Email:</FormLabel>
-                <Input onChange={(e) => setEmail(e.target.value)} type="text" />
+                <Input 
+                placeholder={obj ? obj.email : null}
+                onChange={(e) => setEmail(e.target.value)} type="text" />
               </FormControl>
               <FormControl mt="3">
                 <FormLabel>Company Domain Name:</FormLabel>
                 <Input
+                  placeholder={obj ? obj.domain : null}
                   onChange={(e) => setDomain(e.target.value)}
                   type="text"
                 />
@@ -181,6 +196,7 @@ export default function AlertSection(props) {
               <FormControl mt="3">
                 <FormLabel>Invoice Description:</FormLabel>
                 <Textarea
+                  placeholder={obj ? obj.description : null}
                   onChange={(e) => setDescription(e.target.value)}
                   type="text"
                 />
