@@ -21,6 +21,7 @@ import {
   NumberInputStepper,
   NumberIncrementStepper,
 } from "@chakra-ui/react";
+import { CheckIcon, DownloadIcon, CopyIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
 
@@ -36,16 +37,23 @@ export default function AlertSection(props) {
   const [domain, setDomain] = useState(null);
   const [description, setDescription] = useState(null);
   const [tax, setTax] = useState(null);
+  const [logo, setLogo] = useState(null);
   const [isSaved, isSetSaved] = useState(false);
-  const [obj,setObj] = useState(null)
+  const [isUpload, setIsUploaded] = useState(false);
 
   useEffect(() => {
     return window.localStorage.getItem("company_information")
-    ? isSetSaved(true)
-    : isSetSaved(false)
-  },[]);
+      ? isSetSaved(true)
+      : isSetSaved(false);
+  }, []);
 
   function toLocalStorage() {
+    let reader = new FileReader();
+    reader.readAsDataURL(logo);
+    reader.onload = function () {
+      window.localStorage.setItem("company_logo", reader.result);
+    };
+
     const obj = {
       name: name,
       slogan: slogan,
@@ -61,7 +69,10 @@ export default function AlertSection(props) {
 
     const token = jwt.sign(obj, "shhhhh");
     window.localStorage.setItem("company_information", token);
-    return onClose();
+    setIsUploaded(true);
+    onClose();
+
+    window.location.reload();
   }
 
   return (
@@ -76,8 +87,8 @@ export default function AlertSection(props) {
         >
           <AlertIcon />
           {isSaved
-            ? "You have setted your company information."
-            : "Company information not set yet !"}
+            ? "You have set your company information."
+            : "Company information not set yet!"}
         </Alert>
       </Link>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
@@ -99,6 +110,27 @@ export default function AlertSection(props) {
                 Please fill correctly this form for best experience
               </Text>
               <Divider />
+              <FormControl
+                borderRadius="0.5rem"
+                border="2px dashed gray"
+                mt="3"
+              >
+                <FormLabel
+                  color={props.colorMode === "light" ? "#27d476" : "white"}
+                  p="1rem"
+                  fontWeight="bold"
+                >
+                  {isUpload ? <CheckIcon /> : <DownloadIcon />} Upload your Logo
+                  (.png)
+                </FormLabel>
+                <Input
+                  onChange={(e) => setLogo(e.target.files[0])}
+                  type="file"
+                  accept=".png"
+                  opacity="0"
+                  border="0px"
+                />
+              </FormControl>
               <FormControl mt="3">
                 <FormLabel>Company Name:</FormLabel>
                 <Input onChange={(e) => setName(e.target.value)} type="text" />
