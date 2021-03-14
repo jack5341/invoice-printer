@@ -20,8 +20,9 @@ import {
   NumberInputField,
   NumberInputStepper,
   NumberIncrementStepper,
+  Tooltip
 } from "@chakra-ui/react";
-import { CheckIcon, DownloadIcon, CopyIcon } from "@chakra-ui/icons";
+import { CheckIcon, DownloadIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
 
@@ -50,11 +51,15 @@ export default function AlertSection(props) {
   }, []);
 
   function toLocalStorage() {
-    let reader = new FileReader();
-    reader.readAsDataURL(logo);
-    reader.onload = function () {
-      window.localStorage.setItem("company_logo", reader.result);
-    };
+
+    if(logo){
+      let reader = new FileReader();
+      reader.readAsDataURL(logo);
+      reader.onload = function () {
+        window.localStorage.setItem("company_logo", reader.result);
+      };
+      setIsUploaded(true);
+    }
 
     const obj = {
       name: name,
@@ -71,7 +76,6 @@ export default function AlertSection(props) {
 
     const token = jwt.sign(obj, "shhhhh");
     window.localStorage.setItem("company_information", token);
-    setIsUploaded(true);
     onClose();
 
     window.location.reload();
@@ -80,6 +84,7 @@ export default function AlertSection(props) {
   return (
     <>
       <Link>
+      <Tooltip hasArrow label="Please set your company informations" bg="gray.300" color="black">
         <Alert
           fontWeight="600"
           onClick={onOpen}
@@ -92,6 +97,7 @@ export default function AlertSection(props) {
             ? "You have set your company information."
             : "Company information not set yet!"}
         </Alert>
+      </Tooltip>
       </Link>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay>
@@ -118,7 +124,7 @@ export default function AlertSection(props) {
                 mt="3"
               >
                 <FormLabel
-                  color={props.colorMode === "light" ? "#27d476" : "white"}
+                  color={props.colorMode === "light" ? "#094223" : "white"}
                   p="1rem"
                   fontWeight="bold"
                 >
@@ -176,14 +182,18 @@ export default function AlertSection(props) {
               <FormControl mt="3">
                 <FormLabel>Company Phone Number:</FormLabel>
                 <Input
-                placeholder={obj ? obj.phone : null}
-                onChange={(e) => setPhone(e.target.value)} type="text" />
+                  placeholder={obj ? obj.phone : null}
+                  onChange={(e) => setPhone(e.target.value)}
+                  type="text"
+                />
               </FormControl>
               <FormControl mt="3">
                 <FormLabel>Company Email:</FormLabel>
-                <Input 
-                placeholder={obj ? obj.email : null}
-                onChange={(e) => setEmail(e.target.value)} type="text" />
+                <Input
+                  placeholder={obj ? obj.email : null}
+                  onChange={(e) => setEmail(e.target.value)}
+                  type="text"
+                />
               </FormControl>
               <FormControl mt="3">
                 <FormLabel>Company Domain Name:</FormLabel>
