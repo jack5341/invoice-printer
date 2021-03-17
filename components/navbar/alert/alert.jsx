@@ -20,10 +20,11 @@ import {
   NumberInputField,
   NumberInputStepper,
   NumberIncrementStepper,
-  Tooltip
+  Tooltip,
 } from "@chakra-ui/react";
 import { CheckIcon, DownloadIcon } from "@chakra-ui/icons";
 import { useState, useEffect } from "react";
+import { useMediaQuery } from "react-responsive";
 import jwt from "jsonwebtoken";
 
 export default function AlertSection(props) {
@@ -38,10 +39,11 @@ export default function AlertSection(props) {
   const [domain, setDomain] = useState(null);
   const [description, setDescription] = useState(null);
   const [tax, setTax] = useState(null);
-  const [logo, setLogo] = useState(null);
   const [isSaved, isSetSaved] = useState(false);
   const [isUpload, setIsUploaded] = useState(false);
   const [obj, setObj] = useState(null);
+
+  const isMobile = useMediaQuery({ query: "(max-width: 580px)" });
 
   useEffect(() => {
     window.localStorage.getItem("company_information")
@@ -50,17 +52,17 @@ export default function AlertSection(props) {
     setObj(jwt.decode(window.localStorage.getItem("company_information")));
   }, []);
 
+  const handleFileChosenLogo = async (file) => {
+    if (!file) return null;
+    let reader = new FileReader();
+    reader.readAsDataURL(file);
+    reader.onload = function () {
+      window.localStorage.setItem("company_logo", reader.result);
+    };
+    setIsUploaded(true);
+  };
+
   function toLocalStorage() {
-
-    if(logo){
-      let reader = new FileReader();
-      reader.readAsDataURL(logo);
-      reader.onload = function () {
-        window.localStorage.setItem("company_logo", reader.result);
-      };
-      setIsUploaded(true);
-    }
-
     const obj = {
       name: name,
       slogan: slogan,
@@ -84,20 +86,30 @@ export default function AlertSection(props) {
   return (
     <>
       <Link>
-      <Tooltip hasArrow label="Please set your company informations" bg="gray.300" color="black">
-        <Alert
-          fontWeight="600"
-          onClick={onOpen}
-          status={isSaved ? "success" : "warning"}
-          mt="2"
-          variant="left-accent"
+        <Tooltip
+          hasArrow
+          label={
+            isSaved
+              ? "You have succesfully set company informations !"
+              : "Please set your company informations"
+          }
+          bg="gray.300"
+          color="black"
         >
-          <AlertIcon />
-          {isSaved
-            ? "You have set your company information."
-            : "Company information not set yet!"}
-        </Alert>
-      </Tooltip>
+          <Alert
+            fontWeight="600"
+            fontSize={isMobile ? "sm" : null}
+            onClick={onOpen}
+            status={isSaved ? "success" : "warning"}
+            mt="2"
+            variant="left-accent"
+          >
+            <AlertIcon />
+            {isSaved
+              ? "You have set your company information."
+              : "Company information not set yet!"}
+          </Alert>
+        </Tooltip>
       </Link>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay>
@@ -132,7 +144,7 @@ export default function AlertSection(props) {
                   (.png)
                 </FormLabel>
                 <Input
-                  onChange={(e) => setLogo(e.target.files[0])}
+                  onChange={(e) => handleFileChosenLogo(e.target.files[0])}
                   type="file"
                   accept=".png"
                   opacity="0"

@@ -5,6 +5,7 @@ import { useMediaQuery } from "react-responsive";
 // Components
 import Navbar from "../components/navbar/navbar";
 import Howto from "../components/howto/howto";
+import Content from "../components/content/content"
 
 // Utils
 import { getChangelog } from "../utils/changelog";
@@ -14,11 +15,12 @@ export async function getStaticProps() {
   return {
     props: {
       logs: data.content,
+      version: process.env.VERSION
     },
   };
 }
 
-export default function Home({ logs }) {
+export default function Home({ logs,version }) {
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
   return (
     <>
@@ -30,10 +32,11 @@ export default function Home({ logs }) {
         padding={isTablet ? "0px" : "1rem"}
         paddingTop="0px"
         paddingBottom="0px"
-        maxW="container.lg"
+        maxW={isTablet ? "container.sm" : "container.lg"}
       >
-        <Navbar logs={logs} />
+        <Navbar version={version} logs={logs} />
         <Howto />
+        <Content />
       </Container>
     </>
   );

@@ -29,7 +29,7 @@ export default function FeatureModal(props) {
         color={props.colorMode === "light" ? "#107c41" : "white"}
         size="md"
       >
-        v1.1
+        {props.version}
       </Button>
       <Modal scrollBehavior="inside" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />

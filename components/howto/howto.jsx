@@ -7,6 +7,7 @@ export default function Howto() {
   const isMobile = useMediaQuery({ query: "(max-width: 580px)" });
   const opts = {
     width: "100%",
+    height: isMobile ? "180px" : "400px"
   }; 
   return (
     <Box
