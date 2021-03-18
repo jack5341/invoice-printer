@@ -1,7 +1,8 @@
 import fs from "fs";
 import matter from "gray-matter";
 
-export async function getChangelog() {
+export function getChangelog() {
   const fileContents = fs.readFileSync(process.cwd() + "/CHANGELOG.md").toString()
-  return matter(fileContents)
+  const object = matter(fileContents)
+  return JSON.parse(JSON.stringify(object))
 }
