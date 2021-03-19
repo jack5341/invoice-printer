@@ -12,9 +12,11 @@ import { useMediaQuery } from "react-responsive";
 import FeatureModal from "./feature-modal/feature.modal";
 import Alert from "./alert/alert";
 
+
 export default function Navbar(props) {
   const { colorMode, toggleColorMode } = useColorMode();
   const isMobile = useMediaQuery({ query: "(max-width: 580px)" });
+
 
   return (
     <Box

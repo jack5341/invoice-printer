@@ -15,7 +15,7 @@ export async function getStaticProps() {
   return {
     props: {
       logs: data.content,
-      version: JSON.parse(JSON.stringify(process.env.VERSION))
+      version: process.env.VERSION
     },
   };
 }

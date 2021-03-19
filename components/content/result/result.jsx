@@ -1,22 +1,44 @@
-import { Box, ScaleFade, Text, useColorMode } from "@chakra-ui/react";
+import {
+  Box,
+  Table,
+  Thead,
+  Tbody,
+  Tr,
+  Th,
+  Td,
+  Tooltip,
+} from "@chakra-ui/react";
+
 
 export default function Result() {
-  const { colorMode } = useColorMode();
 
   return (
-    <ScaleFade initialScale={0.9} in={true}>
-      <Box borderRadius="0.2rem" border="1px solid gray" pt="3" mt="5">
-        <Text
-          color={colorMode === "light" ? "#094223" : "#27d476"}
-          padding="1rem"
-          paddingTop="0px"
-          fontSize="xl"
-          fontWeight="600"
-        >
-          Company: Company LLC
-        </Text>
-        
+    <Tooltip hasArrow label="Click for edit !" bg="gray.300" color="black">
+      <Box
+        w="100%"
+        padding="1rem"
+        mt="4"
+        overflow="auto"
+        borderRadius="0.5rem"
+        border="1px solid gray"
+      >
+        <Table borderRadius="0.5rem" variant="striped">
+          <Thead>
+            <Tr>
+              <Th>To convert</Th>
+              <Th>into</Th>
+              <Th isNumeric>multiply by</Th>
+            </Tr>
+          </Thead>
+          <Tbody>
+            <Tr>
+              <Td>inches</Td>
+              <Td>millimetres (mm)</Td>
+              <Td isNumeric>25.4</Td>
+            </Tr>
+          </Tbody>
+        </Table>
       </Box>
-    </ScaleFade>
+    </Tooltip>
   );
 }
