@@ -6,35 +6,35 @@ import {
   Button,
   Spacer,
   Input,
-  Container
+  Container,
 } from "@chakra-ui/react";
-import { useState,useContext } from "react";
+import { useEffect, useState } from "react";
 import { DownloadIcon, DeleteIcon } from "@chakra-ui/icons";
 import { useMediaQuery } from "react-responsive";
 import readXlsxFile from "read-excel-file";
 
-import Result from "./result/result"
-import { ItemStore } from "../../context/itemStore"
+import Result from "./result/result";
 
 const excel =
-"application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
+  "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 const csv = "text/csv";
 
 export default function Content() {
-  const value = useContext(ItemStore)
+  const [items, setItems] = useState(null);
   const [isUpload, setIsUpload] = useState(false);
   const isMobile = useMediaQuery({ query: "(max-width: 580px)" });
   const toast = useToast();
-  
+
+  useEffect(() => items ? setIsUpload(true) : setIsUpload(false), [items])
+
   function parseFile(file) {
-    if (!file) {
+    if (!file) 
       toast({
         title: "File upload failed",
         status: "warning",
         position: "top-left",
         isClosable: true,
       });
-    }
 
     if (!file.type === excel && !file.type === csv)
       toast({
@@ -47,10 +47,7 @@ export default function Content() {
     switch (file.type) {
       case excel:
         readXlsxFile(file).then((rows) => {
-          value.setstate({
-            type: "excel",
-            data: rows
-          })
+          setItems(rows);
         });
         setIsUpload(true);
         break;
@@ -58,14 +55,13 @@ export default function Content() {
       case csv:
         let fileReader = new FileReader();
         fileReader.onloadend = (e) => {
-          value.setstate({
-            type: "csv",
-            data: fileReader.result
-            .toString()
-            .split("\n")
-            .map((e) => e.trim())
-            .map((e) => e.split(",").map((e) => e.trim()))
-          });
+          setItems(
+            fileReader.result
+              .toString()
+              .split("\n")
+              .map((e) => e.trim())
+              .map((e) => e.split(",").map((e) => e.trim()))
+          );
         };
         setIsUpload(true);
         break;
@@ -92,11 +88,11 @@ export default function Content() {
 
   return (
     <Box padding="1.5rem" paddingTop="0px">
-      <Container maxW="container.md">
+      <Container maxW={isMobile ? "container.xl" : "container.md"}>
         <Box
           padding={isMobile ? "0.5rem" : "1rem"}
           borderRadius="0.5rem"
-          border="2px solid gray"
+          border="1px solid gray"
         >
           <Flex>
             <Box>
@@ -118,7 +114,10 @@ export default function Content() {
               {isUpload ? (
                 <Button
                   _focus="none"
-                  onClick={() => window.location.reload()}
+                  onClick={() => {
+                    setItems(null)
+                    document.getElementById("doc-input").value = null
+                  }}
                   rightIcon={<DeleteIcon />}
                   size={isMobile ? "sm" : "md"}
                   colorScheme="red"
@@ -139,7 +138,7 @@ export default function Content() {
             </Box>
           </Flex>
         </Box>
-        <Result />
+        {items ? items.slice(1).map((element,index) => <Result label={items[0]} items={element} />) : null}
       </Container>
     </Box>
   );
