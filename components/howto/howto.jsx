@@ -17,8 +17,9 @@ export default function Howto() {
     >
       <Text
         color={colorMode === "light" ? "#107c41" : "white"}
-        fontSize={isMobile ? "xl" : "3xl"}
+        fontSize={isMobile ? "lg" : "3xl"}
         fontWeight="bold"
+        marginLeft="1rem"
       >
         How does work ?
       </Text>

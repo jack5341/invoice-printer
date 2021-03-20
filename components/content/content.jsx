@@ -138,7 +138,7 @@ export default function Content() {
             </Box>
           </Flex>
         </Box>
-        {items ? items.slice(1).map((element,index) => <Result label={items[0]} items={element} />) : null}
+        {items ? items.slice(1).map((element,index) => <Result key={index} label={items[0]} items={element} />) : null}
       </Container>
     </Box>
   );

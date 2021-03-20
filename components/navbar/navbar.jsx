@@ -24,9 +24,11 @@ export default function Navbar(props) {
       paddingBottom="0.5rem"
       paddingTop="0.5rem"
       background="none"
+      textAlign="center"
     >
       <Box>
         <Flex>
+          <Spacer />
           <Button
             _hover="none"
             _active="none"

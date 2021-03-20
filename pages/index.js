@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { Container, Box } from "@chakra-ui/react";
 import { useMediaQuery } from "react-responsive";
 
@@ -24,9 +23,6 @@ export default function Home({ logs, version }) {
   const isTablet = useMediaQuery({ query: "(max-width: 768px)" });
   return (
     <>
-      <Head>
-        <title>Invoice Printer</title>
-      </Head>
       <Box height="8px" background="#107c41"></Box>
       <Container
         padding={isTablet ? "0px" : "1rem"}
