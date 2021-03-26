@@ -15,7 +15,7 @@ import {
   InfoIcon,
   CheckIcon,
 } from "@chakra-ui/icons";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { useMediaQuery } from "react-responsive";
 import readXlsxFile from "read-excel-file";
 
@@ -25,7 +25,10 @@ const excel =
   "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet";
 const csv = "text/csv";
 
-export default function Upload() {
+import { ItemStore } from "../../context/itemStore"
+
+export default function Upload(props) {
+  const value = useContext(ItemStore)
   const { colorMode } = useColorMode();
   const [items, setItems] = useState(null);
   const [isUpload, setIsUpload] = useState(false);
@@ -56,7 +59,7 @@ export default function Upload() {
     switch (file.type) {
       case excel:
         readXlsxFile(file).then((rows) => {
-          setItems(rows);
+          value.setvalue(rows);
         });
         setIsUpload(true);
         break;
@@ -64,7 +67,7 @@ export default function Upload() {
       case csv:
         let fileReader = new FileReader();
         fileReader.onloadend = (e) => {
-          setItems(
+          value.setvalue(
             fileReader.result
               .toString()
               .split("\n")
@@ -96,15 +99,14 @@ export default function Upload() {
         color={colorMode === "light" ? "#107c41" : "white"}
         fontSize={(isTablet ? "xl" : "2xl") && (isMobileXL ? "md" : "2xl")}
       >
-        <InfoIcon mr="0.5rem" /> You can drag your file to this box for parsing
-        your file.
+        <InfoIcon mr="0.5rem" /> {props.texts.uploadlayer}
       </Text>
       <Collapse in={isUpload} animateOpacity>
         <Button
           mt="2"
           _focus="none"
           onClick={() => {
-            setItems(null);
+            value.setvalue(null);
             setIsUpload(false);
             document.getElementsByClassName("docs").value = null;
           }}
@@ -139,11 +141,11 @@ export default function Upload() {
           border="0px"
         />
       </FormControl>
-      {items
-        ? items
+      {value.value
+        ? value.value
             .slice(1)
             .map((element, index) => (
-              <Result key={index} label={items[0]} items={element} />
+              <Result key={index} label={value.value[0]} items={element} />
             ))
         : null}
     </Box>

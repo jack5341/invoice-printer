@@ -53,24 +53,14 @@ export default function Informations(props) {
           color={colorMode === "light" ? "#107c41" : "white"}
           fontSize={(isLaptop ? "xl" : "8xl") && (isMobileXL ? "4xl" : "8xl")}
         >
-          Invoice Printer
+          {props.texts.subject}
         </Text>
         <Text
           color={colorMode === "light" ? "#074a26" : "white"}
           marginTop={isMobileXL ? "0rem" : "-1rem"}
           fontSize={(isLaptop ? "lg" : "xl") && (isMobileXL ? "md" : "xl")}
         >
-          Automatic Invoice Printer by parsed.{" "}
-          <span
-            style={{ color: colorMode === "light" ? "#107c41" : "#2ed077" }}
-          >
-            .XLSX
-          </span>{" "}
-          or{" "}
-          <span style={{ color: colorMode === "light" ? "blue" : "#64c5ff" }}>
-            .CSV
-          </span>{" "}
-          file.
+          {props.texts.description}
         </Text>
         <Text
           fontSize={(isLaptop ? "4xl" : "5xl") && isMobileXL ? "2xl" : "5xl"}
@@ -78,7 +68,7 @@ export default function Informations(props) {
           fontWeight="bold"
           color={colorMode === "light" ? "#107c41" : "white"}
         >
-          How does it work ?
+          {props.texts.howto}
         </Text>
         <Divider mb="0.3rem" />
         <OrderedList
@@ -86,26 +76,14 @@ export default function Informations(props) {
           fontSize={(isLaptop ? "lg" : "2xl") && isMobileXL ? "md" : "2xl"}
         >
           <ListItem>
-            <Drawer colorMode={colorMode} />
+            <Drawer text={props.texts} colorMode={colorMode} />
           </ListItem>
           <ListItem>
-            Upload your{" "}
-            <span
-              style={{
-                color: colorMode === "light" ? "#107c41" : "#2ed077",
-              }}
-            >
-              .XLSX
-            </span>{" "}
-            or{" "}
-            <span style={{ color: colorMode === "light" ? "blue" : "#64c5ff" }}>
-              .CSV
-            </span>{" "}
-            file
+            {props.texts.steps.second}
           </ListItem>
-          <ListItem>Select one of the parsed items</ListItem>
+          <ListItem> {props.texts.steps.third} </ListItem>
           <ListItem>
-            Edit your invoice and print it! (Everything is editable)
+             {props.texts.steps.fourth}
           </ListItem>
         </OrderedList>
       </Box>

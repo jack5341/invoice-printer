@@ -1,8 +1,15 @@
 import Head from "next/head";
 import "../styles/globals.css";
 import { ChakraProvider } from "@chakra-ui/react";
+import { useState, useEffect } from "react"
+
+import { ItemStore } from "../context/itemStore";
 
 function MyApp({ Component, pageProps }) {
+  const [items,setItem] = useState(null)
+
+  useEffect(() => console.log(items),[items])
+
   return (
     <ChakraProvider>
       <Head>
@@ -15,7 +22,7 @@ function MyApp({ Component, pageProps }) {
           name="keywords"
           content="invoice printer, printer, invoice,automatic invoice printer, invoice printer by web app"
         />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <script
           async
           src="https://www.googletagmanager.com/gtag/js?id=G-VTPVN058D5"
@@ -30,7 +37,12 @@ function MyApp({ Component, pageProps }) {
           }}
         />
       </Head>
-      <Component {...pageProps} />
+      <ItemStore.Provider value={{
+        value: items,
+        setvalue: setItem
+      }}>
+        <Component {...pageProps} />
+      </ItemStore.Provider>
     </ChakraProvider>
   );
 }

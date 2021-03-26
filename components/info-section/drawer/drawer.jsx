@@ -80,7 +80,7 @@ export default function Drawers(props) {
   return (
     <>
       <Link color={props.colorMode === "light" ? "#17d049" : "#27d476"} onClick={onOpen}>
-        Set your company information (Name, Adress, Phone etc.)
+        {props.text.steps.first}
       </Link>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
         <DrawerOverlay>
@@ -95,10 +95,10 @@ export default function Drawers(props) {
                 color={props.colorMode === "light" ? "#094223" : "#27d476"}
                 fontWeight="bold"
               >
-                Set your company information
+                {props.text.drawer.subject}
               </Text>
               <Text pb="2" fontSize="sm">
-                Please fill correctly this form for best experience
+                {props.text.drawer.description}
               </Text>
               <Divider />
               <FormControl
@@ -123,7 +123,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Company Name:</FormLabel>
+                <FormLabel> {props.text.drawer.form.companyname} </FormLabel>
                 <Input
                   placeholder={obj ? obj.name : null}
                   onChange={(e) => setName(e.target.value)}
@@ -131,7 +131,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Company Slogan:</FormLabel>
+                <FormLabel> {props.text.drawer.form.companyslogan} </FormLabel>
                 <Input
                   placeholder={obj ? obj.slogan : null}
                   onChange={(e) => setSlogan(e.target.value)}
@@ -139,7 +139,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Company Location:</FormLabel>
+                <FormLabel> {props.text.drawer.form.companylocation} </FormLabel>
                 <Input
                   placeholder={obj ? obj.location : null}
                   onChange={(e) => setLocation(e.target.value)}
@@ -147,7 +147,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Company Adress:</FormLabel>
+                <FormLabel> {props.text.drawer.form.companyadress} </FormLabel>
                 <Input
                   placeholder={obj ? obj.adress : null}
                   onChange={(e) => setAdress(e.target.value)}
@@ -155,7 +155,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Company Owner Name:</FormLabel>
+                <FormLabel> {props.text.drawer.form.companyownername} </FormLabel>
                 <Input
                   placeholder={obj ? obj.ownername : null}
                   onChange={(e) => setOwnerName(e.target.value)}
@@ -163,7 +163,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Company Phone Number:</FormLabel>
+                <FormLabel> {props.text.drawer.form.companyphonenumber} </FormLabel>
                 <Input
                   placeholder={obj ? obj.phone : null}
                   onChange={(e) => setPhone(e.target.value)}
@@ -171,7 +171,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Company Email:</FormLabel>
+                <FormLabel> {props.text.drawer.form.companyemail} </FormLabel>
                 <Input
                   placeholder={obj ? obj.email : null}
                   onChange={(e) => setEmail(e.target.value)}
@@ -179,7 +179,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Company Domain Name:</FormLabel>
+                <FormLabel> {props.text.drawer.form.companydomainname} </FormLabel>
                 <Input
                   placeholder={obj ? obj.domain : null}
                   onChange={(e) => setDomain(e.target.value)}
@@ -187,7 +187,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Invoice Description:</FormLabel>
+                <FormLabel> {props.text.drawer.form.invoicedescription} </FormLabel>
                 <Textarea
                   placeholder={obj ? obj.description : null}
                   onChange={(e) => setDescription(e.target.value)}
@@ -195,7 +195,7 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel>Tax (%):</FormLabel>
+                <FormLabel> {props.text.drawer.form.tax} </FormLabel>
                 <NumberInput
                   onChange={(e) => setTax(e.target)}
                   defaultValue={15}

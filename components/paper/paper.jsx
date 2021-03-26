@@ -31,7 +31,7 @@ export default function Paper() {
   const [page, setPage] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
   const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
-
+  
   return (
     <>
       <Menu>
