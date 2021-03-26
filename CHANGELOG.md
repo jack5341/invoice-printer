@@ -32,3 +32,4 @@
 - Moved substructure from pure React.js to Next.js.
 - CHANGELOG.md file has connected to feature modal.
 - CHANGELOG modal customized.
+- The design has changed from start to finish

@@ -1,8 +1,8 @@
-@import url('https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,600;0,800;1,200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,600;0,800;1,200&display=swap");
 
 html,
 body {
-  font-family: 'Raleway', sans-serif !important;
+  font-family: "Raleway", sans-serif !important;
   padding: 0;
   margin: 0;
 }
@@ -22,15 +22,26 @@ a {
 
 /* Track */
 ::-webkit-scrollbar-track {
-  background: none
+  background: none;
 }
- 
+
 /* Handle */
 ::-webkit-scrollbar-thumb {
-  background: #888; 
+  background: #888;
 }
 
 /* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
-  background: #555; 
+  background: #555;
+}
+
+@media print {
+  @page {
+    size: auto;
+    margin: 0;
+  }
+
+  .chakra-toast__inner {
+    display: none;
+  }
 }
