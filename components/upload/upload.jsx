@@ -30,13 +30,10 @@ import { ItemStore } from "../../context/itemStore"
 export default function Upload(props) {
   const value = useContext(ItemStore)
   const { colorMode } = useColorMode();
-  const [items, setItems] = useState(null);
   const [isUpload, setIsUpload] = useState(false);
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
   const isMobileXL = useMediaQuery({ query: "(max-width: 600px)" });
   const toast = useToast();
-
-  useEffect(() => (items ? setIsUpload(true) : setIsUpload(false)), [items]);
 
   function handleFile(file) {
 

@@ -7,8 +7,14 @@ import { ItemStore } from "../context/itemStore";
 
 function MyApp({ Component, pageProps }) {
   const [items,setItem] = useState(null)
+  const [storageItems,setStorageItems] = useState([])
 
-  useEffect(() => console.log(items),[items])
+  useEffect(() => {
+    console.log(items ? setStorageItems(items) : null)
+    // window.localStorage.setItem("item_store", JSON.stringify(storageItems))
+  } ,[items])
+
+  useEffect(() => console.log(window.localStorage.getItem("item_store")) ,[storageItems])
 
   return (
     <ChakraProvider>
