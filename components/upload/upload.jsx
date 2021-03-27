@@ -8,6 +8,7 @@ import {
   Button,
   Collapse,
   useColorMode,
+  Divider
 } from "@chakra-ui/react";
 import {
   DownloadIcon,
@@ -15,8 +16,7 @@ import {
   InfoIcon,
   CheckIcon,
 } from "@chakra-ui/icons";
-import { useEffect, useState, useContext } from "react";
-import { useMediaQuery } from "react-responsive";
+import { useState, useContext } from "react";
 import readXlsxFile from "read-excel-file";
 
 import Result from "./result/result";
@@ -31,8 +31,6 @@ export default function Upload(props) {
   const value = useContext(ItemStore)
   const { colorMode } = useColorMode();
   const [isUpload, setIsUpload] = useState(false);
-  const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
-  const isMobileXL = useMediaQuery({ query: "(max-width: 600px)" });
   const toast = useToast();
 
   function handleFile(file) {
@@ -88,18 +86,21 @@ export default function Upload(props) {
 
   return (
     <Box
-      padding={(isTablet ? "0rem" : "4rem") && (isMobileXL ? "1rem" : "4rem")}
-      paddingTop={isTablet ? "0rem" : null}
-      borderLeft={isMobileXL ? "0" : "1px solid gray"}
+      className="upload-container"
+      padding="4rem"
+      borderLeft="1px solid gray"
     >
+      <Divider className="upload-section-divider" display="none"/>
       <Text
+        className="upload-layer"
         color={colorMode === "light" ? "#107c41" : "white"}
-        fontSize={(isTablet ? "xl" : "2xl") && (isMobileXL ? "md" : "2xl")}
+        fontSize="2xl"
       >
         <InfoIcon mr="0.5rem" /> {props.texts.uploadlayer}
       </Text>
       <Collapse in={isUpload} animateOpacity>
         <Button
+          className="upload-delete-btn"
           mt="2"
           _focus="none"
           onClick={() => {
@@ -107,7 +108,7 @@ export default function Upload(props) {
             setIsUpload(false);
             document.getElementsByClassName("docs").value = null;
           }}
-          size={isMobileXL ? "sm" : "md"}
+          size="md"
           leftIcon={<DeleteIcon />}
           colorScheme="green"
           display="block"
@@ -125,7 +126,8 @@ export default function Upload(props) {
           color={colorMode === "light" ? "#107c41" : "white"}
           p="1rem"
           fontWeight="bold"
-          fontSize={isMobileXL ? "md" : "2xl"}
+          className="form-layer"
+          fontSize="2xl"
         >
           {isUpload ? <CheckIcon /> : <DownloadIcon />} Upload your file
         </FormLabel>

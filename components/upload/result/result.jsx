@@ -13,12 +13,11 @@ import jwt from "jsonwebtoken"
 import { useMediaQuery } from "react-responsive";
 
 export default function Result(props) {
-  const isMobile = useMediaQuery({ query: "(max-width: 580px)" });
   const obj = Object.assign({},props.items)
   
   return (
     <ScaleFade in={true}>
-      <Tooltip hasArrow label="Click for edit !" bg="gray.300" color="black">
+      <Tooltip className="result-container" hasArrow label="Click for edit !" bg="gray.300" color="black">
         <a target="_blank" href={"/edit?token=" + jwt.sign(obj, 'shhhh')}>
           <Box
             w="100%"
@@ -32,10 +31,10 @@ export default function Result(props) {
                 <Tr>
                   {props.label.map((element, index) => (
                     <Th
-                      padding={isMobile ? "0.5rem" : null}
+                      className="result-subject"
                       fontFamily="unset"
                       fontWeight="600"
-                      fontSize={isMobile ? "xs" : "sm"}
+                      fontSize="sm"
                       key={index}
                     >
                       {element}
@@ -47,8 +46,8 @@ export default function Result(props) {
                 <Tr>
                   {props.items.map((element, index) => (
                     <Td
-                      padding={isMobile ? "0.5rem" : null}
-                      fontSize={isMobile ? "xs" : "sm"}
+                      className="result-key"
+                      fontSize="sm"
                       key={index}
                     >
                       {" "}

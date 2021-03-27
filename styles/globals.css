@@ -35,13 +35,129 @@ a {
   background: #555;
 }
 
-@media print {
-  @page {
-    size: auto;
-    margin: 0;
+@media (max-width: 1368px) {
+  .info-box .subject {
+    font-size: 4.5rem !important;
   }
 
-  .chakra-toast__inner {
-    display: none;
+  .info-box .description {
+    font-size: 1rem !important;
+  }
+
+  .info-box .howto {
+    font-size: 2.4rem !important;
+  }
+
+  .info-box .list {
+    font-size: 1.125rem !important;
+  }
+}
+
+@media (max-width: 1024px) {
+  .grid-container {
+    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+  }
+
+  /* Information Section */
+
+  .info-container {
+    height: auto !important;
+  }
+
+  .info-box {
+    position: relative !important;
+  }
+
+  /* Upload Section */
+
+  .upload-container {
+    padding: 0rem !important;
+    padding-top: 0rem !important;
+  }
+}
+
+@media (max-width: 600px) {
+  /* Information Section */
+
+  .info-container {
+    padding: 1rem !important;
+  }
+
+  .info-box .subject {
+    font-size: 2.8rem !important;
+  }
+
+  .info-box .description {
+    margin-top: 0rem !important;
+    font-size: 0.7rem !important;
+  }
+
+  .info-box .howto {
+    font-size: 1.5rem !important;
+  }
+
+  .info-box .list {
+    font-size: 0.8rem !important;
+  }
+
+  /* Upload Section */
+
+  .upload-container {
+    padding: 1rem !important;
+    padding-top: 0px !important;
+    border-left: none !important;
+  }
+
+  .upload-container .upload-section-divider {
+    display: block !important;
+  }
+
+  .upload-container .upload-layer {
+    margin-top: 1rem !important;
+    font-size: 0.9rem !important;
+    font-weight: 600;
+  }
+
+  .upload-container .upload-delete-btn {
+    height: 30px !important;
+    font-size: 0.8rem !important;
+  }
+
+  .upload-container .form-layer {
+    font-size: 0.8rem !important;
+  }
+
+  .result-container .result-subject {
+    padding: 0.5rem !important;
+    font-size: 0.6rem !important;
+  }
+
+  .result-container .result-key {
+    padding: 0.5rem !important;
+    font-size: 0.5rem !important;
+    padding: 0.5rem !important;
+  }
+
+  /* Edit Section */
+
+  .menu-btn {
+    display: none !important;
+  }
+
+  .paper-box {
+    display: none !important;
+  }
+
+  .mobile-alert {
+    display: block !important;
+  }
+
+}
+
+@media (max-width: 325px) {
+  /* Information Section */
+
+  .info-box .subject {
+    font-size: 2.3rem !important;
   }
 }

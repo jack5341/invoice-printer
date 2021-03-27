@@ -19,24 +19,25 @@ import {
   MinusIcon,
   ArrowBackIcon,
 } from "@chakra-ui/icons";
-import { useMediaQuery } from "react-responsive";
-import { useState } from "react";
+import { useState, useContext } from "react";
 
 import Header from "./header/header";
 import Body from "./body/body";
-
 import EmptyPage from "./second-page/second";
+
+import { ItemStore } from "../../context/itemStore";
 
 export default function Paper() {
   const [page, setPage] = useState(false);
   const { colorMode, toggleColorMode } = useColorMode();
-  const isMobile = useMediaQuery({ query: "(max-width: 600px)" });
-  
+  const value = useContext(ItemStore);
+
   return (
     <>
       <Menu>
         <MenuButton
-          display={isMobile ? "none" : "block"}
+          className="menu-btn"
+          display="block"
           position="absolute"
           as={IconButton}
           top="1rem"
@@ -61,7 +62,8 @@ export default function Paper() {
       </Menu>
       <Menu>
         <MenuButton
-          display={isMobile ? "none" : "block"}
+          className="menu-btn"
+          display="block"
           position="absolute"
           as={IconButton}
           top="1rem"
@@ -74,7 +76,8 @@ export default function Paper() {
         />
       </Menu>
       <Box
-        display={isMobile ? "none" : "block"}
+        className="paper-box"
+        display="block"
         width="21cm"
         shadow="2xl"
         minHeight="29.7cm"
@@ -86,7 +89,7 @@ export default function Paper() {
         <Body />
       </Box>
       {page ? <EmptyPage /> : null}
-      <Center display={!isMobile ? "none" : "block"}>
+      <Center className="mobile-alert" display="none">
         <Box>
           <img src="https://media.giphy.com/media/MQVjxVmQJ0sCVlaKgX/giphy.gif" />
           <Text
