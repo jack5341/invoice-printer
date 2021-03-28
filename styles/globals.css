@@ -161,10 +161,6 @@ a {
   .modal-container .modal-body {
     font-size: 0.875rem !important;
   }
-
-  .modal-container .github-btn {
-    height: 40px;
-  }
 }
 
 @media (max-width: 325px) {

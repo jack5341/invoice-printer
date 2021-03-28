@@ -1,13 +1,12 @@
 import Head from "next/head";
 import "../styles/globals.css";
+import { useState } from "react";
 import { ChakraProvider } from "@chakra-ui/react";
-import { useState } from "react"
 
 import { ItemStore } from "../context/itemStore";
 
 function MyApp({ Component, pageProps }) {
-  const [items,setItem] = useState(null)
-  const [storageItems,setStorageItems] = useState([])
+  const [items, setItem] = useState(null);
 
   return (
     <ChakraProvider>
@@ -32,14 +31,21 @@ function MyApp({ Component, pageProps }) {
             window.dataLayer = window.dataLayer || []; function gtag()
             {dataLayer.push(arguments)}
             gtag('js', new Date()); gtag('config', 'G-VTPVN058D5');
-        `,
+            `,
           }}
         />
+        <script
+          data-ad-client="ca-pub-3442542443909627"
+          async
+          src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+        ></script>
       </Head>
-      <ItemStore.Provider value={{
-        value: items,
-        setvalue: setItem
-      }}>
+      <ItemStore.Provider
+        value={{
+          value: items,
+          setvalue: setItem,
+        }}
+      >
         <Component {...pageProps} />
       </ItemStore.Provider>
     </ChakraProvider>
