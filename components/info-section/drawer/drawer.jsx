@@ -24,7 +24,7 @@ import { useState, useEffect } from "react";
 import jwt from "jsonwebtoken";
 
 export default function Drawers(props) {
-  const { isOpen,onOpen ,onClose } = useDisclosure();
+  const { isOpen, onOpen, onClose } = useDisclosure();
   const [name, setName] = useState(null);
   const [slogan, setSlogan] = useState(null);
   const [location, setLocation] = useState(null);
@@ -73,13 +73,14 @@ export default function Drawers(props) {
     const token = jwt.sign(obj, "shhhhh");
     window.localStorage.setItem("company_information", token);
     onClose();
-
-    window.location.reload();
   }
 
   return (
     <>
-      <Link color={props.colorMode === "light" ? "#17d049" : "#27d476"} onClick={onOpen}>
+      <Link
+        color={props.colorMode === "light" ? "#17d049" : "#27d476"}
+        onClick={onOpen}
+      >
         {props.text.steps.first}
       </Link>
       <Drawer isOpen={isOpen} placement="right" onClose={onClose}>
@@ -88,7 +89,7 @@ export default function Drawers(props) {
             background={props.colorMode === "light" ? "white" : "#15151f"}
             borderLeft="2px solid #27d476"
           >
-            <DrawerBody>
+            <DrawerBody className="drawer-container">
               <Text
                 pb="2"
                 fontSize="xl"
@@ -139,7 +140,10 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel> {props.text.drawer.form.companylocation} </FormLabel>
+                <FormLabel>
+                  {" "}
+                  {props.text.drawer.form.companylocation}{" "}
+                </FormLabel>
                 <Input
                   placeholder={obj ? obj.location : null}
                   onChange={(e) => setLocation(e.target.value)}
@@ -155,7 +159,10 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel> {props.text.drawer.form.companyownername} </FormLabel>
+                <FormLabel>
+                  {" "}
+                  {props.text.drawer.form.companyownername}{" "}
+                </FormLabel>
                 <Input
                   placeholder={obj ? obj.ownername : null}
                   onChange={(e) => setOwnerName(e.target.value)}
@@ -163,7 +170,10 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel> {props.text.drawer.form.companyphonenumber} </FormLabel>
+                <FormLabel>
+                  {" "}
+                  {props.text.drawer.form.companyphonenumber}{" "}
+                </FormLabel>
                 <Input
                   placeholder={obj ? obj.phone : null}
                   onChange={(e) => setPhone(e.target.value)}
@@ -179,7 +189,10 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel> {props.text.drawer.form.companydomainname} </FormLabel>
+                <FormLabel>
+                  {" "}
+                  {props.text.drawer.form.companydomainname}{" "}
+                </FormLabel>
                 <Input
                   placeholder={obj ? obj.domain : null}
                   onChange={(e) => setDomain(e.target.value)}
@@ -187,7 +200,10 @@ export default function Drawers(props) {
                 />
               </FormControl>
               <FormControl mt="3">
-                <FormLabel> {props.text.drawer.form.invoicedescription} </FormLabel>
+                <FormLabel>
+                  {" "}
+                  {props.text.drawer.form.invoicedescription}{" "}
+                </FormLabel>
                 <Textarea
                   placeholder={obj ? obj.description : null}
                   onChange={(e) => setDescription(e.target.value)}

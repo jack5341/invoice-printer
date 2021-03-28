@@ -16,6 +16,11 @@ a {
   box-sizing: border-box;
 }
 
+:root {
+  --f-xl: 4.5rem !important;
+
+}
+
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -37,7 +42,7 @@ a {
 
 @media (max-width: 1368px) {
   .info-box .subject {
-    font-size: 4.5rem !important;
+    font-size: var(--f-xl);
   }
 
   .info-box .description {
@@ -71,7 +76,7 @@ a {
   /* Upload Section */
 
   .upload-container {
-    padding: 0rem !important;
+    padding: 4rem !important;
     padding-top: 0rem !important;
   }
 }
@@ -151,7 +156,8 @@ a {
   .mobile-alert {
     display: block !important;
   }
-
+  
+  /* Feature Modal */
 }
 
 @media (max-width: 325px) {
