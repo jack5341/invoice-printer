@@ -13,11 +13,9 @@ import {
   Link,
   useDisclosure,
 } from "@chakra-ui/react";
-import { useMediaQuery } from "react-responsive";
 
 export default function FeatureModal(props) {
   const { isOpen, onOpen, onClose } = useDisclosure();
-  const isMobileXL = useMediaQuery({ query: "(max-width: 600px)" });
 
   return (
     <>
@@ -36,13 +34,15 @@ export default function FeatureModal(props) {
       <Modal scrollBehavior="inside" isOpen={isOpen} onClose={onClose}>
         <ModalOverlay />
         <ModalContent
+          className="modal-container"
           padding="1.5rem"
           paddingBottom="0rem"
           paddingTop="0rem"
           background={props.colorMode === "light" ? "white" : "#15151f"}
         >
           <ModalHeader
-            fontSize={isMobileXL ? "xl" : "2xl"}
+            className="modal-subject"
+            fontSize="2xl"
             paddingBottom="0rem"
             color={props.colorMode === "light" ? "#107c41" : "#27d476"}
           >
@@ -52,7 +52,6 @@ export default function FeatureModal(props) {
           <ModalCloseButton _hover="none" _active="none" _focus="none" />
           <ModalBody
             fontWeight="600"
-            fontSize={isMobileXL ? "sm" : null}
             className="modal-body"
             color={props.colorMode === "light" ? "#094223" : "whitesmoke"}
           >
@@ -67,7 +66,6 @@ export default function FeatureModal(props) {
               <Button
                 _focus="none"
                 background="none"
-                size={isMobileXL ? "sm" : null}
                 rightIcon={<ExternalLinkIcon />}
                 color={props.colorMode === "light" ? "#107c41" : "white"}
               >

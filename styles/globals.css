@@ -16,11 +16,6 @@ a {
   box-sizing: border-box;
 }
 
-:root {
-  --f-xl: 4.5rem !important;
-
-}
-
 ::-webkit-scrollbar {
   width: 5px;
 }
@@ -42,7 +37,7 @@ a {
 
 @media (max-width: 1368px) {
   .info-box .subject {
-    font-size: var(--f-xl);
+    font-size: 4.5rem !important;
   }
 
   .info-box .description {
@@ -158,6 +153,18 @@ a {
   }
   
   /* Feature Modal */
+
+  .modal-container .modal-subject {
+    font-size: 1.25rem !important;
+  }
+
+  .modal-container .modal-body {
+    font-size: 0.875rem !important;
+  }
+
+  .modal-container .github-btn {
+    height: 40px;
+  }
 }
 
 @media (max-width: 325px) {
