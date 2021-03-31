@@ -8,10 +8,6 @@ import Homepage from "./pages/homepage";
 import Editor from "./pages/editors";
 
 function App() {
-  useEffect(() =>
-    ReactGA.pageview(window.location.pathname + window.location.search)
-  );
-
   return (
     <ChakraProvider>
       <Helmet>
