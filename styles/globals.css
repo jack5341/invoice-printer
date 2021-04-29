@@ -32,7 +32,7 @@ ul {
 }
 
 .hero .subject {
-  @apply font-extrabold tracking-wider text-6xl p-4 uppercase bg-white shadow-sm;
+  @apply font-black tracking-wider text-6xl p-4 uppercase bg-white shadow-sm;
 }
 
 .hero .description {
@@ -47,10 +47,10 @@ ul {
   @apply h-4 m-2;
 }
 
-.hero .input-box {
-  @apply border-dashed border-4 h-20 md:h-24 w-64 md:w-96 mt-3 bg-white shadow-sm cursor-pointer flex justify-center items-center uppercase text-gray-400
+.hero .icon-list li img:hover {
+  opacity: 0.5
 }
 
-.result {
-  @apply w-4/6	
+.hero .input-box {
+  @apply border-dashed border-4 h-20 md:h-24 w-64 md:w-96 mt-3 bg-white cursor-pointer flex justify-center items-center uppercase text-gray-400
 }

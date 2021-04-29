@@ -1,5 +1,6 @@
+import Head from "next/head";
 import Hero from "../components/layout-components/hero";
-// import Result from "../components/shared-components/result";
+import Result from "../components/shared-components/result";
 
 import { getLinkConstants } from "../utils/getConsts";
 export async function getStaticProps() {
@@ -13,10 +14,11 @@ export async function getStaticProps() {
 export default function Home(props) {
   return (
     <>
+      <Head>
+        <title>Invoice Printer</title>
+      </Head>
       <Hero links={props.links} />
-      <div className="flex flex-col justify-center items-center">
-        {/* <Result /> */}
-      </div>
+      <Result />
     </>
   );
 }
