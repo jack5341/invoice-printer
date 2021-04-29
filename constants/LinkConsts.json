@@ -2,15 +2,18 @@
     "links": [
         {
             "name": "Github",
-            "src": "https://www.flaticon.com/svg/vstatic/svg/2111/2111425.svg?token=exp=1619669867~hmac=1be5ce3434768a7a5415b53467320697"
+            "src": "https://www.flaticon.com/svg/vstatic/svg/2111/2111425.svg?token=exp=1619669867~hmac=1be5ce3434768a7a5415b53467320697",
+            "href": "https://github.com/jack5341"
         },
         {
-            "name": "Github",
-            "src": "https://www.flaticon.com/svg/vstatic/svg/2111/2111425.svg?token=exp=1619669867~hmac=1be5ce3434768a7a5415b53467320697"
+            "name": "Twitter",
+            "src": "https://www.flaticon.com/svg/vstatic/svg/733/733635.svg?token=exp=1619672417~hmac=fd5c3fd9f69dede456d6d715dbba4bcc",
+            "href": "https://twitter.com/0jack5341"
         },
         {
-            "name": "Github",
-            "src": "https://www.flaticon.com/svg/vstatic/svg/2111/2111425.svg?token=exp=1619669867~hmac=1be5ce3434768a7a5415b53467320697"
+            "name": "Paypal",
+            "src": "https://www.flaticon.com/svg/vstatic/svg/732/732119.svg?token=exp=1619672452~hmac=2a7ef84004f15ca61766cfb5dca9060c",
+            "href": "#"
         }
     ]
 }

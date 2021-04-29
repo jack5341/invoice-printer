@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,200&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,200&display=swap");
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -7,26 +7,42 @@ html,
 body {
   padding: 0;
   margin: 0;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
 }
 
-ul{
-  @apply absolute
+.hero::after {
+  background: url("../assets/img/pattern-wallpaper.svg"),
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  content: "";
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+ul {
+  @apply absolute;
 }
 
 .hero {
-  background-color: #a1d2ec;
-  background-image: url("../assets/img/pattern-wallpaper.svg")
-}
-
-.hero {
-  @apply text-center flex flex-col shadow h-screen justify-center items-center 
+  @apply text-center flex flex-col shadow h-screen justify-center items-center shadow-sm backdrop-opacity-80 relative;
 }
 
 .hero .subject {
-  @apply font-extrabold tracking-wider text-6xl p-4 uppercase bg-white
+  @apply font-extrabold tracking-wider text-6xl p-4 uppercase bg-white shadow-sm;
 }
 
 .hero .description {
-  @apply p-2 uppercase bg-white text-base mt-2
+  @apply p-2 uppercase bg-white text-base mt-2;
+}
+
+.hero .icon-list {
+  @apply absolute bottom-8 left-8 bg-white p-1 shadow-sm;
+}
+
+.hero .icon-list li img {
+  @apply h-4 m-2;
 }

@@ -1,4 +1,5 @@
 import Hero from "../components/layout-components/hero"
+
 import { getLinkConstants } from "../utils/getConsts"
 export async function getStaticProps() {
   return {
