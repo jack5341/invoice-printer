@@ -1,172 +1,48 @@
-@import url("https://fonts.googleapis.com/css2?family=Raleway:ital,wght@0,400;0,600;0,800;1,200&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,200&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
 html,
 body {
-  font-family: "Raleway", sans-serif !important;
   padding: 0;
   margin: 0;
+  font-family: "Poppins", sans-serif;
 }
 
-a {
-  color: inherit;
-  text-decoration: none;
+.hero::after {
+  background: url("../assets/img/pattern-wallpaper.svg"),
+    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  content: "";
+  opacity: 0.6;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
 }
 
-* {
-  box-sizing: border-box;
+ul {
+  @apply absolute;
 }
 
-::-webkit-scrollbar {
-  width: 5px;
+.hero {
+  @apply text-center flex flex-col shadow h-screen justify-center items-center shadow-sm backdrop-opacity-80 relative;
 }
 
-/* Track */
-::-webkit-scrollbar-track {
-  background: none;
+.hero .subject {
+  @apply font-extrabold tracking-wider text-6xl p-4 uppercase bg-white shadow-sm;
 }
 
-/* Handle */
-::-webkit-scrollbar-thumb {
-  background: #888;
+.hero .description {
+  @apply p-2 uppercase bg-white text-base mt-2;
 }
 
-/* Handle on hover */
-::-webkit-scrollbar-thumb:hover {
-  background: #555;
+.hero .icon-list {
+  @apply absolute bottom-8 left-8 bg-white p-1 shadow-sm;
 }
 
-@media (max-width: 1368px) {
-  .info-box .subject {
-    font-size: 4.5rem !important;
-  }
-
-  .info-box .description {
-    font-size: 1rem !important;
-  }
-
-  .info-box .howto {
-    font-size: 2.4rem !important;
-  }
-
-  .info-box .list {
-    font-size: 1.125rem !important;
-  }
-}
-
-@media (max-width: 1024px) {
-  .grid-container {
-    grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
-  }
-
-  /* Information Section */
-
-  .info-container {
-    height: auto !important;
-  }
-
-  .info-box {
-    position: relative !important;
-  }
-
-  /* Upload Section */
-
-  .upload-container {
-    padding: 4rem !important;
-    padding-top: 0rem !important;
-  }
-}
-
-@media (max-width: 600px) {
-  /* Information Section */
-
-  .info-container {
-    padding: 1rem !important;
-  }
-
-  .info-box .subject {
-    font-size: 2.8rem !important;
-  }
-
-  .info-box .description {
-    margin-top: 0rem !important;
-    font-size: 0.7rem !important;
-  }
-
-  .info-box .howto {
-    font-size: 1.5rem !important;
-  }
-
-  .info-box .list {
-    font-size: 0.8rem !important;
-  }
-
-  /* Upload Section */
-
-  .upload-container {
-    padding: 1rem !important;
-    padding-top: 0px !important;
-    border-left: none !important;
-  }
-
-  .upload-container .upload-section-divider {
-    display: block !important;
-  }
-
-  .upload-container .upload-layer {
-    margin-top: 1rem !important;
-    font-size: 0.9rem !important;
-    font-weight: 600;
-  }
-
-  .upload-container .upload-delete-btn {
-    height: 30px !important;
-    font-size: 0.8rem !important;
-  }
-
-  .upload-container .form-layer {
-    font-size: 0.8rem !important;
-  }
-
-  .result-container .result-subject {
-    padding: 0.5rem !important;
-    font-size: 0.6rem !important;
-  }
-
-  .result-container .result-key {
-    padding: 0.5rem !important;
-    font-size: 0.5rem !important;
-    padding: 0.5rem !important;
-  }
-
-  /* Edit Section */
-
-  .menu-btn {
-    display: none !important;
-  }
-
-  .paper-box {
-    display: none !important;
-  }
-
-  .mobile-alert {
-    display: block !important;
-  }
-  
-  /* Feature Modal */
-
-  .modal-container .modal-subject {
-    font-size: 1.25rem !important;
-  }
-
-  .modal-container .modal-body {
-    font-size: 0.875rem !important;
-  }
-}
-
-@media (max-width: 325px) {
-  /* Information Section */
-
-  .info-box .subject {
-    font-size: 2.3rem !important;
-  }
+.hero .icon-list li img {
+  @apply h-4 m-2;
 }
