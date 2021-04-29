@@ -1,4 +1,5 @@
-export default function Hero(){
+export default function Hero(props){
+    console.log(props)
     return (
         <>
             <div className="hero">
@@ -9,6 +10,17 @@ export default function Hero(){
                     Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, ipsa.
                 </p>
             </div>
+            <ul>
+                <li>
+                    dwqdwq
+                </li>
+                <li>
+                    dwqdwq
+                </li>
+                <li>
+                    dwqdwq
+                </li>
+            </ul>
         </>
     )
 }
