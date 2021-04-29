@@ -1,30 +1,29 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import readxlsxfile from "read-excel-file";
+
+import IconList from "../shared-components/icon-list"
+
+import { FileStore } from "../../contexts/fileStore";
 
 export default function Hero(props) {
   const [isloading, setisloading] = useState(false);
+  const { setresult } = useContext(FileStore);
 
   async function parseData(file) {
     setisloading(true);
+
     if (!file) {
       document.getElementsByClassName("subject").innerHTML =
         "You have to upload one file...";
-      setisloading(false)
+      setisloading(false);
       return null;
     }
 
     const matches = file.name.split(".").pop();
-    if (!matches === "xlsx" && !matches === "csv" && !matches === "xls") {
-      document.getElementsByClassName("subject").innerHTML =
-        "Wrong file extension !";
-      setisloading(false)
-      return null;
-    }
-
     switch (matches) {
       case "xlsx":
-        readxlsxfile(file).then((rows) => console.log(rows))
-        setisloading(false)
+        readxlsxfile(file).then((rows) => setresult(rows));
+        setisloading(false);
         break;
       case "xls":
         break;
@@ -32,6 +31,9 @@ export default function Hero(props) {
         break;
 
       default:
+        document.getElementsByClassName("subject").innerHTML =
+          "Wrong file extension !";
+        setisloading(false);
         break;
     }
   }
@@ -56,17 +58,8 @@ export default function Hero(props) {
           id="file-input"
           className="hidden"
         ></input>
-        <ul className="icon-list">
-          {props.links
-            ? props.links.map((e, index) => (
-                <li key={index}>
-                  <a href={e.href} target="_blank">
-                    <img src={e.src} alt={e.name} />
-                  </a>
-                </li>
-              ))
-            : null}
-        </ul>
+
+        <IconList links={props.links} />
       </div>
     </>
   );
