@@ -6,6 +6,10 @@ export default function Hero(props) {
         <p className="description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, ipsa.
         </p>
+        <div className="input-box">
+          Upload your file
+        </div>
+        <input type="file" className="hidden file-input"></input>
         <ul className="icon-list">
           {props.links
             ? props.links.map((e, index) => (

@@ -28,7 +28,7 @@ ul {
 }
 
 .hero {
-  @apply text-center flex flex-col shadow h-screen justify-center items-center shadow-sm backdrop-opacity-80 relative;
+  @apply text-center flex flex-col h-screen justify-center items-center backdrop-opacity-80 relative;
 }
 
 .hero .subject {
@@ -36,13 +36,21 @@ ul {
 }
 
 .hero .description {
-  @apply p-2 uppercase bg-white text-base mt-2;
+  @apply p-2 uppercase bg-white text-base mt-2 shadow-sm;
 }
 
 .hero .icon-list {
-  @apply absolute bottom-8 left-8 bg-white p-1 shadow-sm;
+  @apply fixed bottom-8 left-8 bg-white p-1 shadow-sm;
 }
 
 .hero .icon-list li img {
   @apply h-4 m-2;
+}
+
+.hero .input-box {
+  @apply border-dashed border-4 h-20 md:h-24 w-64 md:w-96 mt-3 bg-white shadow-sm cursor-pointer flex justify-center items-center uppercase text-gray-400
+}
+
+.result {
+  @apply w-4/6	
 }
