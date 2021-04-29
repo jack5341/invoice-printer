@@ -1,1 +1,0 @@
-{"ast":null,"code":"import fs from \"fs\";\nimport matter from \"gray-matter\";\nexport function getChangelog() {\n  const fileContents = fs.readFileSync(process.cwd() + \"/CHANGELOG.md\").toString();\n  const object = matter(fileContents);\n  return JSON.parse(JSON.stringify(object));\n}","map":null,"metadata":{},"sourceType":"module"}
