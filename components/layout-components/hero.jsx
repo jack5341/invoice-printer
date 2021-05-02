@@ -10,20 +10,21 @@ export default function Hero(props) {
   const { setresult } = useContext(FileStore);
 
   async function parseData(file) {
-    setisloading(true);
+    setisloading(true)
 
     if (!file) {
       document.getElementsByClassName("subject").innerHTML =
         "You have to upload one file...";
-      setisloading(false);
       return null;
     }
 
     const matches = file.name.split(".").pop();
     switch (matches) {
       case "xlsx":
-        readxlsxfile(file).then((rows) => setresult(rows));
-        setisloading(false);
+        readxlsxfile(file).then((rows) => setresult(rows))
+        setTimeout(() => {
+          window.scrollTo(0,document.body.scrollHeight);
+        }, 300);
         break;
       case "xls":
         break;
@@ -33,9 +34,12 @@ export default function Hero(props) {
       default:
         document.getElementsByClassName("subject").innerHTML =
           "Wrong file extension !";
-        setisloading(false);
         break;
     }
+
+     setTimeout(() => {
+      setisloading(false)
+     }, 3000);
   }
 
   return (
