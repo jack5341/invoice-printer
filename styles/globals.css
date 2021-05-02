@@ -29,7 +29,7 @@ ul {
 }
 
 .hero {
-  @apply text-center flex flex-col h-screen justify-center items-center backdrop-opacity-80 relative shadow-xl;
+  @apply text-center flex flex-col h-screen justify-center items-center backdrop-opacity-80 relative;
 }
 
 .hero .subject {
@@ -57,11 +57,11 @@ ul {
 }
 
 .result {
-  @apply rounded-none m-5 mt-0 mb-0 w-full md:w-2/5 overflow-x-scroll block mx-auto bg-gray-200 text-gray-800 max-h-96;
+  @apply rounded-none m-5 mt-0 mb-0 overflow-x-scroll w-full mx-auto text-gray-800 max-h-96;
 }
 
 .result .head {
-  @apply text-left border-gray-300;
+  @apply text-left border-gray-300 bg-gray-200;
 }
 
 .result .element {

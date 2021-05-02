@@ -23,7 +23,7 @@ export default function Hero(props) {
       case "xlsx":
         readxlsxfile(file).then((rows) => setresult(rows))
         setTimeout(() => {
-          window.scrollTo(0,document.body.scrollHeight);
+          window.scrollTo(0, 500);
         }, 300);
         break;
       case "xls":
