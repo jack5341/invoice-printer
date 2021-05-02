@@ -29,7 +29,7 @@ ul {
 }
 
 .hero {
-  @apply text-center flex flex-col h-screen justify-center items-center backdrop-opacity-80 relative;
+  @apply text-center flex flex-col h-screen justify-center items-center backdrop-opacity-80 relative shadow-xl;
 }
 
 .hero .subject {
@@ -49,9 +49,21 @@ ul {
 }
 
 .hero .icon-list li img:hover {
-  opacity: 0.5
+  opacity: 0.5;
 }
 
 .hero .input-box {
-  @apply border-dashed border-4 h-20 md:h-24 w-64 md:w-96 mt-3 bg-white cursor-pointer flex justify-center items-center uppercase text-gray-400
+  @apply border-dashed border-4 h-20 md:h-24 w-64 md:w-96 mt-3 bg-white cursor-pointer flex justify-center items-center uppercase text-gray-400;
+}
+
+.result {
+  @apply rounded-none m-5 mt-0 mb-0 w-full md:w-2/5 overflow-x-scroll block mx-auto bg-gray-200 text-gray-800 max-h-96;
+}
+
+.result .head {
+  @apply text-left border-gray-300;
+}
+
+.result .element {
+  @apply bg-gray-100 border-b border-gray-200 hover:bg-gray-200 text-sm lg:text-base cursor-pointer;
 }
