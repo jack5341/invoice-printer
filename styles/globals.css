@@ -41,7 +41,7 @@ ul {
 }
 
 .hero .icon-list {
-  @apply fixed bottom-8 left-8 bg-white p-1 shadow-sm z-10;
+  @apply fixed bottom-8 left-8 bg-white p-1 shadow z-10;
 }
 
 .hero .icon-list li img {
