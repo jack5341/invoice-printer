@@ -23,7 +23,7 @@ export default function Home(props) {
           <title>Invoice Printer</title>
         </Head>
         <Hero links={props.links} />
-        <Result />
+        {/* <Result /> */}
       </FileStore.Provider>
     </>
   );

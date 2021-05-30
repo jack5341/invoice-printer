@@ -12,10 +12,9 @@ body {
 }
 
 .hero::after {
-  background: url("../assets/img/pattern-wallpaper.svg"),
-    linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  background: url("../assets/img/pattern-wallpaper.svg"),whitesmoke;
   content: "";
-  opacity: 0.6;
+  height: 100vh;
   top: 0;
   left: 0;
   bottom: 0;
@@ -24,9 +23,25 @@ body {
   z-index: -1;
 }
 
+/* nav{
+  background: url("../assets/img/pattern-wallpaper.svg"),
+  linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5));
+  content: "";
+} */
+
 ul {
   @apply absolute;
 }
+
+/* Global Classes */
+.card-lg {
+  @apply p-10 bg-white rounded shadow-lg
+}
+
+.steps-btn {
+  @apply border-dashed border-4 p-3 px-5 rounded shadow absolute bg-white hover:bg-gray-200 focus:outline-none
+}
+
 
 .hero {
   @apply text-center flex flex-col h-screen justify-center items-center backdrop-opacity-80 relative;
@@ -53,7 +68,7 @@ ul {
 }
 
 .hero .input-box {
-  @apply border-dashed border-4 h-20 md:h-24 w-64 md:w-96 mt-3 bg-white cursor-pointer flex justify-center items-center uppercase text-gray-400;
+  @apply border-dashed border-4 h-20 md:h-24 mt-3 bg-white cursor-pointer flex justify-center items-center uppercase text-gray-400;
 }
 
 .result {
