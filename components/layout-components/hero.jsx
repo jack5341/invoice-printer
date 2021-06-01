@@ -2,6 +2,7 @@ import { useState, useContext } from "react";
 // import readxlsxfile from "read-excel-file";
 
 import IconList from "../shared-components/icon-list";
+import LinkStack from "../shared-components/link-stack"
 
 // import { FileStore } from "../../contexts/fileStore";
 
@@ -55,6 +56,7 @@ export default function Hero(props) {
             Next Step
           </button>
         ) : null}
+        <LinkStack/>
         <p className="subject">Invoice Printer</p>
         <p className="description">
           Lorem ipsum dolor sit amet consectetur adipisicing elit. Itaque, ipsa.

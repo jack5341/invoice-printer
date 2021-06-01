@@ -1,9 +1,12 @@
 # dependencies
 /node_modules
 /.pnp
-/.next
 .pnp.js
 .eslintcache
+
+# next.js
+/.next/
+/out/
 
 # testing
 /coverage

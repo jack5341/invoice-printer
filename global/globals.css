@@ -1,0 +1,90 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;1,200&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  background: url("../assets/img/pattern-wallpaper.svg"),whitesmoke;
+  content: "";
+  scroll-behavior: smooth;
+  font-family: "Poppins", sans-serif;
+}
+
+.hero::after {
+  height: 100vh;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;
+}
+
+ul {
+  @apply absolute;
+}
+
+/* Global Classes */
+.card-lg {
+  @apply p-4 md:p-10 bg-white rounded shadow-lg
+}
+
+.input {
+  @apply p-1 md:p-2 mt-1 w-full text-sm border border-gray-400 rounded focus:outline-none
+}
+
+.block-lg{
+  @apply overflow-hidden overflow-ellipsis hidden md:block my-1
+}
+
+/* Steps Buttons */
+.steps-btn {
+  @apply p-3 px-5 rounded shadow absolute bg-white hover:bg-gray-200 focus:outline-none
+}
+
+/* Link Stack */
+.l-stack {
+  @apply text-gray-700
+}
+
+.l-stack a {
+  @apply opacity-50 hover:opacity-100
+}
+
+/* Hero Section */
+.container {
+  @apply text-center flex;
+}
+
+.container .subject {
+  @apply font-black tracking-wider text-6xl p-0 md:p-2 uppercase;
+}
+
+.container .description {
+  @apply p-2 uppercase text-xs md:text-base mt-0;
+}
+
+.container .icon-list {
+  @apply fixed bottom-8 left-8 bg-white p-1 shadow z-10;
+}
+
+.container .icon-list li img {
+  @apply h-4 m-2;
+}
+
+.container .icon-list li img:hover {
+  opacity: 0.5;
+}
+
+.container .input-box {
+  @apply border-dashed border-4 h-20 md:h-24 mt-3 bg-white cursor-pointer flex justify-center items-center uppercase text-gray-400;
+}
+
+/* Result Cards */
+
+.result-card-body{
+  @apply bg-gray-100 border h-24 md:h-48 p-3 flex flex-col justify-center items-center duration-150 transform hover:scale-90 cursor-pointer
+}

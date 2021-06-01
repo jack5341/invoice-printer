@@ -1,7 +1,15 @@
-import '../styles/globals.css'
+import { useState } from "react";
+import "../global/globals.css";
+import { FileStore } from "../contexts/fileStore";
 
 function MyApp({ Component, pageProps }) {
-  return <Component {...pageProps} />
+  const [result, setresult] = useState(null);
+
+  return (
+    <FileStore.Provider>
+      <Component {...pageProps} />
+    </FileStore.Provider>
+  );
 }
 
-export default MyApp
+export default MyApp;
